@@ -127,7 +127,7 @@ BEGIN
 	EXEC ('sp_addlinkedserver @server=''DYN_DBA_RMT'',@srvproduct='''',@provider=''SQLNCLI'',@datasrc=''tcp:'+@WitnessName+'''')
 	EXEC ('master.dbo.sp_serveroption @server=N''DYN_DBA_RMT'', @optname=N''rpc'', @optvalue=N''true''')
 	EXEC ('master.dbo.sp_serveroption @server=N''DYN_DBA_RMT'', @optname=N''rpc out'', @optvalue=N''true''')
-	EXEC ('master.dbo.sp_addlinkedsrvlogin @rmtsrvname=N''DYN_DBA_RMT'',@useself=N''False'',@locallogin=null,@rmtuser=N''LinkedServer_User'',@rmtpassword=''4vnetonly''')
+	EXEC ('master.dbo.sp_addlinkedsrvlogin @rmtsrvname=N''DYN_DBA_RMT'',@useself=N''False'',@locallogin=null,@rmtuser=N''LinkedServer_User'',@rmtpassword=''${{secrets.LINKEDSERVER_USER_PW}}''')
 
 
 
@@ -170,7 +170,7 @@ IF  EXISTS (SELECT srv.name FROM sys.servers srv WHERE srv.server_id != 0 AND sr
 EXEC ('sp_addlinkedserver @server=''DYN_DBA_RMT'',@srvproduct='''',@provider=''SQLNCLI'',@datasrc=''tcp:'+@FromServerName+'''')
 EXEC ('master.dbo.sp_serveroption @server=N''DYN_DBA_RMT'', @optname=N''rpc'', @optvalue=N''true''')
 EXEC ('master.dbo.sp_serveroption @server=N''DYN_DBA_RMT'', @optname=N''rpc out'', @optvalue=N''true''')
-EXEC ('master.dbo.sp_addlinkedsrvlogin @rmtsrvname=N''DYN_DBA_RMT'',@useself=N''False'',@locallogin=null,@rmtuser=N''LinkedServer_User'',@rmtpassword=''4vnetonly''')
+EXEC ('master.dbo.sp_addlinkedsrvlogin @rmtsrvname=N''DYN_DBA_RMT'',@useself=N''False'',@locallogin=null,@rmtuser=N''LinkedServer_User'',@rmtpassword=''${{secrets.LINKEDSERVER_USER_PW}}''')
 
 -- GET REMOTE MIRRORING ENPOINT INFO
 SELECT		@RemoteEndpointID		= endpoint_id

@@ -49,7 +49,7 @@ SET @SQL = 'master.dbo.sp_addlinkedserver @server = N''' + @PrimaryServer + ''',
 EXEC(@SQL)
 
 
-SET @SQL = 'master.dbo.sp_addlinkedsrvlogin @rmtsrvname = N''' + @PrimaryServer + ''', @locallogin = NULL , @useself = N''False'', @rmtuser = N''sa'', @rmtpassword = N''Virtuosogtg!@2011'''
+SET @SQL = 'master.dbo.sp_addlinkedsrvlogin @rmtsrvname = N''' + @PrimaryServer + ''', @locallogin = NULL , @useself = N''False'', @rmtuser = N''sa'', @rmtpassword = N''${{secrets.SA_PW}}'''
 EXEC(@SQL)
 
 

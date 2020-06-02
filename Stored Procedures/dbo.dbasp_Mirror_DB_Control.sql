@@ -439,7 +439,7 @@ AS
 					EXEC ('sp_addlinkedserver @server=''DYN_DBA_RMT'',@srvproduct='''',@provider=''SQLNCLI'',@datasrc=''tcp:'+@Partner+'''')
 					EXEC ('master.dbo.sp_serveroption @server=N''DYN_DBA_RMT'', @optname=N''rpc'', @optvalue=N''true''')
 					EXEC ('master.dbo.sp_serveroption @server=N''DYN_DBA_RMT'', @optname=N''rpc out'', @optvalue=N''true''')
-					EXEC ('master.dbo.sp_addlinkedsrvlogin @rmtsrvname=N''DYN_DBA_RMT'',@useself=N''False'',@locallogin=null,@rmtuser=N''LinkedServer_User'',@rmtpassword=''4vnetonly''')
+					EXEC ('master.dbo.sp_addlinkedsrvlogin @rmtsrvname=N''DYN_DBA_RMT'',@useself=N''False'',@locallogin=null,@rmtuser=N''LinkedServer_User'',@rmtpassword=''${{secrets.LINKEDSERVER_USER_PW}}''')
 				END
 
 

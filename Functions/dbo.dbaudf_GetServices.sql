@@ -29,7 +29,7 @@ BEGIN
 
 	DECLARE @OutputText VarChar(max)
 	--EXEC DBAOps.dbo.dbasp_RunQuery @Name= 'GetServices', @Query = 'Select @@ServerName [ServerName]', @ServerName = @@ServerName, @DBName = 'DBAOps'
-	--								, @Login = 'LinkedServer_User', @Password = '4vnetonly'	
+	--								, @Login = 'LinkedServer_User', @Password = '${{secrets.LINKEDSERVER_USER_PW}}'	
 	--								, @OutputFile = 'T:\GetServices.txt', @OutputText = @OutputText 
 	--SELECT @OutputText
 

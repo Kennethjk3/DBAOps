@@ -17,7 +17,7 @@ DECLARE		@FullFileName	nvarchar(max)
 DECLARE		@bytes			int				= 48
 DECLARE		@FileText		nvarchar(max)
 DECLARE		@Message		VarChar(8000)	= 'Check Spids: ' + @@ServerName 
-DECLARE		@To				VarChar(8000)	= 'steve.ledridge@gmail.com;sledridge@virtuoso.com' --;techengineering@virtuoso.com;TechQAAutomation@virtuoso.com'
+DECLARE		@To				VarChar(8000)	= 'steve.ledridge@gmail.com'
 DECLARE		@from_address	VarChar(8000)	= @@ServerName + '<'+@@ServerName+'@VIRTUOSO.COM>'
 DECLARE		@HTMLTable		VarChar(max)
 DECLARE		@Body			VarChar(max)
