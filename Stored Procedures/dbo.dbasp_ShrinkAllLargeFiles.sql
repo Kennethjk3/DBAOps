@@ -1,0 +1,198 @@
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_NULLS ON
+GO
+CREATE   PROCEDURE [dbo].[dbasp_ShrinkAllLargeFiles]
+      (
+      @MinLogSize_MB		INT			= 1000		-- LOG SIZE DEFALT MINIMUM IS 1GB
+      ,@MinLogFreePct		INT			= 50		-- LOG PERCENT FREE MINIMUM IS 50%
+      ,@FileTypes		VarChar(10)		= 'BOTH'	-- LOG,DATA,BOTH
+      ,@DBNameFilter		sysname			= NULL		-- SINGLE DBName to PROCESS
+      ,@DoItNow			Bit			= 0
+      )
+AS
+/*
+--	======================================================================================
+--	======================================================================================
+--	Revision History
+--	Date		Author     		Desc
+--	==========	====================	=============================================
+--	??/??/????	Steve Ledridge		New sproc
+--	12/07/2015	Steve Ledridge		Added Exclusion to prevent Shrinking of TempDB
+--	======================================================================================
+
+
+-- EXAMPLES
+
+
+exec DBAOps.dbo.dbasp_ShrinkAllLargeFiles 1000,50,'BOTH','Test'
+GO
+exec	DBAOps.dbo.dbasp_ShrinkAllLargeFiles
+			@FileTypes = 'BOTH' -- 'DATA' --'LOG'
+			,@DoItNow = 1
+GO
+*/
+BEGIN
+            SET NOCOUNT ON
+
+
+            PRINT '-- CHECK DB LOGS FOR NEEDED SHRINKING'
+
+            DECLARE           @TSQL			VARCHAR(max)
+                              ,@CMD			VARCHAR(max)
+                              ,@DBName			SYSNAME
+                              ,@FileName		SYSNAME
+                              ,@FileType		SYSNAME
+                              ,@Env			SYSNAME
+                              ,@Size			NUMERIC(28,2)
+                              ,@Free			NUMERIC(28,2)
+                              ,@Ratio			NUMERIC(28,2)
+			      ,@Recovery		SYSNAME
+
+
+            IF OBJECT_ID('Tempdb..#LogFileSpace') IS NOT NULL
+                  DROP TABLE #LogFileSpace
+
+
+            CREATE TABLE #LogFileSpace
+                        (
+                        [DATABASE_NAME]         SYSNAME
+                        ,[FILE_TYPE]		SYSNAME
+                        ,[FILE_NAME]		SYSNAME
+                        ,[CurrentSizeMB]	FLOAT
+                        ,[FreeSpaceMB]          FLOAT
+                        )
+
+
+            SELECT		@Env = env_detail
+            FROM		DBAOps.dbo.Local_ServerEnviro
+            WHERE		env_type = 'ENVname'
+
+
+            IF          @Env = 'Production'
+                  PRINT ' -- PRODUCTION: CHANGING RECOVERY TO SIMPLE METHOD NOT USED.'
+
+
+		SET         @TSQL =
+		'		RAISERROR(''  -- SHRINKING $FILETYPE$ FILE ($FILENAME$) FOR $DBNAME$'',-1,-1) WITH NOWAIT
+		RAISERROR(''  -- BEFORE: $DBNAME$:$FILENAME$ Size=$SIZE$ Free=$FREE$ RATIO=$RATIO$'',-1,-1) WITH NOWAIT
+		USE [MASTER];'
+		+CHAR(13)+CHAR(10)+CHAR(13)+CHAR(10)
+		+ CASE WHEN @Env = 'Production'
+		THEN
+		'		IF ''$FILETYPE$'' != ''DATA''
+			EXEC DBAOps.dbo.dbasp_backup @DBName = ''$DBNAME$'', @Mode = ''BL'''
+		ELSE
+		'		IF ''$RECOVERY$'' != ''SIMPLE''
+			ALTER DATABASE [$DBNAME$] SET RECOVERY SIMPLE WITH ROLLBACK IMMEDIATE'
+		END
+		+CHAR(13)+CHAR(10)+CHAR(13)+CHAR(10)
+		+ '		USE [$DBNAME$] checkpoint;
+
+
+		IF ''$FILETYPE$'' = ''DATA''
+			DBCC SHRINKFILE (N''$FILENAME$'' , $USEDSIZE$) WITH NO_INFOMSGS;
+		ELSE
+		BEGIN
+			DBCC SHRINKFILE (N''$FILENAME$'' , 0, TRUNCATEONLY) WITH NO_INFOMSGS;
+			DBCC SHRINKFILE (N''$FILENAME$'' , 0, NOTRUNCATE) WITH NO_INFOMSGS;
+			DBCC SHRINKFILE (N''$FILENAME$'' , 0, TRUNCATEONLY) WITH NO_INFOMSGS;
+		END'
+		+CHAR(13)+CHAR(10)+CHAR(13)+CHAR(10)
+		+ CASE WHEN @Env != 'Production'
+		THEN
+		'		IF ''$RECOVERY$'' != ''SIMPLE''
+			ALTER DATABASE [$DBNAME$] SET RECOVERY $RECOVERY$ WITH ROLLBACK IMMEDIATE'
+		ELSE ''
+		END
+		+CHAR(13)+CHAR(10)+CHAR(13)+CHAR(10)
+
+
+	    +'
+		DECLARE		@Size VarChar(10), @Free VarChar(10), @Ratio VarChar(10)
+		SELECT		@Size	= CAST(size/128.0 AS NUMERIC(28,2))
+				,@Free	= CAST(size/128.0 - CAST(FILEPROPERTY(name, ''SpaceUsed'') AS INT)/128.0 AS NUMERIC(28,2))
+				,@Ratio	= CAST((CAST(@Free  AS NUMERIC(28,2))*100.0)/CAST(@Size  AS NUMERIC(28,2)) AS NUMERIC(28,2))
+		FROM		sys.master_files
+		WHERE		name = ''$FILENAME$''
+			AND	database_id = DB_ID()
+
+
+		RAISERROR(''    -- AFTER: $DBNAME$:$FILENAME$  Size=%s  Free=%s  RATIO=%s'',-1,-1,@Size,@Free,@Ratio) WITH NOWAIT'
+
+
+            EXEC  sp_MsForEachDB
+            'USE [?];
+            INSERT INTO		#LogFileSpace
+            SELECT			DB_NAME(database_id)
+							,CASE Type WHEN 1 THEN ''LOG'' ELSE ''DATA'' END
+							,name
+							,CAST(size/128.0 AS NUMERIC(28,2))
+							,CAST(size/128.0 - CAST(FILEPROPERTY(name, ''SpaceUsed'') AS INT)/128.0 AS NUMERIC(28,2))
+            FROM			sys.master_files
+            WHERE			state = 0   -- ONLINE
+                  AND		database_id = DB_ID()'
+
+
+	DELETE #LogFileSpace WHERE [DATABASE_NAME] = 'TempDB'
+
+	-- SELECT * FROM sys.databases
+	DECLARE LogFileCursor CURSOR KEYSET
+	FOR
+	SELECT		[DATABASE_NAME]
+				,[FILE_TYPE]
+				,[FILE_NAME]
+				,[CurrentSizeMB]
+				,[FreeSpaceMB]
+				,([FreeSpaceMB]*100.0)/[CurrentSizeMB]
+				,T2.recovery_model_desc
+	FROM		#LogFileSpace T1
+	JOIN		sys.databases T2
+		ON	T1.[DATABASE_NAME] = DB_NAME(T2.database_id)
+
+
+	        WHERE       ([FILE_TYPE] = @FileTypes OR @FileTypes = 'BOTH')
+			AND		([DATABASE_NAME] = @DBNameFilter OR @DBNameFilter IS NULL)
+			AND		[FreeSpaceMB] >= @MinLogSize_MB
+			AND		([FreeSpaceMB] * 100) / [CurrentSizeMB] >= @MinLogFreePct
+			AND	T2.is_read_only = 0
+	ORDER BY	1,2,3
+        OPEN LogFileCursor
+
+
+            IF  @@CURSOR_ROWS = 0 PRINT '  --  ALL DATABASES ARE GOOD, NO SHRINKING PERFORMED.'
+            FETCH NEXT FROM LogFileCursor INTO @DBName,@FileType,@FileName,@Size,@Free,@Ratio,@Recovery
+            WHILE (@@fetch_status <> -1)
+            BEGIN
+                  IF (@@fetch_status <> -2)
+                  BEGIN
+                        SET @CMD = REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(@TSQL,'$DBNAME$',@DBName),'$USEDSIZE$',CAST(CAST(((@Size-@Free)* 1.05) AS INT) AS VarChar(50))),'$FILETYPE$',@FileType),'$FILENAME$',@FileName),'$SIZE$',CAST(@Size AS VarChar(10))),'$FREE$',CAST(@Free AS VarChar(10))),'$RATIO$',CAST(@Ratio AS VarChar(10))),'$RECOVERY$',@RECOVERY)
+                        If @DoItNow = 0
+						   BEGIN
+							PRINT (@CMD)
+							PRINT 'GO'
+						   END
+						ELSE
+						BEGIN
+							BEGIN TRY
+								EXEC (@CMD)
+							END TRY
+							BEGIN CATCH
+								EXEC DBAOps.dbo.dbasp_GetErrorInfo
+							END CATCH
+						END
+                  END
+                  FETCH NEXT FROM LogFileCursor INTO @DBName,@FileType,@FileName,@Size,@Free,@Ratio,@Recovery
+            END
+
+
+            CLOSE LogFileCursor
+            DEALLOCATE LogFileCursor
+
+
+            IF OBJECT_ID('Tempdb..#LogFileSpace') IS NOT NULL
+                  DROP TABLE #LogFileSpace
+END
+GO
+GRANT EXECUTE ON  [dbo].[dbasp_ShrinkAllLargeFiles] TO [public]
+GO

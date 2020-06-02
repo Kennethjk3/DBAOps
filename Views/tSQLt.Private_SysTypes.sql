@@ -1,0 +1,8 @@
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_NULLS ON
+GO
+CREATE VIEW [tSQLt].[Private_SysTypes] AS SELECT * FROM sys.types AS T;
+GO
+GRANT SELECT ON  [tSQLt].[Private_SysTypes] TO [public]
+GO

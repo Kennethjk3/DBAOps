@@ -1,0 +1,15 @@
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_NULLS ON
+GO
+CREATE   FUNCTION [dbo].[dbaudf_IPAddressToInteger] (@IP AS varchar(15))
+RETURNS bigint
+AS
+BEGIN
+ RETURN (CONVERT(bigint, PARSENAME(@IP,1)) +
+         CONVERT(bigint, PARSENAME(@IP,2)) * 256 +
+         CONVERT(bigint, PARSENAME(@IP,3)) * 65536 +
+         CONVERT(bigint, PARSENAME(@IP,4)) * 16777216)
+
+END
+GO

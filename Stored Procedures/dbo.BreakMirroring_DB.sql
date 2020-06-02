@@ -1,0 +1,37 @@
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_NULLS ON
+GO
+CREATE   PROCEDURE [dbo].[BreakMirroring_DB]
+		(
+		@DBName varchar(255)
+		)
+AS
+BEGIN
+	set nocount on
+	DECLARE	@TSQL	VarChar(MAX)
+
+
+	SET		@TSQL =
+			'ALTER DATABASE ['
+			+ @DBName
+			+ '] SET PARTNER OFF;'
+	EXEC  (@TSQL)
+
+
+	SET		@TSQL =
+			'RESTORE DATABASE ['
+			+ @DBName
+			+ '] WITH RECOVERY;'
+	BEGIN TRY
+		EXEC  (@TSQL)
+	END TRY
+	BEGIN CATCH
+		PRINT 'ERROR BREAKING MIRROR ON ' + @DBName
+	END CATCH
+
+
+END
+GO
+GRANT EXECUTE ON  [dbo].[BreakMirroring_DB] TO [public]
+GO
