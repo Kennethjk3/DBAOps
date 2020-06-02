@@ -7,7 +7,7 @@ CREATE   PROCEDURE [dbo].[dbasp_HC_DbaDB_General]
 
 /*********************************************************
  **  Stored Procedure dbasp_HC_DbaDB_General
- **  Written by Steve Ledridge, Virtuoso
+ **  Written by Steve Ledridge, ${{secrets.COMPANY_NAME}}
  **  December 18, 2014
  **  This procedure runs the DBA DB portion
  **  of the DBA SQL Health Check process.

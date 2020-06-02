@@ -9,7 +9,7 @@ CREATE   PROCEDURE [dbo].[dbasp_BaselineFile_moverESE] ( @source_path nvarchar(5
 
 /*********************************************************
  **  Stored Procedure dbasp_BaselineFile_moverESE
- **  Written by Steve Ledridge, Virtuoso
+ **  Written by Steve Ledridge, ${{secrets.COMPANY_NAME}}
  **  August 17, 2004
  **
  **  This procedure is used for copying baseline files from one server

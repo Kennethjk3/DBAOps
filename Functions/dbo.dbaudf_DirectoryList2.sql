@@ -14,5 +14,5 @@ RETURNS TABLE (
 [Attributes] [nvarchar] (4000) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 [Size] [bigint] NULL)
 WITH EXECUTE AS CALLER
-EXTERNAL NAME [Virtuoso.Operations.CLRTools].[Virtuoso.Operations.UserDefinedFunctions].[dbaudf_DirectoryList2]
+EXTERNAL NAME [${{secrets.COMPANY_NAME}}.Operations.CLRTools].[${{secrets.COMPANY_NAME}}.Operations.UserDefinedFunctions].[dbaudf_DirectoryList2]
 GO

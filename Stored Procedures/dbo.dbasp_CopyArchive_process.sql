@@ -8,7 +8,7 @@ CREATE   PROCEDURE [dbo].[dbasp_CopyArchive_process] (@DomainName sysname = 'ame
 
 /**************************************************************
  **  Stored Procedure dbasp_CopyArchive_process
- **  Written by Steve Ledridge, Virtuoso
+ **  Written by Steve Ledridge, ${{secrets.COMPANY_NAME}}
  **  October 22, 2008
  **
  **  This dbasp is set up to gather files from the dbasql

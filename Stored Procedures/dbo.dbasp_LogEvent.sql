@@ -58,7 +58,7 @@ CREATE   PROCEDURE [dbo].[dbasp_LogEvent]
 
 /***************************************************************
  **  Stored Procedure dbasp_LogEvent
- **  Written by Steve Ledridge, Virtuoso
+ **  Written by Steve Ledridge, ${{secrets.COMPANY_NAME}}
  **  MAY 8, 2010
  **
  **

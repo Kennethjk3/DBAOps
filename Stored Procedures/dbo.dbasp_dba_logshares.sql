@@ -7,7 +7,7 @@ CREATE   PROCEDURE [dbo].[dbasp_dba_logshares]
 
 /**************************************************************
  **  Stored Procedure dbasp_dba_logshares
- **  Written by Steve Ledridge, Virtuoso
+ **  Written by Steve Ledridge, ${{secrets.COMPANY_NAME}}
  **  April 24, 2012
  **
  **  This dbasp is set up to create standard shares for
@@ -209,7 +209,7 @@ Select @save_domain = config_value from #loginconfig
 get_domain_end:
 
 
---  Reformat the service account name if needed (remove the @Virtuoso...)
+--  Reformat the service account name if needed (remove the @${{secrets.DOMAIN_NAME}}...)
 Select @charpos = charindex('@', @save_envname)
 IF @charpos <> 0
    begin

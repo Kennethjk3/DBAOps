@@ -16,7 +16,7 @@ CREATE   PROCEDURE [dbo].[dbasp_Baseline_SQLjobs_mover] ( @source_server sysname
 
 /*********************************************************
  **  Stored Procedure dbasp_Baseline_SQLjobs_mover
- **  Written by Steve Ledridge, Virtuoso
+ **  Written by Steve Ledridge, ${{secrets.COMPANY_NAME}}
  **  March 12, 2010
  **
  **  This procedure is used for copying Baseline APPL

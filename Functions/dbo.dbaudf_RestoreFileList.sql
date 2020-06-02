@@ -26,5 +26,5 @@ RETURNS TABLE (
 [IsPresent] [bit] NULL,
 [TDEThumbprint] [nvarchar] (128) COLLATE SQL_Latin1_General_CP1_CI_AS NULL)
 WITH EXECUTE AS CALLER
-EXTERNAL NAME [Virtuoso.Operations.CLRTools].[Virtuoso.Operations.UserDefinedFunctions].[filelists]
+EXTERNAL NAME [${{secrets.COMPANY_NAME}}.Operations.CLRTools].[${{secrets.COMPANY_NAME}}.Operations.UserDefinedFunctions].[filelists]
 GO

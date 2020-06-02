@@ -18,7 +18,7 @@ AS
 
 
 --DECLARE	@ServerName		SYSNAME		= 'SEAPCRMSQL1A'
---	,@DBName		SYSNAME		= 'Virtuoso_Images_US_Inc__MSCRM'
+--	,@DBName		SYSNAME		= '${{secrets.COMPANY_NAME}}_Images_US_Inc__MSCRM'
 --	,@BackupPath		VARCHAR(MAX)	= NULL
 --	,@RestorePath		VARCHAR(MAX)	= NULL
 --	,@FullReset		BIT		= 1

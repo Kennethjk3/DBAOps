@@ -7,7 +7,7 @@ returns nvarchar(4000)
 
 /**************************************************************
  **  User Defined Function dbaudf_xpExec
- **  Written by Steve Ledridge, Virtuoso
+ **  Written by Steve Ledridge, ${{secrets.COMPANY_NAME}}
  **  December 10, 2008
  **
  **  This dbaudf is set up to execute a shell command utilizing

@@ -11,7 +11,7 @@ CREATE   PROCEDURE [dbo].[dbasp_FileCleanup](@targetpath nvarchar(2000) = null
 
 /*********************************************************
  **  Stored Procedure dbasp_FileCleanup
- **  Written by Steve Ledridge, Virtuoso
+ **  Written by Steve Ledridge, ${{secrets.COMPANY_NAME}}
  **  December 10,2008
  **
  **  This procedure is used to delete files older than the

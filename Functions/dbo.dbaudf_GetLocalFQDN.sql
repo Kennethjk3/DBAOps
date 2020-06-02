@@ -17,10 +17,10 @@ BEGIN
 	DECLARE @FQDN SYSNAME
 	EXEC xp_instance_regread N'HKEY_LOCAL_MACHINE', N'SYSTEM\CurrentControlSet\Services\Tcpip\Parameters', N'Domain', @FQDN OUTPUT
 
-	IF @FQDN Not Like '%virtuoso.com'
+	IF @FQDN Not Like '%${{secrets.DOMAIN_NAME}}'
 		SET @FQDN = dbo.dbaudf_GetEV('USERDNSDOMAIN')
 
-	SELECT @FQDN = Cast(SERVERPROPERTY('MachineName') as nvarchar) + '.' + COALESCE(@FQDN,'DB.VIRTUOSO.COM')
+	SELECT @FQDN = Cast(SERVERPROPERTY('MachineName') as nvarchar) + '.' + COALESCE(@FQDN,'DB.${{secrets.DOMAIN_NAME}}')
 
 	RETURN @FQDN
 END

@@ -8,7 +8,7 @@ CREATE   PROCEDURE [dbo].[dbasp_HC_DB_Backups] (@dbname sysname = null
 
 /*********************************************************
  **  Stored Procedure dbasp_HC_DB_Backups
- **  Written by Steve Ledridge, Virtuoso
+ **  Written by Steve Ledridge, ${{secrets.COMPANY_NAME}}
  **  February 10, 2015
  **  This procedure runs the DB Backup portion
  **  of the DBA SQL Health Check process.

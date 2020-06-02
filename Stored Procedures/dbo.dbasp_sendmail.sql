@@ -21,7 +21,7 @@ CREATE   PROCEDURE [dbo].[dbasp_sendmail]
 
 /*********************************************************
  **  Stored Procedure dbasp_sendmail
- **  Written by Steve Ledridge, Virtuoso
+ **  Written by Steve Ledridge, ${{secrets.COMPANY_NAME}}
  **  July 1, 2002
  **
  **  This dbasp is set up to create a parameter file

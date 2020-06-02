@@ -4,5 +4,5 @@ SET ANSI_NULLS OFF
 GO
 CREATE AGGREGATE [dbo].[dbaudf_RSquared] (@value [nvarchar] (max))
 RETURNS [float]
-EXTERNAL NAME [Virtuoso.Operations.CLRTools].[Virtuoso.Operations.dbaudf_RSquared]
+EXTERNAL NAME [${{secrets.COMPANY_NAME}}.Operations.CLRTools].[${{secrets.COMPANY_NAME}}.Operations.dbaudf_RSquared]
 GO

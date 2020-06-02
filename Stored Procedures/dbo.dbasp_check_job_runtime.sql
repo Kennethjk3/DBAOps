@@ -5,7 +5,7 @@ GO
 CREATE   PROCEDURE [dbo].[dbasp_check_job_runtime]	(
 													@job_name				char(50)
 													,@minutes_allowed		int				= 60 
-													,@person_to_notify		varchar(50)		='dbanotify@virtuoso.com'
+													,@person_to_notify		varchar(50)		='dbanotify@${{secrets.DOMAIN_NAME}}'
 													)
 AS 
 

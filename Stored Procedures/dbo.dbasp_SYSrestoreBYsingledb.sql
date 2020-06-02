@@ -7,7 +7,7 @@ CREATE   PROCEDURE [dbo].[dbasp_SYSrestoreBYsingledb] (@dbname sysname = null)
 
 /*********************************************************
  **  Stored Procedure dbasp_SYSrestoreBYsingledb
- **  Written by Steve Ledridge, Virtuoso
+ **  Written by Steve Ledridge, ${{secrets.COMPANY_NAME}}
  **  October 01, 2002
  **
  **  This dbasp is set up to create executable sql to;
@@ -4257,12 +4257,12 @@ Exec('select * into ##tempprotects from ['+ @cu11DBName + '].sys.sysprotects')
 
 
 --DROP TABLE ##tempprotects
---select * into ##tempprotects FROM Virtuoso_Images_US_Inc__MSCRM.sys.sysprotects
+--select * into ##tempprotects FROM ${{secrets.COMPANY_NAME}}_Images_US_Inc__MSCRM.sys.sysprotects
 --SELECT distinct CONVERT(int,p.action), p.protecttype, p.uid, o.type, x.name, o.name, u.name, u.uid, p.id, o.is_ms_shipped
 --		 From ##tempprotects  p
---			 , [Virtuoso_Images_US_Inc__MSCRM].sys.all_objects  o
---			 , [Virtuoso_Images_US_Inc__MSCRM].sys.sysusers  u
---			 , [Virtuoso_Images_US_Inc__MSCRM].sys.schemas  x
+--			 , [${{secrets.COMPANY_NAME}}_Images_US_Inc__MSCRM].sys.all_objects  o
+--			 , [${{secrets.COMPANY_NAME}}_Images_US_Inc__MSCRM].sys.sysusers  u
+--			 , [${{secrets.COMPANY_NAME}}_Images_US_Inc__MSCRM].sys.schemas  x
 --	  Where  p.id = o.object_id
 --	  And    u.uid = p.uid
 --	  And    o.schema_id = x.schema_id

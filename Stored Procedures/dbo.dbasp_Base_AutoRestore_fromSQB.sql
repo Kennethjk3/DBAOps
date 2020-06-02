@@ -7,7 +7,7 @@ CREATE   PROCEDURE [dbo].[dbasp_Base_AutoRestore_fromSQB]
 
 /*********************************************************
  **  Stored Procedure dbasp_Base_AutoRestore_fromSQB
- **  Written by Steve Ledridge, Virtuoso
+ **  Written by Steve Ledridge, ${{secrets.COMPANY_NAME}}
  **  March 3, 2004
  **
  **  This procedure is used to create local *nxt files for

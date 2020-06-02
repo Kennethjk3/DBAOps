@@ -16,5 +16,5 @@ RETURNS TABLE (
 [PercentUsed] [float] NULL,
 [UseChart] [nvarchar] (4000) COLLATE SQL_Latin1_General_CP1_CI_AS NULL)
 WITH EXECUTE AS CALLER
-EXTERNAL NAME [Virtuoso.Operations.CLRTools].[Virtuoso.Operations.UserDefinedFunctions].[dbaudf_ListDrives]
+EXTERNAL NAME [${{secrets.COMPANY_NAME}}.Operations.CLRTools].[${{secrets.COMPANY_NAME}}.Operations.UserDefinedFunctions].[dbaudf_ListDrives]
 GO

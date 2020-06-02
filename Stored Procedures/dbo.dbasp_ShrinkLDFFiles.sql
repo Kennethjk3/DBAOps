@@ -6,7 +6,7 @@ CREATE   PROCEDURE [dbo].[dbasp_ShrinkLDFFiles] (@DBname sysname = null)
 
 /*********************************************************
  **  Stored Procedure dbasp_ShrinkLDFFiles
- **  Written by Steve Ledridge, Virtuoso
+ **  Written by Steve Ledridge, ${{secrets.COMPANY_NAME}}
  **  July 22, 2003
  **
  **  This proc accepts one optional input parm; DBname.

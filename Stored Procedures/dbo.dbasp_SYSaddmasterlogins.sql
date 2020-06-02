@@ -7,7 +7,7 @@ CREATE   PROCEDURE [dbo].[dbasp_SYSaddmasterlogins]
 
 /**************************************************************
  **  Stored Procedure dbasp_SYSaddmasterlogins
- **  Written by Steve Ledridge, Virtuoso
+ **  Written by Steve Ledridge, ${{secrets.COMPANY_NAME}}
  **  May 2, 2000
  **
  **  This dbasp is set up to create executable sql to;

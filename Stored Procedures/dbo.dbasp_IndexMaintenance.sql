@@ -31,7 +31,7 @@ N'
 
 /***************************************************************
  **  Stored Procedure dbasp_IndexMaintenance
- **  Written by Steve Ledridge, Virtuoso
+ **  Written by Steve Ledridge, ${{secrets.COMPANY_NAME}}
  **  November 24, 2003
  **
  **
@@ -117,7 +117,7 @@ set nocount on
 --	2008-05-19	Steve Ledridge			Created
 --	2009-02-01	Steve Ledridge			Improved error handling, flow control, loops through indexes instead of partitions.
 --	2009-02-07	Steve Ledridge			Added @exceptionXML parameter support.
---	2010-04-01	Steve Ledridge			Modified For VirtuosoImages.
+--	2010-04-01	Steve Ledridge			Modified For ${{secrets.COMPANY_NAME}}Images.
 --	2010-04-27	Steve Ledridge			Added Update stats, limit processing and tranlog backup features.
 --	2010-06-07	Steve Ledridge			Modifid ReadsPerHr calculation to include seeks for population
 --											of @getReindexItems at line 592.

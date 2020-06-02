@@ -6,7 +6,7 @@ CREATE   PROCEDURE [dbo].[dbasp_SYSbase_archive]
 
 /***************************************************************
  **  Stored Procedure dbasp_SYSbase_archive
- **  Written by Steve Ledridge, Virtuoso
+ **  Written by Steve Ledridge, ${{secrets.COMPANY_NAME}}
  **  August 31, 2009
  **
  **  This proc will archive all the local baseline folders and

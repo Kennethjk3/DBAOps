@@ -7,7 +7,7 @@ CREATE   PROCEDURE [dbo].[dbasp_dba_setpolicygrants]
 
 /*********************************************************
  **  Stored Procedure dbasp_dba_setpolicygrants
- **  Written by Steve Ledridge, Virtuoso
+ **  Written by Steve Ledridge, ${{secrets.COMPANY_NAME}}
  **  November 13, 2008
  **
  **  This procedure sets user_rights for specific policies

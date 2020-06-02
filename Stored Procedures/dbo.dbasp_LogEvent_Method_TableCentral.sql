@@ -20,12 +20,12 @@ BEGIN
 
 	EXEC dbo.dbasp_GetPaths @CentralServer = @CentralServer OUTPUT	
 	
-	SET @CentralServerShortName = UPPER(REPLACE(@CentralServer,'.DB.VIRTUOSO.COM',''))
+	SET @CentralServerShortName = UPPER(REPLACE(@CentralServer,'.DB.${{secrets.DOMAIN_NAME}}',''))
 
 
 	IF NOT EXISTS (SELECT srv.name FROM [sys].[servers] srv WHERE srv.server_id != 0 AND srv.name = @CentralServerShortName)
 	BEGIN
-		EXEC master.dbo.sp_addlinkedserver @server = @CentralServerShortName, @srvproduct=N'SQL', @provider=N'SQLNCLI', @datasrc=N'tcp:SDCSQLTOOLS.DB.VIRTUOSO.COM'
+		EXEC master.dbo.sp_addlinkedserver @server = @CentralServerShortName, @srvproduct=N'SQL', @provider=N'SQLNCLI', @datasrc=N'tcp:SDCSQLTOOLS.DB.${{secrets.DOMAIN_NAME}}'
 		EXEC master.dbo.sp_addlinkedsrvlogin @rmtsrvname=@CentralServerShortName,@useself=N'False',@locallogin=NULL,@rmtuser=N'LinkedServer_User',@rmtpassword='${{secrets.LINKEDSERVER_USER_PW}}'
 		EXEC master.dbo.sp_serveroption @server=@CentralServerShortName, @optname=N'collation compatible', @optvalue=N'true'
 		EXEC master.dbo.sp_serveroption @server=@CentralServerShortName, @optname=N'data access', @optvalue=N'true'

@@ -4,7 +4,7 @@ SET ANSI_NULLS ON
 GO
 /*
 EXEC	[dbo].[dbasp_HealthCheck_MirrorAndAG]
-		@Recipients		= 'dbasupport@virtuoso.com;sql@virtuoso.pagerduty.com'
+		@Recipients		= 'dbasupport@${{secrets.DOMAIN_NAME}};sql@${{secrets.DOMAIN_NAME}}.pagerduty.com'
 		,@RequiredMirroredDBs	= 'AppLogArchive|EnterpriseServices|TravelMart_DNN|VCOM|ComposerSL|GEOdata|TRANSIENT|DBAOps'
 
 
@@ -13,7 +13,7 @@ EXEC	[dbo].[dbasp_HealthCheck_MirrorAndAG]
 
 CREATE   PROCEDURE [dbo].[dbasp_HealthCheck_MirrorAndAG]
 		(
-		@Recipients				VarChar(8000)	= 'sledridge@virtuoso.com'
+		@Recipients				VarChar(8000)	= 'sledridge@${{secrets.DOMAIN_NAME}}'
 		,@RequiredMirroredDBs	VarChar(8000)	= NULL
 		)
 AS

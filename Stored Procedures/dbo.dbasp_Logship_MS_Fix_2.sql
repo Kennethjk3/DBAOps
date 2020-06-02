@@ -50,7 +50,7 @@ AS
 
 	EXEC DBAOps.dbo.dbasp_Logship_MS_Fix_2 'EditorialSiteDB'			,'EDSQLG0A'		,NULL	,NULL	,1,0,1
 	EXEC DBAOps.dbo.dbasp_Logship_MS_Fix_2 'EventServiceDB'			,'EDSQLG0A'		,NULL	,NULL	,1,0,1
-	EXEC DBAOps.dbo.dbasp_Logship_MS_Fix_2 'Virtuoso_Master'				,'FREPSQLRYLA01'	,NULL	,NULL	,1,0,1
+	EXEC DBAOps.dbo.dbasp_Logship_MS_Fix_2 '${{secrets.COMPANY_NAME}}_Master'				,'FREPSQLRYLA01'	,NULL	,NULL	,1,0,1
 	EXEC DBAOps.dbo.dbasp_Logship_MS_Fix_2 'RM_Integration'			,'FREPSQLRYLA01'	,NULL	,NULL	,1,0,1
 	EXEC DBAOps.dbo.dbasp_Logship_MS_Fix_2 'GINS_Master'				,'FREPSQLRYLB01'	,NULL	,NULL	,1,0,1
 	EXEC DBAOps.dbo.dbasp_Logship_MS_Fix_2 'Gins_Integration'			,'FREPSQLRYLB01'	,NULL	,NULL	,1,0,1
@@ -60,10 +60,10 @@ AS
 	EXEC DBAOps.dbo.dbasp_Logship_MS_Fix_2 'WCDSwork'				,'G1SQLA\A'		,NULL	,'LSRestore_tcp:G1SQLA\A,1252_WCDSwork2'	,1,0,1
 	EXEC DBAOps.dbo.dbasp_Logship_MS_Fix_2 'AssetUsage_Archive'			,'G1SQLB\B'		,NULL	,NULL	,1,0,1
 	EXEC DBAOps.dbo.dbasp_Logship_MS_Fix_2 'ContributorSystemsContract'		,'SEAPCTBSQLA'		,NULL	,NULL	,1,0,1
-	EXEC DBAOps.dbo.dbasp_Logship_MS_Fix_2 'Virtuoso_Images_CRM_GENESYS'		,'SEAPCRMSQL1A'		,NULL	,NULL	,1,0,1
-	EXEC DBAOps.dbo.dbasp_Logship_MS_Fix_2 'Virtuoso_Images_US_Inc__MSCRM'		,'SEAPCRMSQL1A'		,NULL	,NULL	,1,0,1
-	EXEC DBAOps.dbo.dbasp_Logship_MS_Fix_2 'Virtuoso_Images_US_Inc__MSCRM_Clone'	,'SEAPCRMSQL1A'		,NULL	,NULL	,1,0,1
-	EXEC DBAOps.dbo.dbasp_Logship_MS_Fix_2 'Virtuoso_Images_US_Inc_Custom'		,'SEAPCRMSQL1A'		,NULL	,NULL	,1,0,1
+	EXEC DBAOps.dbo.dbasp_Logship_MS_Fix_2 '${{secrets.COMPANY_NAME}}_Images_CRM_GENESYS'		,'SEAPCRMSQL1A'		,NULL	,NULL	,1,0,1
+	EXEC DBAOps.dbo.dbasp_Logship_MS_Fix_2 '${{secrets.COMPANY_NAME}}_Images_US_Inc__MSCRM'		,'SEAPCRMSQL1A'		,NULL	,NULL	,1,0,1
+	EXEC DBAOps.dbo.dbasp_Logship_MS_Fix_2 '${{secrets.COMPANY_NAME}}_Images_US_Inc__MSCRM_Clone'	,'SEAPCRMSQL1A'		,NULL	,NULL	,1,0,1
+	EXEC DBAOps.dbo.dbasp_Logship_MS_Fix_2 '${{secrets.COMPANY_NAME}}_Images_US_Inc_Custom'		,'SEAPCRMSQL1A'		,NULL	,NULL	,1,0,1
 	EXEC DBAOps.dbo.dbasp_Logship_MS_Fix_2 'MSCRM_CONFIG'				,'SEAPCRMSQL1A'		,NULL	,NULL	,1,0,1
 	EXEC DBAOps.dbo.dbasp_Logship_MS_Fix_2 'ReportServer'				,'SEAPCRMSQL1A'		,NULL	,NULL	,1,0,1
 	EXEC DBAOps.dbo.dbasp_Logship_MS_Fix_2 'ReportServer2'			,'SEAPCRMSQL1A'		,NULL	,NULL	,1,0,1

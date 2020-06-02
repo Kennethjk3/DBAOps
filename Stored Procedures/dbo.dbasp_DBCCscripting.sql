@@ -10,7 +10,7 @@ CREATE   PROCEDURE [dbo].[dbasp_DBCCscripting] (@DBname sysname = null,
 
 /***************************************************************
  **  Stored Procedure dbasp_DBCCscripting
- **  Written by Steve Ledridge, Virtuoso
+ **  Written by Steve Ledridge, ${{secrets.COMPANY_NAME}}
  **  August 03, 2004
  **
  **  This procedure is used for various

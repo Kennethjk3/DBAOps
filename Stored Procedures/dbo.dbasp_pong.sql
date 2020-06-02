@@ -11,7 +11,7 @@ CREATE   PROCEDURE [dbo].[dbasp_pong] (@rq_servername sysname = null
 
 /***************************************************************
  **  Stored Procedure dbasp_pong
- **  Written by Steve Ledridge, Virtuoso
+ **  Written by Steve Ledridge, ${{secrets.COMPANY_NAME}}
  **  May 30, 2007
  **
  **  This sproc is set up to;

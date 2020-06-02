@@ -7,7 +7,7 @@ CREATE   PROCEDURE [dbo].[dbasp_base_APPL_JobScripting]
 
 /*********************************************************
  **  Stored Procedure dbasp_base_APPL_JobScripting
- **  Written by Steve Ledridge, Virtuoso
+ **  Written by Steve Ledridge, ${{secrets.COMPANY_NAME}}
  **  February 19, 2009
  **
  **  Process for baseline APPL job scripting.
@@ -223,7 +223,7 @@ If (select count(*) from #dbnames) > 0
 
 
 		Exec DBAOps.dbo.dbasp_sendmail
-		@recipients = 'DBANotify@virtuoso.com',
+		@recipients = 'DBANotify@${{secrets.DOMAIN_NAME}}',
 		@subject = @savesubject,
 		@message = @miscprint
 
@@ -251,7 +251,7 @@ If @joblog_outpath is null or @joblog_outpath = ''
 
 
 	Exec DBAOps.dbo.dbasp_sendmail
-	@recipients = 'DBANotify@virtuoso.com',
+	@recipients = 'DBANotify@${{secrets.DOMAIN_NAME}}',
 	@subject = @savesubject,
 	@message = @miscprint
 
@@ -323,7 +323,7 @@ If (select count(*) from #saveAPPL) > 0
 
 
 --		Exec DBAOps.dbo.dbasp_sendmail
---		@recipients = 'DBANotify@virtuoso.com',
+--		@recipients = 'DBANotify@${{secrets.DOMAIN_NAME}}',
 --		@subject = @savesubject,
 --		@message = @miscprint
 
@@ -368,7 +368,7 @@ If (select count(*) from #saveAPPL) > 0
 
 
 		Exec DBAOps.dbo.dbasp_sendmail
-		@recipients = 'DBANotify@virtuoso.com',
+		@recipients = 'DBANotify@${{secrets.DOMAIN_NAME}}',
 		@subject = @savesubject,
 		@message = @miscprint
 
@@ -405,7 +405,7 @@ If (select count(*) from #saveAPPL) > 0
 
 
 		Exec DBAOps.dbo.dbasp_sendmail
-		@recipients = 'DBANotify@virtuoso.com',
+		@recipients = 'DBANotify@${{secrets.DOMAIN_NAME}}',
 		@subject = @savesubject,
 		@message = @miscprint
 

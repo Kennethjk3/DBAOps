@@ -7,7 +7,7 @@ CREATE   PROCEDURE [dbo].[dbasp_HC_control] @outpath varchar (255) = null
 
 /*********************************************************
  **  Stored Procedure dbasp_HC_control
- **  Written by Steve Ledridge, Virtuoso
+ **  Written by Steve Ledridge, ${{secrets.COMPANY_NAME}}
  **  June 19, 2014
  **  This procedure runs the DBA SQL Health Check process.
  *********************************************************/

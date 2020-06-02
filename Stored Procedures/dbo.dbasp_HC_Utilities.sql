@@ -7,7 +7,7 @@ CREATE   PROCEDURE [dbo].[dbasp_HC_Utilities]
 
 /*********************************************************
  **  Stored Procedure dbasp_HC_Utilities
- **  Written by Steve Ledridge, Virtuoso
+ **  Written by Steve Ledridge, ${{secrets.COMPANY_NAME}}
  **  January 13, 2015
  **  This procedure runs the Utilities check portion
  **  of the DBA SQL Health Check process.

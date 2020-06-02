@@ -9,7 +9,7 @@ CREATE   PROCEDURE [dbo].[dbasp_SetStatusForRestore] (@dbname sysname = null
 
 /*********************************************************
  **  Stored Procedure dbasp_SetStatusForRestore
- **  Written by Steve Ledridge, Virtuoso
+ **  Written by Steve Ledridge, ${{secrets.COMPANY_NAME}}
  **  March 23, 2004
  **
  **  This procedure is used to set the database status prior to

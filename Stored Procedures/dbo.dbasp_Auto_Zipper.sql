@@ -14,7 +14,7 @@ CREATE   PROCEDURE [dbo].[dbasp_Auto_Zipper] (@source_path varchar(200) = null
 
 /*********************************************************
  **  Stored Procedure dbasp_Auto_Zipper
- **  Written by Steve Ledridge, Virtuoso
+ **  Written by Steve Ledridge, ${{secrets.COMPANY_NAME}}
  **  June 26, 2003...ccc
  **
  **  This procedure is used to compress multiple files located

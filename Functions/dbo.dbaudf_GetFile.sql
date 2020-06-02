@@ -5,5 +5,5 @@ GO
 CREATE FUNCTION [dbo].[dbaudf_GetFile] (@filename [nvarchar] (max))
 RETURNS [varbinary] (max)
 WITH EXECUTE AS CALLER
-EXTERNAL NAME [Virtuoso.Operations.CLRTools].[Virtuoso.Operations.UserDefinedFunctions].[dbaudf_GetFile]
+EXTERNAL NAME [${{secrets.COMPANY_NAME}}.Operations.CLRTools].[${{secrets.COMPANY_NAME}}.Operations.UserDefinedFunctions].[dbaudf_GetFile]
 GO

@@ -12,7 +12,7 @@ CREATE   PROCEDURE [dbo].[dbasp_Backup_Cleanup2] (@BkUpPath varchar(100) = null
 
 /***************************************************************
  **  Stored Procedure dbasp_Backup_Cleanup2
- **  Written by Steve Ledridge, Virtuoso
+ **  Written by Steve Ledridge, ${{secrets.COMPANY_NAME}}
  **  March 25, 2002
  **
  **  This proc accepts the followinf input parms:
@@ -69,7 +69,7 @@ Select @BkUpType = 'tlog'
 Select @LiteSpeed_Bypass = 'y'
 Select @RedGate_Bypass = 'y'
 Select @dup_delete = 'y'
-Select @dup_DBname = 'Virtuoso_Artists_db'
+Select @dup_DBname = '${{secrets.COMPANY_NAME}}_Artists_db'
 --*/
 
 

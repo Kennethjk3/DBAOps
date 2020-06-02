@@ -234,20 +234,20 @@ DECLARE @ConditionDef Xml =
 '
 <WaitForCondition>
   <Set Type="AND" Verbose="1" UpdateInterval="00:01:00" LookBackMinutes="600" TimeoutAfter="180" TimeoutState="Error" OutputTable="0" OutputStatus="1">
-    <AgentJob Action="Start" Value="RESTOREDB_SDCPRODM02.DB.VIRTUOSO.COM_ClientLeads"				FailOn="0,3,5" PassOn="1" />
-    <AgentJob Action="Start" Value="RESTOREDB_SDCPRODM02.DB.VIRTUOSO.COM_dmbooking"					FailOn="0,3,5" PassOn="1" />
-    <AgentJob Action="Start" Value="RESTOREDB_SDCPRODM02.DB.VIRTUOSO.COM_DMODS"						FailOn="0,3,5" PassOn="1" />
-    <AgentJob Action="Start" Value="RESTOREDB_SDCPRODM02.DB.VIRTUOSO.COM_ETLConfig"					FailOn="0,3,5" PassOn="1" />
-    <AgentJob Action="Start" Value="RESTOREDB_SDCPRODM02.DB.VIRTUOSO.COM_GlobalDB"					FailOn="0,3,5" PassOn="1" />
-    <AgentJob Action="Start" Value="RESTOREDB_SDCPRODM02.DB.VIRTUOSO.COM_SupplierEtl"				FailOn="0,3,5" PassOn="1" />
-    <AgentJob Action="Start" Value="RESTOREDB_SDCPRORPT03.DB.VIRTUOSO.COM_MarketingListTool"		FailOn="0,3,5" PassOn="1" />
-    <AgentJob Action="Start" Value="RESTOREDB_SDCPROSQL03.DB.VIRTUOSO.COM_ComposerSL"				FailOn="0,3,5" PassOn="1" />
-    <AgentJob Action="Start" Value="RESTOREDB_SDCPROSQL03.DB.VIRTUOSO.COM_EnterpriseServices"		FailOn="0,3,5" PassOn="1" />
-    <AgentJob Action="Start" Value="RESTOREDB_SDCPROSSSQL02.DB.VIRTUOSO.COM_Globalmatrix"			FailOn="0,3,5" PassOn="1" />
-    <AgentJob Action="Start" Value="RESTOREDB_SDCPROSSSQL02.DB.VIRTUOSO.COM_MDI"					FailOn="0,3,5" PassOn="1" />
-    <AgentJob Action="Start" Value="RESTOREDB_SDCPROSSSQL02.DB.VIRTUOSO.COM_V1_CONSOLIDATED"		FailOn="0,3,5" PassOn="1" />
-    <AgentJob Action="Start" Value="RESTOREDB_SDCPROSSSQL02.DB.VIRTUOSO.COM_Virtuoso_Utility"		FailOn="0,3,5" PassOn="1" />
-    <AgentJob Action="Start" Value="RESTOREDB_SDCPROSSSQL02.DB.VIRTUOSO.COM_Web Reporting - Admin"	FailOn="0,3,5" PassOn="1" />
+    <AgentJob Action="Start" Value="RESTOREDB_SDCPRODM02.DB.${{secrets.DOMAIN_NAME}}_ClientLeads"				FailOn="0,3,5" PassOn="1" />
+    <AgentJob Action="Start" Value="RESTOREDB_SDCPRODM02.DB.${{secrets.DOMAIN_NAME}}_dmbooking"					FailOn="0,3,5" PassOn="1" />
+    <AgentJob Action="Start" Value="RESTOREDB_SDCPRODM02.DB.${{secrets.DOMAIN_NAME}}_DMODS"						FailOn="0,3,5" PassOn="1" />
+    <AgentJob Action="Start" Value="RESTOREDB_SDCPRODM02.DB.${{secrets.DOMAIN_NAME}}_ETLConfig"					FailOn="0,3,5" PassOn="1" />
+    <AgentJob Action="Start" Value="RESTOREDB_SDCPRODM02.DB.${{secrets.DOMAIN_NAME}}_GlobalDB"					FailOn="0,3,5" PassOn="1" />
+    <AgentJob Action="Start" Value="RESTOREDB_SDCPRODM02.DB.${{secrets.DOMAIN_NAME}}_SupplierEtl"				FailOn="0,3,5" PassOn="1" />
+    <AgentJob Action="Start" Value="RESTOREDB_SDCPRORPT03.DB.${{secrets.DOMAIN_NAME}}_MarketingListTool"		FailOn="0,3,5" PassOn="1" />
+    <AgentJob Action="Start" Value="RESTOREDB_SDCPROSQL03.DB.${{secrets.DOMAIN_NAME}}_ComposerSL"				FailOn="0,3,5" PassOn="1" />
+    <AgentJob Action="Start" Value="RESTOREDB_SDCPROSQL03.DB.${{secrets.DOMAIN_NAME}}_EnterpriseServices"		FailOn="0,3,5" PassOn="1" />
+    <AgentJob Action="Start" Value="RESTOREDB_SDCPROSSSQL02.DB.${{secrets.DOMAIN_NAME}}_Globalmatrix"			FailOn="0,3,5" PassOn="1" />
+    <AgentJob Action="Start" Value="RESTOREDB_SDCPROSSSQL02.DB.${{secrets.DOMAIN_NAME}}_MDI"					FailOn="0,3,5" PassOn="1" />
+    <AgentJob Action="Start" Value="RESTOREDB_SDCPROSSSQL02.DB.${{secrets.DOMAIN_NAME}}_V1_CONSOLIDATED"		FailOn="0,3,5" PassOn="1" />
+    <AgentJob Action="Start" Value="RESTOREDB_SDCPROSSSQL02.DB.${{secrets.DOMAIN_NAME}}_${{secrets.COMPANY_NAME}}_Utility"		FailOn="0,3,5" PassOn="1" />
+    <AgentJob Action="Start" Value="RESTOREDB_SDCPROSSSQL02.DB.${{secrets.DOMAIN_NAME}}_Web Reporting - Admin"	FailOn="0,3,5" PassOn="1" />
   </Set>
 </WaitForCondition>
 '

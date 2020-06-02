@@ -18,14 +18,14 @@ DECLARE @Results TABLE
                  )
 
 
--- THIS MAKES SURE THAT THE Software\Virtuoso\Script\DiskMonitor BRANCH EXISTS
-EXEC[sys].[xp_instance_regwrite]	N'HKEY_LOCAL_MACHINE',N'Software\Virtuoso\Script\DiskMonitor','XX','reg_sz','0'
-EXEC[sys].[xp_instance_regdeletevalue]	N'HKEY_LOCAL_MACHINE',N'Software\Virtuoso\Script\DiskMonitor','XX'
+-- THIS MAKES SURE THAT THE Software\${{secrets.COMPANY_NAME}}\Script\DiskMonitor BRANCH EXISTS
+EXEC[sys].[xp_instance_regwrite]	N'HKEY_LOCAL_MACHINE',N'Software\${{secrets.COMPANY_NAME}}\Script\DiskMonitor','XX','reg_sz','0'
+EXEC[sys].[xp_instance_regdeletevalue]	N'HKEY_LOCAL_MACHINE',N'Software\${{secrets.COMPANY_NAME}}\Script\DiskMonitor','XX'
 
 
 	EXEC[sys].[xp_instance_regwrite]
 		N'HKEY_LOCAL_MACHINE'
-		,N'Software\Virtuoso\Script\DiskMonitor'
+		,N'Software\${{secrets.COMPANY_NAME}}\Script\DiskMonitor'
 		,@DriveLetter
 		,'reg_sz'
 		,@OverrideValue
@@ -36,13 +36,13 @@ IF @OverrideValue IS NULL
 
 	EXEC[sys].[xp_instance_regdeletevalue]
 		N'HKEY_LOCAL_MACHINE'
-		,N'Software\Virtuoso\Script\DiskMonitor'
+		,N'Software\${{secrets.COMPANY_NAME}}\Script\DiskMonitor'
 		,@DriveLetter
 
 
--- GET DISK ALERT OVERRIDES AT Software\Virtuoso\Script\DiskMonitor
+-- GET DISK ALERT OVERRIDES AT Software\${{secrets.COMPANY_NAME}}\Script\DiskMonitor
 INSERT INTO @Results
-EXEC [sys].[xp_instance_regenumvalues] N'HKEY_LOCAL_MACHINE',N'Software\Virtuoso\Script\DiskMonitor'
+EXEC [sys].[xp_instance_regenumvalues] N'HKEY_LOCAL_MACHINE',N'Software\${{secrets.COMPANY_NAME}}\Script\DiskMonitor'
 SELECT * FROM @Results
 GO
 GRANT EXECUTE ON  [dbo].[dbasp_SetDriveSpaceOverrideValue] TO [public]

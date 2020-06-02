@@ -6,7 +6,7 @@ CREATE   PROCEDURE [dbo].[dbasp_HC_ReportToCentral] @PrintLocal BIT = 1
 --
 --/*********************************************************
 -- **  Stored Procedure dbasp_HC_ReportToCentral
--- **  Written by Steve Ledridge, Virtuoso
+-- **  Written by Steve Ledridge, ${{secrets.COMPANY_NAME}}
 -- **  November 11, 2014
 -- **
 -- **  This procedure captures Failed and Warning rows from the HealthCheckLog
@@ -95,7 +95,7 @@ DECLARE		@DataPath					VarChar(8000)
 --	goto label99
 --   end
 
--- \\sdcsqltools.db.virtuoso.com\dba_reports\HealthChecks
+-- \\sdcsqltools.db.${{secrets.DOMAIN_NAME}}\dba_reports\HealthChecks
 Select @outfile_name = 'CentralHealthCheckUpdate_' + @@Servername + '.sql'
 Select @outfile_path = @DBASQLPath + '\dba_reports\' + @outfile_name
 

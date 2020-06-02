@@ -7,7 +7,7 @@ CREATE   PROCEDURE [dbo].[dbasp_filescan_logparser]
 
 /**************************************************************
  **  Stored Procedure dbasp_filescan_logparser
- **  Written by Steve Ledridge and Steve Ledridge, Virtuoso
+ **  Written by Steve Ledridge and Steve Ledridge, ${{secrets.COMPANY_NAME}}
  **  April 29, 2010
  **
  **  This dbasp is set up to run the local filescan log parser process.

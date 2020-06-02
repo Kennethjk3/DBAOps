@@ -7,7 +7,7 @@ CREATE   PROCEDURE [dbo].[dbasp_depl_NXTdelete] @environment sysname = null
 
 /*********************************************************
  **  Stored Procedure dbasp_depl_NXTdelete
- **  Written by Steve Ledridge, Virtuoso
+ **  Written by Steve Ledridge, ${{secrets.COMPANY_NAME}}
  **  April 01, 2005
  **
  **  This procedure is used to delete mdfnxt files prior to

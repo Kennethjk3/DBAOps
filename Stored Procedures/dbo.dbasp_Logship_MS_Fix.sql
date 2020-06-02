@@ -41,10 +41,10 @@ AS
 	--EXAMPLES FOR EACH ASHBURN CRM DATABASES
 
 
-	EXEC DBAOps.dbo.dbasp_Logship_MS_Fix 'Virtuoso_Images_CRM_GENESYS',1,0,1
-	EXEC DBAOps.dbo.dbasp_Logship_MS_Fix 'Virtuoso_Images_US_Inc__MSCRM',1,0,1
-	EXEC DBAOps.dbo.dbasp_Logship_MS_Fix 'Virtuoso_Images_US_Inc__MSCRM_Clone',1,0,1
-	EXEC DBAOps.dbo.dbasp_Logship_MS_Fix 'Virtuoso_Images_US_Inc_Custom',1,0,1
+	EXEC DBAOps.dbo.dbasp_Logship_MS_Fix '${{secrets.COMPANY_NAME}}_Images_CRM_GENESYS',1,0,1
+	EXEC DBAOps.dbo.dbasp_Logship_MS_Fix '${{secrets.COMPANY_NAME}}_Images_US_Inc__MSCRM',1,0,1
+	EXEC DBAOps.dbo.dbasp_Logship_MS_Fix '${{secrets.COMPANY_NAME}}_Images_US_Inc__MSCRM_Clone',1,0,1
+	EXEC DBAOps.dbo.dbasp_Logship_MS_Fix '${{secrets.COMPANY_NAME}}_Images_US_Inc_Custom',1,0,1
 	EXEC DBAOps.dbo.dbasp_Logship_MS_Fix 'MSCRM_CONFIG',1,0,1
 	EXEC DBAOps.dbo.dbasp_Logship_MS_Fix 'ReportServer',1,0,1
 	EXEC DBAOps.dbo.dbasp_Logship_MS_Fix 'ReportServer2',1,0,1
@@ -154,7 +154,7 @@ AS
 
 	SELECT		'EditorialSiteDB'			,'\\EDSQLG0A\EDSQLG0A_backup\'			,'LSRestore_EDSQLG0A_EditorialSiteDB'				UNION ALL
 	SELECT		'EventServiceDB'			,'\\EDSQLG0A\EDSQLG0A_backup\'			,'LSRestore_EDSQLG0A_EventServiceDB'				UNION ALL
-	SELECT		'Virtuoso_Master'				,'\\FREPSQLRYLA01\FREPSQLRYLA01_backup\'	,'LSRestore_FREPSQLRYLA01_Virtuoso_Master'				UNION ALL
+	SELECT		'${{secrets.COMPANY_NAME}}_Master'				,'\\FREPSQLRYLA01\FREPSQLRYLA01_backup\'	,'LSRestore_FREPSQLRYLA01_${{secrets.COMPANY_NAME}}_Master'				UNION ALL
 	SELECT		'GINS_Master'				,'\\FREPSQLRYLB01\FREPSQLRYLB01_backup\'	,'LSRestore_FREPSQLRYLB01_GINS_Master'				UNION ALL
 	SELECT		'Gins_Integration'			,'\\FREPSQLRYLB01\FREPSQLRYLB01_backup\'	,'LSRestore_FREPSQLRYLB01_Gins_Integration'			UNION ALL
 	SELECT		'RM_Integration'			,'\\FREPSQLRYLA01\FREPSQLRYLA01_backup\'	,'LSRestore_FREPSQLRYLB01_RM_Integration'			UNION ALL
@@ -167,10 +167,10 @@ AS
 	SELECT		'AssetUsage_Archive'			,'\\G1sqlB\G1SQLB$B_backup\'			,'LSRestore_G1SQLB\B_AssetUsage_Archive'			UNION ALL
 	SELECT		'ContributorSystemsContract'		,'\\SEAPCTBSQLA\SEAPCTBSQLA_backup\'		,'LSRestore_SEAPCTBSQLA_ContributorSystemsContract'		UNION ALL
 
-	SELECT		'Virtuoso_Images_CRM_GENESYS'		,'\\SEAPCRMSQL1A\SEAPCRMSQL1A_backup\'		,'LSRestore_SEAPCRMSQL1A_Virtuoso_Images_CRM_GENESYS'		UNION ALL
-	SELECT		'Virtuoso_Images_US_Inc__MSCRM'		,'\\SEAPCRMSQL1A\SEAPCRMSQL1A_backup\'		,'LSRestore_SEAPCRMSQL1A_Virtuoso_Images_US_Inc__MSCRM'		UNION ALL
-	SELECT		'Virtuoso_Images_US_Inc__MSCRM_Clone'	,'\\SEAPCRMSQL1A\SEAPCRMSQL1A_backup\'		,'LSRestore_SEAPCRMSQL1A_Virtuoso_Images_US_Inc__MSCRM_Clone'	UNION ALL
-	SELECT		'Virtuoso_Images_US_Inc_Custom'		,'\\SEAPCRMSQL1A\SEAPCRMSQL1A_backup\'		,'LSRestore_SEAPCRMSQL1A_Virtuoso_Images_US_Inc_Custom'		UNION ALL
+	SELECT		'${{secrets.COMPANY_NAME}}_Images_CRM_GENESYS'		,'\\SEAPCRMSQL1A\SEAPCRMSQL1A_backup\'		,'LSRestore_SEAPCRMSQL1A_${{secrets.COMPANY_NAME}}_Images_CRM_GENESYS'		UNION ALL
+	SELECT		'${{secrets.COMPANY_NAME}}_Images_US_Inc__MSCRM'		,'\\SEAPCRMSQL1A\SEAPCRMSQL1A_backup\'		,'LSRestore_SEAPCRMSQL1A_${{secrets.COMPANY_NAME}}_Images_US_Inc__MSCRM'		UNION ALL
+	SELECT		'${{secrets.COMPANY_NAME}}_Images_US_Inc__MSCRM_Clone'	,'\\SEAPCRMSQL1A\SEAPCRMSQL1A_backup\'		,'LSRestore_SEAPCRMSQL1A_${{secrets.COMPANY_NAME}}_Images_US_Inc__MSCRM_Clone'	UNION ALL
+	SELECT		'${{secrets.COMPANY_NAME}}_Images_US_Inc_Custom'		,'\\SEAPCRMSQL1A\SEAPCRMSQL1A_backup\'		,'LSRestore_SEAPCRMSQL1A_${{secrets.COMPANY_NAME}}_Images_US_Inc_Custom'		UNION ALL
 	SELECT		'MSCRM_CONFIG'				,'\\SEAPCRMSQL1A\SEAPCRMSQL1A_backup\'		,'LSRestore_SEAPCRMSQL1A_MSCRM_CONFIG'				UNION ALL
 	SELECT		'ReportServer'				,'\\SEAPCRMSQL1A\SEAPCRMSQL1A_backup\'		,'LSRestore_SEAPCRMSQL1A_ReportServer'				UNION ALL
 	SELECT		'ReportServer2'				,'\\SEAPCRMSQL1A\SEAPCRMSQL1A_backup\'		,'LSRestore_SEAPCRMSQL1A_ReportServer2'				UNION ALL

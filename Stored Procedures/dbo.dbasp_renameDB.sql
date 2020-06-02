@@ -13,7 +13,7 @@ CREATE   PROCEDURE [dbo].[dbasp_renameDB] ( @current_dbname sysname = null,
 
 /*********************************************************
  **  Stored Procedure dbasp_renameDB
- **  Written by Steve Ledridge, Virtuoso
+ **  Written by Steve Ledridge, ${{secrets.COMPANY_NAME}}
  **  August 06, 2008
  **
  **  This procedure is used to rename a DB using detach and reattach.

@@ -58,5 +58,5 @@ RETURNS TABLE (
 [CompressedBackupSize] [bigint] NULL,
 [Containment] [bit] NULL)
 WITH EXECUTE AS CALLER
-EXTERNAL NAME [Virtuoso.Operations.CLRTools].[Virtuoso.Operations.UserDefinedFunctions].[headers]
+EXTERNAL NAME [${{secrets.COMPANY_NAME}}.Operations.CLRTools].[${{secrets.COMPANY_NAME}}.Operations.UserDefinedFunctions].[headers]
 GO

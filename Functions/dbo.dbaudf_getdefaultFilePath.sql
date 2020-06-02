@@ -8,7 +8,7 @@ as
 
 /**************************************************************
  **  User Defined Function dbaudf_getdefaultFilePath
- **  Written by Steve Ledridge, Virtuoso
+ **  Written by Steve Ledridge, ${{secrets.COMPANY_NAME}}
  **  July 08/2009
  **
  **  This dbaudf is set up to check the the default path

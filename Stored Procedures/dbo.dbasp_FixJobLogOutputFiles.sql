@@ -14,7 +14,7 @@ CREATE   PROCEDURE [dbo].[dbasp_FixJobLogOutputFiles]
 
 /**************************************************************
  **  Stored Procedure dbasp_FixJobLogOutputFiles                  
- **  Written by Steve Ledridge, VIRTUOSO                
+ **  Written by Steve Ledridge, ${{secrets.COMPANY_NAME}}                
  **  July 17, 2012                                      
  **  
  **  This dbasp is set up to fix the name and/or path of the job step
@@ -52,7 +52,7 @@ CREATE   PROCEDURE [dbo].[dbasp_FixJobLogOutputFiles]
 --	03/26/2013	Steve Ledridge		Resolved issue with Null output_file_name for job steps.
 --	08/26/2015	Steve Ledridge		Added exclusions for all Jobs not owned by sa
 --	09/09/2015	Steve Ledridge		Modified sa check to force conversion of sid to varchar.
---	04/03/2018	Steve Ledridge		Modified to make usable in Virtuoso Environment.
+--	04/03/2018	Steve Ledridge		Modified to make usable in ${{secrets.COMPANY_NAME}} Environment.
 --	======================================================================================
 
 /***

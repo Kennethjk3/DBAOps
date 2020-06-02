@@ -5,7 +5,7 @@ GO
 CREATE   FUNCTION [dbo].[dbaudf_BackupScripter_GetBackupFiles2]
 				(
 				@DBName				SYSNAME			--= 'MDI'
-				,@FilePath			VARCHAR(max)	--= '\\SDCPROFS.virtuoso.com\CleanBackups\SDCPROSSSQL01.DB.VIRTUOSO.COM\'
+				,@FilePath			VARCHAR(max)	--= '\\SDCPROFS.${{secrets.DOMAIN_NAME}}\CleanBackups\SDCPROSSSQL01.DB.${{secrets.DOMAIN_NAME}}\'
 				,@IncludeSubDir		bit				= 0
 				,@ForceFileName		VarChar(max)	= null
 				)

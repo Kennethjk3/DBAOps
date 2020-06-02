@@ -7,7 +7,7 @@ CREATE   PROCEDURE [dbo].[dbasp_Reset_UserDB_Access] @db_name sysname = null
 
 /***************************************************************
  **  Stored Procedure dbasp_Reset_UserDB_Access
- **  Written by Steve Ledridge, Virtuoso
+ **  Written by Steve Ledridge, ${{secrets.COMPANY_NAME}}
  **  April 01, 2003
  **
  **  This sproc is set up to;
@@ -39,7 +39,7 @@ CREATE   PROCEDURE [dbo].[dbasp_Reset_UserDB_Access] @db_name sysname = null
 declare @db_name sysname
 
 
-Select @db_name = 'Virtuoso_Images_US_Inc__MSCRM'
+Select @db_name = '${{secrets.COMPANY_NAME}}_Images_US_Inc__MSCRM'
 --**/
 
 

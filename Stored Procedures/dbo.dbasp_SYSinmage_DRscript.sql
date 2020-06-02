@@ -7,7 +7,7 @@ CREATE   PROCEDURE [dbo].[dbasp_SYSinmage_DRscript]
 
 /*********************************************************
  **  Stored Procedure dbasp_SYSinmage_DRscript
- **  Written by Steve Ledridge, Virtuoso
+ **  Written by Steve Ledridge, ${{secrets.COMPANY_NAME}}
  **  June 21, 2012
  **
  **  This dbasp is set up to create executable sql to;

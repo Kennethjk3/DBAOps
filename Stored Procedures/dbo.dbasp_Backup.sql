@@ -32,7 +32,7 @@ CREATE   PROCEDURE [dbo].[dbasp_Backup]
 
 /***************************************************************
  **  Stored Procedure dbasp_Backup                  
- **  Written by Steve Ledridge, Virtuoso                
+ **  Written by Steve Ledridge, ${{secrets.COMPANY_NAME}}                
  **  September 05, 2013                                      
  **
  **  This procedure is used for various 
@@ -109,7 +109,7 @@ SET NOCOUNT ON
 --	05/28/2015	Steve Ledridge				Added input parm @ForceLocal.
 --	02/01/2016	Steve Ledridge				Fixed Test for DB in an availability group.
 --	01/20/2017	Steve Ledridge				Use SERVERPROPERTY('IsHadrEnabled') to check for availability groups enabled.
---	04/03/2017	Steve Ledridge				Changed Standard Paths to Virtuoso Standards
+--	04/03/2017	Steve Ledridge				Changed Standard Paths to ${{secrets.COMPANY_NAME}} Standards
 --											Modified PlanName to refer to Recovery Model
 --	08/08/2017	Steve Ledridge				Delete None is now the default and cleanup will be another sproc
 --	11/06/2019	Steve Ledridge				Modified Process to save Backups in Directory named by Listener if in an AG.

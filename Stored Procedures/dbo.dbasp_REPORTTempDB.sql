@@ -7,7 +7,7 @@ CREATE   PROCEDURE [dbo].[dbasp_REPORTTempDB] (@check_top_offender char(5) = 'n'
 
 /*********************************************************
  **  Stored Procedure dbasp_REPORTTempDB
- **  Written by Steve Ledridge, Virtuoso
+ **  Written by Steve Ledridge, ${{secrets.COMPANY_NAME}}
  **  March 9, 2009
  **
  **  This dbasp is set up to report the current TempDB database space

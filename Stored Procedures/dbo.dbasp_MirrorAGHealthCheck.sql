@@ -4,13 +4,13 @@ SET ANSI_NULLS ON
 GO
 CREATE   PROCEDURE [dbo].[dbasp_MirrorAGHealthCheck]
 		(
-		@Recipients				VarChar(2000) = 'DBANotify@virtuoso.com'
+		@Recipients				VarChar(2000) = 'DBANotify@${{secrets.DOMAIN_NAME}}'
 		)
 
 
 /*********************************************************
  **  Stored Procedure dbasp_MirrorAGHealthCheck
- **  Written by Steve Ledridge, Virtuoso
+ **  Written by Steve Ledridge, ${{secrets.COMPANY_NAME}}
  **  December 11, 2015
  **
  **  This dbasp is set up to check Mirroring and AvailGrp
@@ -26,7 +26,7 @@ SET NOCOUNT ON
 declare @Recipients VarChar(2000)
 
 
-select @Recipients = 'DBANotify@virtuoso.com'
+select @Recipients = 'DBANotify@${{secrets.DOMAIN_NAME}}'
 --*/
 
 

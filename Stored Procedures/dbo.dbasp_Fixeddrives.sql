@@ -9,7 +9,7 @@ CREATE   PROCEDURE [dbo].[dbasp_Fixeddrives]
 			)
 /*********************************************************
  **  Stored Procedure dbasp_Fixeddrives
- **  Written by Steve Ledridge, Virtuoso
+ **  Written by Steve Ledridge, ${{secrets.COMPANY_NAME}}
  **  August 25, 2014
  **
  **  This procedure is a replacement for xp_fixeddrives
@@ -47,27 +47,27 @@ DECLARE @Results TABLE
                  )
 
 
--- THIS MAKES SURE THAT THE Software\Virtuoso\Script\DiskMonitor BRANCH EXISTS
-EXEC[sys].[xp_instance_regwrite] N'HKEY_LOCAL_MACHINE',N'Software\Virtuoso\Script\DiskMonitor','XX','reg_sz','0'
-EXEC[sys].[xp_instance_regdeletevalue] N'HKEY_LOCAL_MACHINE',N'Software\Virtuoso\Script\DiskMonitor','XX'
+-- THIS MAKES SURE THAT THE Software\${{secrets.COMPANY_NAME}}\Script\DiskMonitor BRANCH EXISTS
+EXEC[sys].[xp_instance_regwrite] N'HKEY_LOCAL_MACHINE',N'Software\${{secrets.COMPANY_NAME}}\Script\DiskMonitor','XX','reg_sz','0'
+EXEC[sys].[xp_instance_regdeletevalue] N'HKEY_LOCAL_MACHINE',N'Software\${{secrets.COMPANY_NAME}}\Script\DiskMonitor','XX'
 
 
 IF EXISTS (SELECT 1 FROM DBAOps.dbo.dbaudf_ListDrives() WHERE RootFolder = @RootFolder)
 BEGIN
 	-- SET NEW OVERRIDE VALUE
 	IF @New_PercentFullOverride IS NOT NULL
-		EXEC[sys].[xp_instance_regwrite] N'HKEY_LOCAL_MACHINE',N'Software\Virtuoso\Script\DiskMonitor',@RootFolder,'reg_sz',@New_PercentFullOverride
+		EXEC[sys].[xp_instance_regwrite] N'HKEY_LOCAL_MACHINE',N'Software\${{secrets.COMPANY_NAME}}\Script\DiskMonitor',@RootFolder,'reg_sz',@New_PercentFullOverride
 	ELSE
-		EXEC[sys].[xp_instance_regdeletevalue] N'HKEY_LOCAL_MACHINE',N'Software\Virtuoso\Script\DiskMonitor',@RootFolder
+		EXEC[sys].[xp_instance_regdeletevalue] N'HKEY_LOCAL_MACHINE',N'Software\${{secrets.COMPANY_NAME}}\Script\DiskMonitor',@RootFolder
 
 
 	RETURN 0
 END
 
 
--- GET DISK ALERT OVERRIDES AT Software\Virtuoso\Script\DiskMonitor
+-- GET DISK ALERT OVERRIDES AT Software\${{secrets.COMPANY_NAME}}\Script\DiskMonitor
 INSERT INTO @Results
-EXEC [sys].[xp_instance_regenumvalues] N'HKEY_LOCAL_MACHINE',N'Software\Virtuoso\Script\DiskMonitor'
+EXEC [sys].[xp_instance_regenumvalues] N'HKEY_LOCAL_MACHINE',N'Software\${{secrets.COMPANY_NAME}}\Script\DiskMonitor'
 
 
 -- MAIN QUERY

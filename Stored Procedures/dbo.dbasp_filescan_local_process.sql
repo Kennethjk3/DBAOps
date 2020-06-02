@@ -7,7 +7,7 @@ CREATE   PROCEDURE [dbo].[dbasp_filescan_local_process]
 
 /**************************************************************
  **  Stored Procedure dbasp_filescan_local_process
- **  Written by Steve Ledridge, Virtuoso
+ **  Written by Steve Ledridge, ${{secrets.COMPANY_NAME}}
  **  June 16, 2009
  **
  **  This dbasp is set up to run the filescan process locally.

@@ -7,7 +7,7 @@ CREATE   PROCEDURE [dbo].[dbasp_SYSsqlconfig]
 
 /*********************************************************
  **  Stored Procedure dbasp_SYSsqlconfig
- **  Written by Steve Ledridge, Virtuoso
+ **  Written by Steve Ledridge, ${{secrets.COMPANY_NAME}}
  **  December 1, 2000
  **
  **  Canabalized from:

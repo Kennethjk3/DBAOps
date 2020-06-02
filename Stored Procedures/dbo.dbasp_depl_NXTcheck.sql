@@ -7,7 +7,7 @@ CREATE   PROCEDURE [dbo].[dbasp_depl_NXTcheck]    (@dbname sysname = null)
 
 /*********************************************************
  **  Stored Procedure dbasp_depl_NXTcheck
- **  Written by Steve Ledridge, Virtuoso
+ **  Written by Steve Ledridge, ${{secrets.COMPANY_NAME}}
  **  February 12, 2007
  **
  **  This procedure is used to check for local NXT files
@@ -508,8 +508,8 @@ If @outmessage <> ''
    begin
 	--  Email TS SQL DBA with this information
 	EXEC DBAOps.dbo.dbasp_sendmail
-		--@recipients = 'DBANotify@virtuoso.com',
-		@recipients = 'DBANotify@virtuoso.com',
+		--@recipients = 'DBANotify@${{secrets.DOMAIN_NAME}}',
+		@recipients = 'DBANotify@${{secrets.DOMAIN_NAME}}',
 		@subject = @outsubject,
 		@message = @outmessage
    end

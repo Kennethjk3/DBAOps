@@ -7,7 +7,7 @@ Returns		SYSNAME
 --
 --/*********************************************************
 -- **  Function dbaudf_GetServerClass
--- **  Written by Steve Ledridge, Virtuoso
+-- **  Written by Steve Ledridge, ${{secrets.COMPANY_NAME}}
 -- ** January 27, 2020
 -- **
 -- **  This Function returns the Environment of server to be used for

@@ -6,7 +6,7 @@ CREATE   PROCEDURE [dbo].[dbasp_internalGetEnviroInfoByApp]
 				 (@appl sysname)
 /**************************************************************
  **  Stored Procedure dbasp_internalGetEnviroInfoByApp
- **  Written by Steve Ledridge, Virtuoso
+ **  Written by Steve Ledridge, ${{secrets.COMPANY_NAME}}
  **  September 25, 2008
  **
  **  Returns the baseline folder, SQL Instance,

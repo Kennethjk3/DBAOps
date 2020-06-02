@@ -7,7 +7,7 @@ CREATE   PROCEDURE [dbo].[dbasp_BaseLocal_Control]
 
 /*********************************************************
  **  Stored Procedure dbasp_BaseLocal_Control
- **  Written by Steve Ledridge, Virtuoso
+ **  Written by Steve Ledridge, ${{secrets.COMPANY_NAME}}
  **  June 18, 2010
  **
  **  This sproc will control the SQL baseline push process.

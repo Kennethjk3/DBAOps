@@ -7,7 +7,7 @@ CREATE   PROCEDURE [dbo].[dbasp_add_Base_Skip_sqb2nxt]  @SQBname sysname = NULL
 
 /*********************************************************
  **  Stored Procedure dbasp_add_Base_Skip_sqb2nxt
- **  Written by Steve Ledridge, Virtuoso
+ **  Written by Steve Ledridge, ${{secrets.COMPANY_NAME}}
  **  May 27, 2008
  **
  **  This proc requires one input parm for a Baseline SQB file name.

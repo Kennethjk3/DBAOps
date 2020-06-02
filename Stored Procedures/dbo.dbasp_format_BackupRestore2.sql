@@ -50,7 +50,7 @@ CREATE   PROCEDURE [dbo].[dbasp_format_BackupRestore2]
 
 /*********************************************************
  **  Stored Procedure dbasp_Format_BackupRestore
- **  Written by Steve Ledridge, Virtuoso
+ **  Written by Steve Ledridge, ${{secrets.COMPANY_NAME}}
  **  August 08, 2013
  **
  **

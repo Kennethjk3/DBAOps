@@ -19,7 +19,7 @@ CREATE   PROCEDURE [dbo].[dbasp_SYSaddjobs]
 	)
 /*********************************************************
  **  Stored Procedure dbasp_SYSaddjobs
- **  Written by Steve Ledridge, Virtuoso
+ **  Written by Steve Ledridge, ${{secrets.COMPANY_NAME}}
  **  May 5, 2000
  **
  **  This dbasp is set up to create executable sql to;
@@ -92,7 +92,7 @@ SET NOCOUNT ON
 --	05/31/2012	Steve Ledridge		New code for DBAOps.
 --	04/29/2013	Steve Ledridge		Removed code for DB DEPLinfo.
 --	04/19/2016	Steve Ledridge		New code for AG related category.
---	10/09/2017	Steve Ledridge		Modified to Run in Virtuoso Environment
+--	10/09/2017	Steve Ledridge		Modified to Run in ${{secrets.COMPANY_NAME}} Environment
 --	======================================================================================
 
 
@@ -206,7 +206,7 @@ DECLARE		@DataPath					VarChar(8000)
 exec master.dbo.xp_instance_regread N'HKEY_LOCAL_MACHINE', N'Software\Microsoft\MSSQLServer\MSSQLServer', N'DefaultData', @DataPath output
 exec master.dbo.xp_instance_regread N'HKEY_LOCAL_MACHINE', N'Software\Microsoft\MSSQLServer\MSSQLServer', N'DefaultLog', @LogPath output
 exec master.dbo.xp_instance_regread N'HKEY_LOCAL_MACHINE', N'Software\Microsoft\MSSQLServer\MSSQLServer', N'BackupDirectory', @BackupPathL output
-SELECT		@BackupPathN		= '\\SDCSQLBACKUPFS.virtuoso.com\DatabaseBackups\' + UPPER(dbo.dbaudf_GetLocalFQDN())
+SELECT		@BackupPathN		= '\\SDCSQLBACKUPFS.${{secrets.DOMAIN_NAME}}\DatabaseBackups\' + UPPER(dbo.dbaudf_GetLocalFQDN())
 SELECT		@DBASQLPath			= @BackupPathL + '\dbasql'
 SELECT		@SQLAgentLogPath	= @BackupPathL + '\SQLAgentLogs'
 SELECT		@DBAArchivePath		= @BackupPathL + '\dba_archive'
@@ -1055,7 +1055,7 @@ BEGIN
 
 		IF @WriteToCentral = 1 AND @DontExtractReplica = 0
 		BEGIN
-			SET @ScriptFilePath = '\\SDCSQLTOOLS.DB.VIRTUOSO.COM\dba_reports\AgentJobs\'
+			SET @ScriptFilePath = '\\SDCSQLTOOLS.DB.${{secrets.DOMAIN_NAME}}\dba_reports\AgentJobs\'
 								+ CASE @@SERVERNAME 
 									WHEN 'SDCPRORPT03'		 THEN 'CUBE\'
 									WHEN 'SDCPROSQL04'		 THEN 'COMPOSER\'

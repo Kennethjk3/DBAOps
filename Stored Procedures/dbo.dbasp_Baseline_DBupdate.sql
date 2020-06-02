@@ -7,7 +7,7 @@ CREATE   PROCEDURE [dbo].[dbasp_Baseline_DBupdate] @DBname sysname = null
 
 /*********************************************************
  **  Stored Procedure dbasp_Baseline_DBupdate
- **  Written by Steve Ledridge, Virtuoso
+ **  Written by Steve Ledridge, ${{secrets.COMPANY_NAME}}
  **  March 18, 2015
  **
  **  This procedure is used to set DB related options as part of

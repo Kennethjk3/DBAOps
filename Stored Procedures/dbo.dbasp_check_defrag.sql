@@ -7,7 +7,7 @@ CREATE   PROCEDURE [dbo].[dbasp_check_defrag] (@check_period smallint = 7)
 
 /**************************************************************
  **  Stored Procedure dbasp_check_defrag
- **  Written by Steve Ledridge, Virtuoso
+ **  Written by Steve Ledridge, ${{secrets.COMPANY_NAME}}
  **  February 13, 2008
  **
  **  This dbasp is set up to check local defrag processing.

@@ -10,7 +10,7 @@ returns @SplittedValues TABLE
 )
 /**************************************************************
  **  User Defined Function dbaudf_split
- **  Written by Steve Ledridge, Virtuoso
+ **  Written by Steve Ledridge, ${{secrets.COMPANY_NAME}}
  **  May 12, 2009
  **
  **  This dbaudf is set up parse a delimited string return values

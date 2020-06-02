@@ -25,7 +25,7 @@ CREATE   PROCEDURE [dbo].[dbasp_IndexUpdateStats]
 
 /***************************************************************
  **  Stored Procedure dbasp_IndexUpdateStats
- **  Written by Steve Ledridge, Virtuoso
+ **  Written by Steve Ledridge, ${{secrets.COMPANY_NAME}}
  **  April 28, 2010
  **
  **

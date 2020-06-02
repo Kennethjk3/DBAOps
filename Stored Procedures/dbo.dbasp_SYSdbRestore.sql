@@ -7,7 +7,7 @@ CREATE   PROCEDURE [dbo].[dbasp_SYSdbRestore]
 
 /*********************************************************
  **  Stored Procedure dbasp_SYSdbRestore
- **  Written by Steve Ledridge, Virtuoso
+ **  Written by Steve Ledridge, ${{secrets.COMPANY_NAME}}
  **  October 13, 2000
  **
  **  This dbasp is set up to create executable sql to;

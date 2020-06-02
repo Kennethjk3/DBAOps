@@ -7,7 +7,7 @@ CREATE   PROCEDURE [dbo].[dbasp_REPORTjobs]
 
 /*********************************************************
  **  Stored Procedure dbasp_REPORTjobs
- **  Written by Steve Ledridge, Virtuoso
+ **  Written by Steve Ledridge, ${{secrets.COMPANY_NAME}}
  **  July 25, 2001
  **
  **  This dbasp is set up to create a report documenting

@@ -7,5 +7,5 @@ RETURNS TABLE (
 [OccurenceId] [int] NULL,
 [SplitValue] [nvarchar] (max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL)
 WITH EXECUTE AS CALLER
-EXTERNAL NAME [Virtuoso.Operations.CLRTools].[Virtuoso.Operations.UserDefinedFunctions].[dbaudf_StringToTable]
+EXTERNAL NAME [${{secrets.COMPANY_NAME}}.Operations.CLRTools].[${{secrets.COMPANY_NAME}}.Operations.UserDefinedFunctions].[dbaudf_StringToTable]
 GO

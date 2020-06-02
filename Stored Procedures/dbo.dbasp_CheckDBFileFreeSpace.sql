@@ -18,14 +18,14 @@ DECLARE @Results TABLE
                  )
 
 
--- THIS MAKES SURE THAT THE Software\Virtuoso\Script\DiskMonitor BRANCH EXISTS
-EXEC[sys].[xp_instance_regwrite] N'HKEY_LOCAL_MACHINE',N'Software\Virtuoso\Script\DiskMonitor','XX','reg_sz','0'
-EXEC[sys].[xp_instance_regdeletevalue] N'HKEY_LOCAL_MACHINE',N'Software\Virtuoso\Script\DiskMonitor','XX'
+-- THIS MAKES SURE THAT THE Software\${{secrets.COMPANY_NAME}}\Script\DiskMonitor BRANCH EXISTS
+EXEC[sys].[xp_instance_regwrite] N'HKEY_LOCAL_MACHINE',N'Software\${{secrets.COMPANY_NAME}}\Script\DiskMonitor','XX','reg_sz','0'
+EXEC[sys].[xp_instance_regdeletevalue] N'HKEY_LOCAL_MACHINE',N'Software\${{secrets.COMPANY_NAME}}\Script\DiskMonitor','XX'
 
 
--- GET DISK ALERT OVERRIDES AT Software\Virtuoso\Script\DiskMonitor
+-- GET DISK ALERT OVERRIDES AT Software\${{secrets.COMPANY_NAME}}\Script\DiskMonitor
 INSERT INTO @Results
-EXEC [sys].[xp_instance_regenumvalues] N'HKEY_LOCAL_MACHINE',N'Software\Virtuoso\Script\DiskMonitor'
+EXEC [sys].[xp_instance_regenumvalues] N'HKEY_LOCAL_MACHINE',N'Software\${{secrets.COMPANY_NAME}}\Script\DiskMonitor'
 
 
 CREATE TABLE #Results ([DBName] SYSNAME,[Type] sysname, [FileName] SYSNAME, [CurrentSizeMB] Float, [FreeSpaceMB] Float, [GrowthMB] Float, [MaxSizeMB] Float)

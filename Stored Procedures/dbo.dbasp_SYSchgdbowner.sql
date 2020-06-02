@@ -7,7 +7,7 @@ CREATE   PROCEDURE [dbo].[dbasp_SYSchgdbowner]
 
 /*********************************************************
  **  Stored Procedure dbasp_SYSchgdbowner
- **  Written by Steve Ledridge, Virtuoso
+ **  Written by Steve Ledridge, ${{secrets.COMPANY_NAME}}
  **  October 4, 2000
  **
  **  This dbasp is set up to create executable sql to;

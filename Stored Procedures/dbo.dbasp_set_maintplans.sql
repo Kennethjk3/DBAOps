@@ -7,7 +7,7 @@ CREATE   PROCEDURE [dbo].[dbasp_set_maintplans]
 
 /***************************************************************
  **  Stored Procedure dbasp_set_maintplans
- **  Written by Steve Ledridge, Virtuoso
+ **  Written by Steve Ledridge, ${{secrets.COMPANY_NAME}}
  **  August 05, 2004
  **
  **  This sproc is set up to;

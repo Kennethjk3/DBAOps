@@ -31,7 +31,7 @@ JOIN	sys.syslogins	L
 
 WHERE	u.islogin = 1
 AND		U.sid != L.sid
-AND		u.name Not Like ''Virtuoso\%''
+AND		u.name Not Like ''${{secrets.COMPANY_NAME}}\%''
 and		u.issqlrole = 0
 and		u.isapprole = 0
 and		u.name != ''dbo''

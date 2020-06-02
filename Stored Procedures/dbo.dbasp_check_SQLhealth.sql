@@ -2,7 +2,7 @@ SET QUOTED_IDENTIFIER ON
 GO
 SET ANSI_NULLS ON
 GO
-CREATE   PROCEDURE [dbo].[dbasp_check_SQLhealth] (@rpt_recipient sysname = 'DBANotify@virtuoso.com'
+CREATE   PROCEDURE [dbo].[dbasp_check_SQLhealth] (@rpt_recipient sysname = 'DBANotify@${{secrets.DOMAIN_NAME}}'
 						,@checkin_grace_hours SMALLINT = 32
 						,@recycle_grace_days SMALLINT = 120
 						,@reboot_grace_days SMALLINT = 120
@@ -14,7 +14,7 @@ CREATE   PROCEDURE [dbo].[dbasp_check_SQLhealth] (@rpt_recipient sysname = 'DBAN
 
 	/*************************************************************************************************
 	 **  Stored Procedure dbasp_check_SQLhealth
-	 **  Written by Steve Ledridge, Virtuoso
+	 **  Written by Steve Ledridge, ${{secrets.COMPANY_NAME}}
 	 **  August 31, 2010
 	 **
 	 **  This dbasp is set up to do a complete health check for
@@ -140,7 +140,7 @@ declare @NestLevel INT
 declare @PrintOnly INT
 
 
-select @rpt_recipient = 'DBANotify@virtuoso.com'
+select @rpt_recipient = 'DBANotify@${{secrets.DOMAIN_NAME}}'
 Select @checkin_grace_hours = 32
 select @recycle_grace_days = 120
 select @reboot_grace_days = 120
@@ -6559,7 +6559,7 @@ BEGIN	--------------------------  GENERATE REPORT AND UPDATE FILE  -------------
 		Else
 		   begin
 			EXEC DBAOps.dbo.dbasp_sendmail
-				@recipients = 'DBANotify@virtuoso.com',
+				@recipients = 'DBANotify@${{secrets.DOMAIN_NAME}}',
 				@subject = @subject ,
 				@message = @message
 		   end

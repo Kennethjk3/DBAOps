@@ -6,7 +6,7 @@ CREATE   PROCEDURE [dbo].[dbasp_GetBuildInfo]
 
 /***************************************************************
  **  Stored Procedure dbasp_GetBuildInfo
- **  Written by Steve Ledridge, Virtuoso
+ **  Written by Steve Ledridge, ${{secrets.COMPANY_NAME}}
  **  11/18/2008
  **
  **  This procedure is used to gather the build information from

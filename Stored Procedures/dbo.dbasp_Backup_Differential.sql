@@ -20,7 +20,7 @@ CREATE   PROCEDURE [dbo].[dbasp_Backup_Differential] (@PlanName varchar(500) = n
 
 /***************************************************************
  **  Stored Procedure dbasp_Backup_Differential
- **  Written by Steve Ledridge, Virtuoso
+ **  Written by Steve Ledridge, ${{secrets.COMPANY_NAME}}
  **  June 11, 2004
  **
  **  This proc accepts the following input parms (none are required):

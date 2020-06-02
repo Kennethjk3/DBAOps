@@ -8,7 +8,7 @@ CREATE   PROCEDURE [dbo].[dbasp_dbamail_process] (@server_name sysname = null
 
 /**************************************************************
  **  Stored Procedure dbasp_dbamail_process
- **  Written by Steve Ledridge, Virtuoso
+ **  Written by Steve Ledridge, ${{secrets.COMPANY_NAME}}
  **  March 10, 2002
  **
  **  This dbasp is set up to process sql mail requests using
@@ -143,7 +143,7 @@ Select @extention 	= 'sml'
 Select @EOLWinNT        = char(13)+char(10)
 Select @message_flag	= 'n'
 select @attach_continue = 'n'
-Select @save_mailserver = 'mail.Virtuoso.com'
+Select @save_mailserver = 'mail.${{secrets.DOMAIN_NAME}}'
 
 
 Select @save_servername = @@servername

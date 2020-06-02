@@ -7,11 +7,11 @@ CREATE   PROCEDURE [dbo].[help] (@DBname sysname = null)
 
 /**************************************************************
  **  Stored Procedure help
- **  Written by Steve Ledridge, Virtuoso
+ **  Written by Steve Ledridge, ${{secrets.COMPANY_NAME}}
  **  March 4, 2014
  **
  **  This sproc provides example syntax for many of the common
- **  queries a DBA might need in the Virtuoso Environment.
+ **  queries a DBA might need in the ${{secrets.COMPANY_NAME}} Environment.
  ***************************************************************/
   as
   SET NOCOUNT ON

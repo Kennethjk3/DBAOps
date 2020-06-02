@@ -18,7 +18,7 @@ CREATE   PROCEDURE [dbo].[dbasp_prerestore] ( @full_path nvarchar(500) = null,
 
 /*********************************************************
  **  Stored Procedure dbasp_prerestore
- **  Written by Steve Ledridge, Virtuoso
+ **  Written by Steve Ledridge, ${{secrets.COMPANY_NAME}}
  **  December 29, 2008
  **
  **  This procedure is used for automated database
@@ -79,8 +79,8 @@ Declare @complete_on_diffOnly_fail char(1)
 
 
 select @full_path = '\\DBAOpser02\e$\mssql.1\restore'
-select @dbname = 'Virtuoso_Images_US_Inc__MSCRM'
-select @ALTdbname = 'z_Virtuoso_Images_US_Inc__MSCRM_new'
+select @dbname = '${{secrets.COMPANY_NAME}}_Images_US_Inc__MSCRM'
+select @ALTdbname = 'z_${{secrets.COMPANY_NAME}}_Images_US_Inc__MSCRM_new'
 --Select @backupname = 'RM_Integration_db'
 Select @backmidmask = '_db_FG_PRIMARY_2'
 Select @diffmidmask = '_dfntl_2'
@@ -1007,8 +1007,8 @@ If @db_norecovOnly_flag <> 'y'
 				Select @save_subject = 'DBAOps:  prerestore Failure for server ' + @@servername
 				Select @save_message = 'Unable to restore the differential file for database ''' + @check_dbname + ''', the restore will be completed without the differential.'
 				EXEC DBAOps.dbo.dbasp_sendmail
-					@recipients = 'DBANotify@virtuoso.com',
-					--@recipients = 'DBANotify@virtuoso.com',
+					@recipients = 'DBANotify@${{secrets.DOMAIN_NAME}}',
+					--@recipients = 'DBANotify@${{secrets.DOMAIN_NAME}}',
 					@subject = @save_subject,
 					@message = @save_message
 
@@ -1087,8 +1087,8 @@ If @db_norecovOnly_flag <> 'y'
 				Select @save_subject = 'DBAOps:  prerestore Failure for server ' + @@servername
 				Select @save_message = 'Unable to restore the differential file for database ''' + @check_dbname + ''', the restore will be completed without the differential.'
 				EXEC DBAOps.dbo.dbasp_sendmail
-					@recipients = 'DBANotify@virtuoso.com',
-					--@recipients = 'DBANotify@virtuoso.com',
+					@recipients = 'DBANotify@${{secrets.DOMAIN_NAME}}',
+					--@recipients = 'DBANotify@${{secrets.DOMAIN_NAME}}',
 					@subject = @save_subject,
 					@message = @save_message
 
@@ -1162,8 +1162,8 @@ If @db_norecovOnly_flag <> 'y'
 				Select @save_subject = 'DBAOps:  prerestore Failure for server ' + @@servername
 				Select @save_message = 'Unable to restore the differential file for database ''' + @check_dbname + ''', the restore will be completed without the differential.'
 				EXEC DBAOps.dbo.dbasp_sendmail
-					@recipients = 'DBANotify@virtuoso.com',
-					--@recipients = 'DBANotify@virtuoso.com',
+					@recipients = 'DBANotify@${{secrets.DOMAIN_NAME}}',
+					--@recipients = 'DBANotify@${{secrets.DOMAIN_NAME}}',
 					@subject = @save_subject,
 					@message = @save_message
 

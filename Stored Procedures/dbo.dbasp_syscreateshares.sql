@@ -7,7 +7,7 @@ CREATE   PROCEDURE [dbo].[dbasp_syscreateshares]
 
 /**************************************************************
  **  Stored Procedure dbasp_syscreateshares
- **  Written by Steve Ledridge, Virtuoso
+ **  Written by Steve Ledridge, ${{secrets.COMPANY_NAME}}
  **  September 16, 2003
  **
  **  This dbasp is set up to help recreate shares.  The output

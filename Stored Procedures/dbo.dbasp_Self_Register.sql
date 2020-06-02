@@ -6,7 +6,7 @@ CREATE   PROCEDURE [dbo].[dbasp_Self_Register]
 --
 --/*********************************************************
 -- **  Stored Procedure dbasp_Self_Register
--- **  Written by Steve Ledridge, Virtuoso
+-- **  Written by Steve Ledridge, ${{secrets.COMPANY_NAME}}
 -- **  March 22, 2007
 -- **
 -- **  This procedure registers the local SQL server instance
@@ -136,7 +136,7 @@ create table #ls_ver 	(
 
 create table #outfile_check(data01 nvarchar(4000) null)
 
-Select @central_server = 'SDCSQLTOOLS.DB.VIRTUOSO.COM'
+Select @central_server = 'SDCSQLTOOLS.DB.${{secrets.DOMAIN_NAME}}'
 --Select @central_server = env_detail from dbo.Local_ServerEnviro where env_type = 'CentralServer'
 --If @central_server is null
 --   begin

@@ -80,7 +80,7 @@ BEGIN
 
 		@dbname				NULL		Name of Database to Restore
 		@NewDBName			NULL		New Name if Changing from the Original
-		@FromServer				NULL		The Server FQDN from which the database comes (real name, not alias) ex. SDCPROSQL01.DB.VIRTUOSO.COM
+		@FromServer				NULL		The Server FQDN from which the database comes (real name, not alias) ex. SDCPROSQL01.DB.${{secrets.DOMAIN_NAME}}
 		@FilePath				NULL		Only used to force a restore from a nonstandard location
 		@FileGroups				NULL		Only used to restore a single file group (if the file group was backed up independently)
 		@ForceFileName			NULL		Only used to force a restore from a nonstandard location or naming convention
@@ -118,14 +118,14 @@ END
 
 EXEC	DBAOps.dbo.dbasp_Backup_Retention_RestoreScript
 		@DBName					= 'dmbooking'
-		,@PrimaryFile_Path		= '\\SDCPROFS.virtuoso.com\DatabaseBackups\SDCPRODM01.db.virtuoso.com'
+		,@PrimaryFile_Path		= '\\SDCPROFS.${{secrets.DOMAIN_NAME}}\DatabaseBackups\SDCPRODM01.db.${{secrets.DOMAIN_NAME}}'
 		,@PrimaryFile_Mask		= 'dmbooking_DB_20180831010123_SET_01_OF_32.cBAK'
 		,@SupportFile_Path		= ''
 		,@SupportFile_Mask		= ''
 
 
 SELECT		*
-FROM		[dbaops].[dbo].[dbaudf_BackupScripter_GetBackupFiles] ('dmbooking','\\SDCPROFS.virtuoso.com\DatabaseBackups\SDCPRODM01.db.virtuoso.com',0,'dmbooking_DB_20180831010123_SET_01_OF_32.cBAK')
+FROM		[dbaops].[dbo].[dbaudf_BackupScripter_GetBackupFiles] ('dmbooking','\\SDCPROFS.${{secrets.DOMAIN_NAME}}\DatabaseBackups\SDCPRODM01.db.${{secrets.DOMAIN_NAME}}',0,'dmbooking_DB_20180831010123_SET_01_OF_32.cBAK')
 
 
 

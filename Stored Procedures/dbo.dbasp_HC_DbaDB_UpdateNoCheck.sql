@@ -7,7 +7,7 @@ CREATE   PROCEDURE [dbo].[dbasp_HC_DbaDB_UpdateNoCheck]
 
 /*********************************************************
  **  Stored Procedure dbasp_HC_DbaDB_UpdateNoCheck
- **  Written by Steve Ledridge, Virtuoso
+ **  Written by Steve Ledridge, ${{secrets.COMPANY_NAME}}
  **  March 20, 2015
  **  This procedure runs the Update NoCheck portion
  **  of the DBA SQL Health Check process.

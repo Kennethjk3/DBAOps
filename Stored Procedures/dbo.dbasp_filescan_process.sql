@@ -7,7 +7,7 @@ CREATE   PROCEDURE [dbo].[dbasp_filescan_process] (@save_SQLEnv sysname = '')
 
 /**************************************************************
  **  Stored Procedure dbasp_filescan_process
- **  Written by Steve Ledridge, Virtuoso
+ **  Written by Steve Ledridge, ${{secrets.COMPANY_NAME}}
  **  December 26, 2002
  **
  **  This dbasp is set up to run the filescan process.

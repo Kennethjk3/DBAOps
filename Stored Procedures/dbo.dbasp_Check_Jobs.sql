@@ -7,7 +7,7 @@ CREATE   PROCEDURE [dbo].[dbasp_Check_Jobs] (@purge_days int = 30)
 
 /***************************************************************
  **  Stored Procedure dbasp_Check_Jobs
- **  Written by Steve Ledridge, Virtuoso
+ **  Written by Steve Ledridge, ${{secrets.COMPANY_NAME}}
  **  May 11, 2000
  **
  **  This dbasp is set up to;

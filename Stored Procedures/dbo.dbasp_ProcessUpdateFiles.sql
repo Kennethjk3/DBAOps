@@ -7,7 +7,7 @@ CREATE   PROCEDURE [dbo].[dbasp_ProcessUpdateFiles]
 
 /*********************************************************
  **  Stored Procedure dbasp_ProcessUpdateFiles
- **  Written by Steve Ledridge, Virtuoso
+ **  Written by Steve Ledridge, ${{secrets.COMPANY_NAME}}
  **  June 08, 2009
  **
  **  This sproc will process files in the local dba_UpdateFiles

@@ -7,7 +7,7 @@ CREATE   PROCEDURE [dbo].[dbasp_backup_status]
 
 /*********************************************************
  **  Stored Procedure dbasp_backup_status
- **  Written by Steve Ledridge, Virtuoso
+ **  Written by Steve Ledridge, ${{secrets.COMPANY_NAME}}
  **  September 12, 2012
  **
  **  This dbasp will list the status for all active backups.

@@ -7,7 +7,7 @@ CREATE   PROCEDURE [dbo].[dbasp_code_update_prep]
 
 /**************************************************************
  **  Stored Procedure dbasp_code_update_prep
- **  Written by Steve Ledridge, Virtuoso
+ **  Written by Steve Ledridge, ${{secrets.COMPANY_NAME}}
  **  March 25, 2016
  **
  **  This dbasp is set up to check for new updates of sproc

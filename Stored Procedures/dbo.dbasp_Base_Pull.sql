@@ -7,7 +7,7 @@ CREATE   PROCEDURE [dbo].[dbasp_Base_Pull]
 
 /*********************************************************
  **  Stored Procedure dbasp_Base_Pull
- **  Written by Steve Ledridge, Virtuoso
+ **  Written by Steve Ledridge, ${{secrets.COMPANY_NAME}}
  **  March 6, 2004
  **
  **  This procedure is used to pull baseline backup files

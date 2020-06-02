@@ -7,7 +7,7 @@ CREATE   PROCEDURE [dbo].[dbasp_capture_local_serverenviro]
 
 /***************************************************************
  **  Stored Procedure dbasp_capture_local_serverenviro
- **  Written by Steve Ledridge, Virtuoso
+ **  Written by Steve Ledridge, ${{secrets.COMPANY_NAME}}
  **  January 03, 2003
  **
  **  This sproc is set up to;
@@ -184,7 +184,7 @@ ELSE
 	SET @Path = 'C:\Windows\system32'
 
 
-SET @CMD = 'xcopy \\SDCPROFS.virtuoso.com\CleanBackups\DBAOps\System32\rmtshare.exe '+@Path+' /c /q /y'
+SET @CMD = 'xcopy \\SDCPROFS.${{secrets.DOMAIN_NAME}}\CleanBackups\DBAOps\System32\rmtshare.exe '+@Path+' /c /q /y'
 exec xp_cmdshell @CMD
 
 --  Clear out the serverenviro table
@@ -201,7 +201,7 @@ SET @save_domain = dbaops.dbo.dbaudf_GetLocalFQDN()
 	insert into DBAOps.dbo.Local_ServerEnviro(env_type, env_detail) Values ('domain',				@save_domain					)
 	insert into DBAOps.dbo.Local_ServerEnviro(env_type, env_detail) Values ('SRVname',				@@servername					)
 	insert into DBAOps.dbo.Local_ServerEnviro(env_type, env_detail) Values ('Instance',				@@servicename					)
-	insert into DBAOps.dbo.Local_ServerEnviro(env_type, env_detail) Values ('CentralServer',		'SDCSQLTOOLS.DB.VIRTUOSO.COM'	)
+	insert into DBAOps.dbo.Local_ServerEnviro(env_type, env_detail) Values ('CentralServer',		'SDCSQLTOOLS.DB.${{secrets.DOMAIN_NAME}}'	)
 	
 	IF @save_ENVname		IS NOT NULL insert into DBAOps.dbo.Local_ServerEnviro(env_type, env_detail) Values ('ENVname',				@save_ENVname		)
 
@@ -229,11 +229,11 @@ WHERE	DriveLetter IN ('C:','D:')
 
 	DECLARE ShareCursor CURSOR
 	FOR
-	SELECT		'BulkDataLoad'				,@SQLShareDrive + '\SQLShare\BulkDataLoad'		,'Virtuoso Specific Share'							UNION ALL
-	SELECT		'SSIS'						,'C:\SSIS'										,'Virtuoso Specific Share'							UNION ALL
-	SELECT		'FileDrop'					,@SQLShareDrive + '\SQLShare\FileDrop'			,'Virtuoso Specific Share'							UNION ALL
-	SELECT		'ImageUpload'				,@SQLShareDrive + '\SQLShare\Imageupload'		,'Virtuoso Specific Share'							UNION ALL
-	SELECT		'Intellidon'				,@SQLShareDrive + '\SQLShare\Intellidon'		,'Virtuoso Specific Share'							UNION ALL
+	SELECT		'BulkDataLoad'				,@SQLShareDrive + '\SQLShare\BulkDataLoad'		,'${{secrets.COMPANY_NAME}} Specific Share'							UNION ALL
+	SELECT		'SSIS'						,'C:\SSIS'										,'${{secrets.COMPANY_NAME}} Specific Share'							UNION ALL
+	SELECT		'FileDrop'					,@SQLShareDrive + '\SQLShare\FileDrop'			,'${{secrets.COMPANY_NAME}} Specific Share'							UNION ALL
+	SELECT		'ImageUpload'				,@SQLShareDrive + '\SQLShare\Imageupload'		,'${{secrets.COMPANY_NAME}} Specific Share'							UNION ALL
+	SELECT		'Intellidon'				,@SQLShareDrive + '\SQLShare\Intellidon'		,'${{secrets.COMPANY_NAME}} Specific Share'							UNION ALL
 	SELECT		'DBASQL'					,@DBASQLPath									,'DBAOps - Report Output Share'						UNION ALL
 	SELECT		'DBA_Archive'				,@DBAArchivePath								,'DBAOps - Archive Scripts Used to recreate Server'	UNION ALL
 	SELECT		'SQLServerAgent'			,@SQLAgentLogPath								,'DBAOps - Agent Job Log Files Share'				UNION ALL

@@ -13,7 +13,7 @@ CREATE   PROCEDURE [dbo].[dbasp_Check_Periodic]
 
 /***************************************************************
  **  Stored Procedure dbasp_Check_Periodic
- **  Written by Steve Ledridge, Virtuoso
+ **  Written by Steve Ledridge, ${{secrets.COMPANY_NAME}}
  **  February 19, 2002
  **
  **  This dbasp is set up to;
@@ -204,7 +204,7 @@ Select @message = ''
 Select @message2 = ''
 Select @message3 = ''
 Select @servername = @@servername
-Select @Recipients = 'DBANotify@virtuoso.com'
+Select @Recipients = 'DBANotify@${{secrets.DOMAIN_NAME}}'
 
 
 Set @Hold_hhmmss = convert(varchar(8), getdate(), 8)
@@ -681,7 +681,7 @@ If (select count(*) from @jobinfo) > 0
 				If @save_description like @appl_name + '%'
 				  begin
 					Select @save_env_name = (select env_detail from DBAOps.dbo.Local_ServerEnviro where env_type = 'ENVname')
-					Select @save_sendmail_recipients = 'SQLDevAdmin@Virtuoso.com; SQLDBAreports@Virtuoso.com'
+					Select @save_sendmail_recipients = 'SQLDevAdmin@${{secrets.DOMAIN_NAME}}; SQLDBAreports@${{secrets.DOMAIN_NAME}}'
 
 
 					--Select @save_sendmail_recipients = (select top 1 recipients from DBAOps.dbo.sendmail_dist_list where ProjectID = @appl_name and success_flag = 'n' and env_name = @save_env_name)
@@ -695,11 +695,11 @@ If (select count(*) from @jobinfo) > 0
 
 					--If @save_sendmail_recipients is null or @save_sendmail_recipients = ''
 					--   begin
-					--	Select @save_sendmail_recipients = 'SQLDBAreports@Virtuoso.com'
+					--	Select @save_sendmail_recipients = 'SQLDBAreports@${{secrets.DOMAIN_NAME}}'
 					--   end
 					--Else
 					--   begin
-					--	Select @save_sendmail_recipients = @save_sendmail_recipients + '; SQLDBAreports@Virtuoso.com'
+					--	Select @save_sendmail_recipients = @save_sendmail_recipients + '; SQLDBAreports@${{secrets.DOMAIN_NAME}}'
 					--   end
 
 					Select @message  = 'APPL Job Step Failure - Server: ' + @servername + '  Job: ' + @save_name + '  Step: ' + @save_step_name + '  Date/Time: ' + convert(varchar(10),@save_run_date) + ' ' + convert(varchar(10),@save_run_time)
@@ -1096,8 +1096,8 @@ If (select count(*) from @jobinfo) > 0
 
 
 	EXEC DBAOps.dbo.dbasp_sendmail
-		--@recipients = 'DBANotify@virtuoso.com',
-		@recipients = 'DBANotify@virtuoso.com',
+		--@recipients = 'DBANotify@${{secrets.DOMAIN_NAME}}',
+		@recipients = 'DBANotify@${{secrets.DOMAIN_NAME}}',
 		@subject = @message,
 		@message = @message2
 

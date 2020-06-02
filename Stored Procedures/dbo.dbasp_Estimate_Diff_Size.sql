@@ -8,7 +8,7 @@ CREATE   PROCEDURE [dbo].[dbasp_Estimate_Diff_Size] (@DBname sysname = null
 
 /*********************************************************
  **  Stored Procedure dbasp_Estimate_Diff_Size
- **  Written by Steve Ledridge, Virtuoso
+ **  Written by Steve Ledridge, ${{secrets.COMPANY_NAME}}
  **  August 13, 2013
  **
  **  This procedure is used for estimating the size of the next

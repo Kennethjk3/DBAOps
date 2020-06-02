@@ -4,5 +4,5 @@ SET ANSI_NULLS OFF
 GO
 CREATE AGGREGATE [dbo].[dbaudf_Concatenate] (@value [nvarchar] (max))
 RETURNS [nvarchar] (max)
-EXTERNAL NAME [Virtuoso.Operations.CLRTools].[Virtuoso.Operations.dbaudf_Concatenate]
+EXTERNAL NAME [${{secrets.COMPANY_NAME}}.Operations.CLRTools].[${{secrets.COMPANY_NAME}}.Operations.dbaudf_Concatenate]
 GO

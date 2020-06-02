@@ -8,7 +8,7 @@ CREATE   PROCEDURE [dbo].[dbasp_dbamail_cleanup] (@purge_days smallint = 14
 
 /**************************************************************
  **  Stored Procedure dbasp_dbamail_cleanup
- **  Written by Steve Ledridge, Virtuoso
+ **  Written by Steve Ledridge, ${{secrets.COMPANY_NAME}}
  **  August 23, 2002
  **
  **  This dbasp is set up to cleanup the dba_mail folders.

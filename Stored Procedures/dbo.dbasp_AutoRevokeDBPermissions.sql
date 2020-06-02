@@ -225,8 +225,8 @@ BEGIN
 
 		DECLARE @sub Varchar(8000) = 'DB Permissions have Been Revoked from ' + @@SERVERNAME
 
-		EXEC		msdb.dbo.sp_send_dbmail				@from_address 		= 'DBA<DBA@VIRTUOSO.COM>' 
-														,@recipients		= 'sledridge@virtuoso.com'
+		EXEC		msdb.dbo.sp_send_dbmail				@from_address 		= 'DBA<DBA@${{secrets.DOMAIN_NAME}}>' 
+														,@recipients		= 'sledridge@${{secrets.DOMAIN_NAME}}'
 														,@subject			= @sub
 														,@body				= @MSG
 														,@body_format		= 'HTML'

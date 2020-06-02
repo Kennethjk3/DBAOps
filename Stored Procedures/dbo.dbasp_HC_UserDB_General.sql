@@ -7,7 +7,7 @@ CREATE   PROCEDURE [dbo].[dbasp_HC_UserDB_General]
 
 /*********************************************************
  **  Stored Procedure dbasp_HC_UserDB_General
- **  Written by Steve Ledridge, Virtuoso
+ **  Written by Steve Ledridge, ${{secrets.COMPANY_NAME}}
  **  February 03, 2015
  **  This procedure runs the User DB portion
  **  of the DBA SQL Health Check process.
@@ -794,7 +794,7 @@ IF (SELECT COUNT(*) FROM #miscTempTable) > 0
 
 	If @save_DBname not in (select db_name from dbo.db_sequence)
 	   begin
-		Print 'Skip Build Table check for DB ' + @save_DBname + '.  The DB is not part of the Virtuoso deployment process.'
+		Print 'Skip Build Table check for DB ' + @save_DBname + '.  The DB is not part of the ${{secrets.COMPANY_NAME}} deployment process.'
 		Print ''
 		goto skip_buildtable
 	   end
@@ -1227,7 +1227,7 @@ IF (SELECT COUNT(*) FROM #miscTempTable) > 0
 
 	If @save_DBname not in (select db_name from dbo.db_sequence)
 	   begin
-		Print 'Skip DBA Read Access check for DB ' + @save_DBname + '.  The DB is not part of the Virtuoso deployment process.'
+		Print 'Skip DBA Read Access check for DB ' + @save_DBname + '.  The DB is not part of the ${{secrets.COMPANY_NAME}} deployment process.'
 		Print ''
 		goto skip_DBAReadAccess
 	   end

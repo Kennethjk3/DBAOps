@@ -7,7 +7,7 @@ AS
 
 --/*********************************************************
 -- **  Stored Procedure dbasp_AG_UpdateJobs
--- **  Written by Steve Ledridge, Virtuoso
+-- **  Written by Steve Ledridge, ${{secrets.COMPANY_NAME}}
 -- **  April 21, 2016
 -- **
 -- **  This dbasp will Reset AvailGrp related jobs enabled status.

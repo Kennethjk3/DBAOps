@@ -7,7 +7,7 @@ CREATE   PROCEDURE [dbo].[dbasp_check_errorlog] (@size_limit int = 500000)
 
 /**************************************************************
  **  Stored Procedure dbasp_check_errorlog
- **  Written by Steve Ledridge, Virtuoso
+ **  Written by Steve Ledridge, ${{secrets.COMPANY_NAME}}
  **  Based on code from Francis Stanisci
  **  October 9, 2003
  **

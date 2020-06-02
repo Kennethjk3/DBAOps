@@ -15,7 +15,7 @@ CREATE   PROCEDURE [dbo].[dbasp_File_Transit]
 
 /*********************************************************
  **  Stored Procedure dbasp_File_Transit
- **  Written by Steve Ledridge, Virtuoso
+ **  Written by Steve Ledridge, ${{secrets.COMPANY_NAME}}
  **  August 01, 2005
  **
  **  This procedure is used for copying files and folders from one Domain
@@ -61,9 +61,9 @@ Declare @retry_limit smallint
 
 
 select @source_name = '*.html'
-Select @source_path = '\\sdcprosssql02.db.virtuoso.com\DBASQL\dba_reports'
-Select @target_env = 'virtuoso'
-Select @target_server = 'SDCSQLTOOLS.db.virtuoso.com'
+Select @source_path = '\\sdcprosssql02.db.${{secrets.DOMAIN_NAME}}\DBASQL\dba_reports'
+Select @target_env = '${{secrets.COMPANY_NAME}}'
+Select @target_server = 'SDCSQLTOOLS.db.${{secrets.DOMAIN_NAME}}'
 Select @target_share = 'dba_reports'
 Select @retry_limit = 5
 

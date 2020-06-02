@@ -7,7 +7,7 @@ CREATE   PROCEDURE [dbo].[dbasp_Check_Logins]
 
 /*********************************************************
  **  Stored Procedure dbasp_Check_Logins
- **  Written by Steve Ledridge, Virtuoso
+ **  Written by Steve Ledridge, ${{secrets.COMPANY_NAME}}
  **  November 30, 2000
  **
  **  This procedure checks for orphaned SQL logins

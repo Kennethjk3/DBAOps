@@ -7,7 +7,7 @@ CREATE   PROCEDURE [dbo].[dbasp_Backup_Verify]
 
 /*********************************************************
  **  Stored Procedure dbasp_Backup_Verify
- **  Written by Steve Ledridge, Virtuoso
+ **  Written by Steve Ledridge, ${{secrets.COMPANY_NAME}}
  **  August 13, 2012
  **
  **  This dbasp is set up to verify recent sql backups.

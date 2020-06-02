@@ -7,7 +7,7 @@ CREATE   PROCEDURE [dbo].[dbasp_depl_ScriptServerList] (@forServermask sysname =
 
 /***************************************************************
  **  Stored Procedure dbasp_depl_ScriptServerList
- **  Written by Steve Ledridge, Virtuoso
+ **  Written by Steve Ledridge, ${{secrets.COMPANY_NAME}}
  **  October 13, 2005
  **
  **  This procedure creates a file that is used to populate the

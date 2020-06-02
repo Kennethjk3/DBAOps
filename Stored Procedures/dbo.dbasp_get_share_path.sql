@@ -7,7 +7,7 @@ CREATE   PROCEDURE [dbo].[dbasp_get_share_path] (@share_name varchar(255),@phy_p
 
 /*********************************************************
  **  Stored Procedure dbasp_get_share_path
- **  Written by Steve Ledridge, Virtuoso
+ **  Written by Steve Ledridge, ${{secrets.COMPANY_NAME}}
  **  10/28/2002
  **
  **  This procedure gets the drive path for a defined share.

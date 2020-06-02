@@ -24,7 +24,7 @@ CREATE   PROCEDURE [dbo].[dbasp_Base_Backup] (@dbname sysname = null
 
 /*********************************************************
  **  Stored Procedure dbasp_Base_Backup
- **  Written by Steve Ledridge, Virtuoso
+ **  Written by Steve Ledridge, ${{secrets.COMPANY_NAME}}
  **  November 20, 2002
  **
  **  This procedure is used to backup a database for the

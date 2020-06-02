@@ -13,7 +13,7 @@ AS
 BEGIN
 	/*********************************************************
 	 **  Function dbaudf_FormatNumber
-	 **  Written by Steve Ledridge, Virtuoso
+	 **  Written by Steve Ledridge, ${{secrets.COMPANY_NAME}}
 	 **  June 24, 2010
 	 **
 	 **  This function is used to format numeric values it a text output

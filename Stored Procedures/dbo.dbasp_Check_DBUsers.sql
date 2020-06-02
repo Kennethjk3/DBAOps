@@ -7,7 +7,7 @@ CREATE   PROCEDURE [dbo].[dbasp_Check_DBUsers]
 
 /*********************************************************
  **  Stored Procedure dbasp_Check_DBUsers
- **  Written by Steve Ledridge, Virtuoso
+ **  Written by Steve Ledridge, ${{secrets.COMPANY_NAME}}
  **  February 6, 2001
  **
  **  This procedure checks for orphaned SQL Users

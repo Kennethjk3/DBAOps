@@ -7,7 +7,7 @@ CREATE   PROCEDURE [dbo].[dbasp_Check_MaintJobStatus]
 
 /*********************************************************
  **  Stored Procedure dbasp_Check_MaintJobStatus
- **  Written by Steve Ledridge, Virtuoso
+ **  Written by Steve Ledridge, ${{secrets.COMPANY_NAME}}
  **  August 8, 2012
  **
  **  This procedure checks the status of other MAINT jobs

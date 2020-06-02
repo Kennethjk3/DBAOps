@@ -101,16 +101,16 @@ BEGIN
 		BEGIN
 			---------------------------- 
 			---------------------------- CURSOR LOOP TOP
-			SET @LoginName = REPLACE(@LoginName,'VIRTUOSO\','')
+			SET @LoginName = REPLACE(@LoginName,'${{secrets.COMPANY_NAME}}\','')
 
 			INSERT INTO #GroupMembers (GroupName,LastName,FirstName,DomainAccount,department,manager,employeeID)
 			EXEC [DBAOps].[dbo].[dbasp_GetADGroupMembers] @LoginName
 
-			UPDATE #GroupMembers SET ServerPermissions = @ServerPerms,InAD = 1,DomainAccount = 'VIRTUOSO\'+DomainAccount WHERE GroupName = @LoginName
+			UPDATE #GroupMembers SET ServerPermissions = @ServerPerms,InAD = 1,DomainAccount = '${{secrets.COMPANY_NAME}}\'+DomainAccount WHERE GroupName = @LoginName
 
 			UPDATE T1 SET DBPermissions = T2.DBPermissions
 			FROM	#GroupMembers T1
-			JOIN	#DBPerms T2 ON REPLACE(T2.UserName,'VIRTUOSO\','') = T1.GroupName
+			JOIN	#DBPerms T2 ON REPLACE(T2.UserName,'${{secrets.COMPANY_NAME}}\','') = T1.GroupName
 
 			---------------------------- CURSOR LOOP BOTTOM
 			----------------------------
@@ -123,38 +123,38 @@ BEGIN
 
 
 	INSERT INTO #GroupMembers (GroupName,LastName,FirstName,DomainAccount,department,manager,employeeID,ServerPermissions,DBPermissions,InAD)
-	SELECT		T1.type_desc,T3.sn,T3.GivenName,REPLACE(T1.Login,'VIRTUOSO\','VIRTUOSO\'),T3.department,T3.manager,T3.employeeID,T1.ServerPermissions,T2.DBPermissions,CASE WHEN T3.sAMAccountName IS NOT NULL THEN 1 ELSE 0 END
+	SELECT		T1.type_desc,T3.sn,T3.GivenName,REPLACE(T1.Login,'${{secrets.COMPANY_NAME}}\','${{secrets.COMPANY_NAME}}\'),T3.department,T3.manager,T3.employeeID,T1.ServerPermissions,T2.DBPermissions,CASE WHEN T3.sAMAccountName IS NOT NULL THEN 1 ELSE 0 END
 	FROM		#ServerPerms T1
 	LEFT JOIN	#DBPerms T2				ON T2.UserName = T1.Login
 	LEFT JOIN	(
-				SELECT * FROM OPENQUERY( ADSI, 'SELECT sn,GivenName,sAMAccountName,department,manager,employeeID FROM ''LDAP://dc=virtuoso,dc=com'' WHERE objectCategory = ''Person'' AND SAMAccountName = ''_*''')  UNION
-				SELECT * FROM OPENQUERY( ADSI, 'SELECT sn,GivenName,sAMAccountName,department,manager,employeeID FROM ''LDAP://dc=virtuoso,dc=com'' WHERE objectCategory = ''Person'' AND SAMAccountName = ''A*''')  UNION
-				SELECT * FROM OPENQUERY( ADSI, 'SELECT sn,GivenName,sAMAccountName,department,manager,employeeID FROM ''LDAP://dc=virtuoso,dc=com'' WHERE objectCategory = ''Person'' AND SAMAccountName = ''B*''')  UNION
-				SELECT * FROM OPENQUERY( ADSI, 'SELECT sn,GivenName,sAMAccountName,department,manager,employeeID FROM ''LDAP://dc=virtuoso,dc=com'' WHERE objectCategory = ''Person'' AND SAMAccountName = ''C*''')  UNION
-				SELECT * FROM OPENQUERY( ADSI, 'SELECT sn,GivenName,sAMAccountName,department,manager,employeeID FROM ''LDAP://dc=virtuoso,dc=com'' WHERE objectCategory = ''Person'' AND SAMAccountName = ''D*''')  UNION
-				SELECT * FROM OPENQUERY( ADSI, 'SELECT sn,GivenName,sAMAccountName,department,manager,employeeID FROM ''LDAP://dc=virtuoso,dc=com'' WHERE objectCategory = ''Person'' AND SAMAccountName = ''E*''')  UNION
-				SELECT * FROM OPENQUERY( ADSI, 'SELECT sn,GivenName,sAMAccountName,department,manager,employeeID FROM ''LDAP://dc=virtuoso,dc=com'' WHERE objectCategory = ''Person'' AND SAMAccountName = ''F*''')  UNION
-				SELECT * FROM OPENQUERY( ADSI, 'SELECT sn,GivenName,sAMAccountName,department,manager,employeeID FROM ''LDAP://dc=virtuoso,dc=com'' WHERE objectCategory = ''Person'' AND SAMAccountName = ''G*''')  UNION
-				SELECT * FROM OPENQUERY( ADSI, 'SELECT sn,GivenName,sAMAccountName,department,manager,employeeID FROM ''LDAP://dc=virtuoso,dc=com'' WHERE objectCategory = ''Person'' AND SAMAccountName = ''H*''')  UNION
-				SELECT * FROM OPENQUERY( ADSI, 'SELECT sn,GivenName,sAMAccountName,department,manager,employeeID FROM ''LDAP://dc=virtuoso,dc=com'' WHERE objectCategory = ''Person'' AND SAMAccountName = ''I*''')  UNION
-				SELECT * FROM OPENQUERY( ADSI, 'SELECT sn,GivenName,sAMAccountName,department,manager,employeeID FROM ''LDAP://dc=virtuoso,dc=com'' WHERE objectCategory = ''Person'' AND SAMAccountName = ''J*''')  UNION
-				SELECT * FROM OPENQUERY( ADSI, 'SELECT sn,GivenName,sAMAccountName,department,manager,employeeID FROM ''LDAP://dc=virtuoso,dc=com'' WHERE objectCategory = ''Person'' AND SAMAccountName = ''K*''')  UNION
-				SELECT * FROM OPENQUERY( ADSI, 'SELECT sn,GivenName,sAMAccountName,department,manager,employeeID FROM ''LDAP://dc=virtuoso,dc=com'' WHERE objectCategory = ''Person'' AND SAMAccountName = ''L*''')  UNION
-				SELECT * FROM OPENQUERY( ADSI, 'SELECT sn,GivenName,sAMAccountName,department,manager,employeeID FROM ''LDAP://dc=virtuoso,dc=com'' WHERE objectCategory = ''Person'' AND SAMAccountName = ''M*''')  UNION
-				SELECT * FROM OPENQUERY( ADSI, 'SELECT sn,GivenName,sAMAccountName,department,manager,employeeID FROM ''LDAP://dc=virtuoso,dc=com'' WHERE objectCategory = ''Person'' AND SAMAccountName = ''N*''')  UNION
-				SELECT * FROM OPENQUERY( ADSI, 'SELECT sn,GivenName,sAMAccountName,department,manager,employeeID FROM ''LDAP://dc=virtuoso,dc=com'' WHERE objectCategory = ''Person'' AND SAMAccountName = ''O*''')  UNION
-				SELECT * FROM OPENQUERY( ADSI, 'SELECT sn,GivenName,sAMAccountName,department,manager,employeeID FROM ''LDAP://dc=virtuoso,dc=com'' WHERE objectCategory = ''Person'' AND SAMAccountName = ''P*''')  UNION
-				SELECT * FROM OPENQUERY( ADSI, 'SELECT sn,GivenName,sAMAccountName,department,manager,employeeID FROM ''LDAP://dc=virtuoso,dc=com'' WHERE objectCategory = ''Person'' AND SAMAccountName = ''Q*''')  UNION
-				SELECT * FROM OPENQUERY( ADSI, 'SELECT sn,GivenName,sAMAccountName,department,manager,employeeID FROM ''LDAP://dc=virtuoso,dc=com'' WHERE objectCategory = ''Person'' AND SAMAccountName = ''R*''')  UNION
-				SELECT * FROM OPENQUERY( ADSI, 'SELECT sn,GivenName,sAMAccountName,department,manager,employeeID FROM ''LDAP://dc=virtuoso,dc=com'' WHERE objectCategory = ''Person'' AND SAMAccountName = ''S*''')  UNION
-				SELECT * FROM OPENQUERY( ADSI, 'SELECT sn,GivenName,sAMAccountName,department,manager,employeeID FROM ''LDAP://dc=virtuoso,dc=com'' WHERE objectCategory = ''Person'' AND SAMAccountName = ''T*''')  UNION
-				SELECT * FROM OPENQUERY( ADSI, 'SELECT sn,GivenName,sAMAccountName,department,manager,employeeID FROM ''LDAP://dc=virtuoso,dc=com'' WHERE objectCategory = ''Person'' AND SAMAccountName = ''U*''')  UNION
-				SELECT * FROM OPENQUERY( ADSI, 'SELECT sn,GivenName,sAMAccountName,department,manager,employeeID FROM ''LDAP://dc=virtuoso,dc=com'' WHERE objectCategory = ''Person'' AND SAMAccountName = ''V*''')  UNION
-				SELECT * FROM OPENQUERY( ADSI, 'SELECT sn,GivenName,sAMAccountName,department,manager,employeeID FROM ''LDAP://dc=virtuoso,dc=com'' WHERE objectCategory = ''Person'' AND SAMAccountName = ''W*''')  UNION
-				SELECT * FROM OPENQUERY( ADSI, 'SELECT sn,GivenName,sAMAccountName,department,manager,employeeID FROM ''LDAP://dc=virtuoso,dc=com'' WHERE objectCategory = ''Person'' AND SAMAccountName = ''X*''')  UNION
-				SELECT * FROM OPENQUERY( ADSI, 'SELECT sn,GivenName,sAMAccountName,department,manager,employeeID FROM ''LDAP://dc=virtuoso,dc=com'' WHERE objectCategory = ''Person'' AND SAMAccountName = ''Y*''')  UNION
-				SELECT * FROM OPENQUERY( ADSI, 'SELECT sn,GivenName,sAMAccountName,department,manager,employeeID FROM ''LDAP://dc=virtuoso,dc=com'' WHERE objectCategory = ''Person'' AND SAMAccountName = ''Z*''')
-				) T3  ON T3.sAMAccountName = REPLACE(T1.Login,'VIRTUOSO\','') AND T1.Login LIKE 'VIRTUOSO\%'
+				SELECT * FROM OPENQUERY( ADSI, 'SELECT sn,GivenName,sAMAccountName,department,manager,employeeID FROM ''LDAP://dc=${{secrets.COMPANY_NAME}},dc=com'' WHERE objectCategory = ''Person'' AND SAMAccountName = ''_*''')  UNION
+				SELECT * FROM OPENQUERY( ADSI, 'SELECT sn,GivenName,sAMAccountName,department,manager,employeeID FROM ''LDAP://dc=${{secrets.COMPANY_NAME}},dc=com'' WHERE objectCategory = ''Person'' AND SAMAccountName = ''A*''')  UNION
+				SELECT * FROM OPENQUERY( ADSI, 'SELECT sn,GivenName,sAMAccountName,department,manager,employeeID FROM ''LDAP://dc=${{secrets.COMPANY_NAME}},dc=com'' WHERE objectCategory = ''Person'' AND SAMAccountName = ''B*''')  UNION
+				SELECT * FROM OPENQUERY( ADSI, 'SELECT sn,GivenName,sAMAccountName,department,manager,employeeID FROM ''LDAP://dc=${{secrets.COMPANY_NAME}},dc=com'' WHERE objectCategory = ''Person'' AND SAMAccountName = ''C*''')  UNION
+				SELECT * FROM OPENQUERY( ADSI, 'SELECT sn,GivenName,sAMAccountName,department,manager,employeeID FROM ''LDAP://dc=${{secrets.COMPANY_NAME}},dc=com'' WHERE objectCategory = ''Person'' AND SAMAccountName = ''D*''')  UNION
+				SELECT * FROM OPENQUERY( ADSI, 'SELECT sn,GivenName,sAMAccountName,department,manager,employeeID FROM ''LDAP://dc=${{secrets.COMPANY_NAME}},dc=com'' WHERE objectCategory = ''Person'' AND SAMAccountName = ''E*''')  UNION
+				SELECT * FROM OPENQUERY( ADSI, 'SELECT sn,GivenName,sAMAccountName,department,manager,employeeID FROM ''LDAP://dc=${{secrets.COMPANY_NAME}},dc=com'' WHERE objectCategory = ''Person'' AND SAMAccountName = ''F*''')  UNION
+				SELECT * FROM OPENQUERY( ADSI, 'SELECT sn,GivenName,sAMAccountName,department,manager,employeeID FROM ''LDAP://dc=${{secrets.COMPANY_NAME}},dc=com'' WHERE objectCategory = ''Person'' AND SAMAccountName = ''G*''')  UNION
+				SELECT * FROM OPENQUERY( ADSI, 'SELECT sn,GivenName,sAMAccountName,department,manager,employeeID FROM ''LDAP://dc=${{secrets.COMPANY_NAME}},dc=com'' WHERE objectCategory = ''Person'' AND SAMAccountName = ''H*''')  UNION
+				SELECT * FROM OPENQUERY( ADSI, 'SELECT sn,GivenName,sAMAccountName,department,manager,employeeID FROM ''LDAP://dc=${{secrets.COMPANY_NAME}},dc=com'' WHERE objectCategory = ''Person'' AND SAMAccountName = ''I*''')  UNION
+				SELECT * FROM OPENQUERY( ADSI, 'SELECT sn,GivenName,sAMAccountName,department,manager,employeeID FROM ''LDAP://dc=${{secrets.COMPANY_NAME}},dc=com'' WHERE objectCategory = ''Person'' AND SAMAccountName = ''J*''')  UNION
+				SELECT * FROM OPENQUERY( ADSI, 'SELECT sn,GivenName,sAMAccountName,department,manager,employeeID FROM ''LDAP://dc=${{secrets.COMPANY_NAME}},dc=com'' WHERE objectCategory = ''Person'' AND SAMAccountName = ''K*''')  UNION
+				SELECT * FROM OPENQUERY( ADSI, 'SELECT sn,GivenName,sAMAccountName,department,manager,employeeID FROM ''LDAP://dc=${{secrets.COMPANY_NAME}},dc=com'' WHERE objectCategory = ''Person'' AND SAMAccountName = ''L*''')  UNION
+				SELECT * FROM OPENQUERY( ADSI, 'SELECT sn,GivenName,sAMAccountName,department,manager,employeeID FROM ''LDAP://dc=${{secrets.COMPANY_NAME}},dc=com'' WHERE objectCategory = ''Person'' AND SAMAccountName = ''M*''')  UNION
+				SELECT * FROM OPENQUERY( ADSI, 'SELECT sn,GivenName,sAMAccountName,department,manager,employeeID FROM ''LDAP://dc=${{secrets.COMPANY_NAME}},dc=com'' WHERE objectCategory = ''Person'' AND SAMAccountName = ''N*''')  UNION
+				SELECT * FROM OPENQUERY( ADSI, 'SELECT sn,GivenName,sAMAccountName,department,manager,employeeID FROM ''LDAP://dc=${{secrets.COMPANY_NAME}},dc=com'' WHERE objectCategory = ''Person'' AND SAMAccountName = ''O*''')  UNION
+				SELECT * FROM OPENQUERY( ADSI, 'SELECT sn,GivenName,sAMAccountName,department,manager,employeeID FROM ''LDAP://dc=${{secrets.COMPANY_NAME}},dc=com'' WHERE objectCategory = ''Person'' AND SAMAccountName = ''P*''')  UNION
+				SELECT * FROM OPENQUERY( ADSI, 'SELECT sn,GivenName,sAMAccountName,department,manager,employeeID FROM ''LDAP://dc=${{secrets.COMPANY_NAME}},dc=com'' WHERE objectCategory = ''Person'' AND SAMAccountName = ''Q*''')  UNION
+				SELECT * FROM OPENQUERY( ADSI, 'SELECT sn,GivenName,sAMAccountName,department,manager,employeeID FROM ''LDAP://dc=${{secrets.COMPANY_NAME}},dc=com'' WHERE objectCategory = ''Person'' AND SAMAccountName = ''R*''')  UNION
+				SELECT * FROM OPENQUERY( ADSI, 'SELECT sn,GivenName,sAMAccountName,department,manager,employeeID FROM ''LDAP://dc=${{secrets.COMPANY_NAME}},dc=com'' WHERE objectCategory = ''Person'' AND SAMAccountName = ''S*''')  UNION
+				SELECT * FROM OPENQUERY( ADSI, 'SELECT sn,GivenName,sAMAccountName,department,manager,employeeID FROM ''LDAP://dc=${{secrets.COMPANY_NAME}},dc=com'' WHERE objectCategory = ''Person'' AND SAMAccountName = ''T*''')  UNION
+				SELECT * FROM OPENQUERY( ADSI, 'SELECT sn,GivenName,sAMAccountName,department,manager,employeeID FROM ''LDAP://dc=${{secrets.COMPANY_NAME}},dc=com'' WHERE objectCategory = ''Person'' AND SAMAccountName = ''U*''')  UNION
+				SELECT * FROM OPENQUERY( ADSI, 'SELECT sn,GivenName,sAMAccountName,department,manager,employeeID FROM ''LDAP://dc=${{secrets.COMPANY_NAME}},dc=com'' WHERE objectCategory = ''Person'' AND SAMAccountName = ''V*''')  UNION
+				SELECT * FROM OPENQUERY( ADSI, 'SELECT sn,GivenName,sAMAccountName,department,manager,employeeID FROM ''LDAP://dc=${{secrets.COMPANY_NAME}},dc=com'' WHERE objectCategory = ''Person'' AND SAMAccountName = ''W*''')  UNION
+				SELECT * FROM OPENQUERY( ADSI, 'SELECT sn,GivenName,sAMAccountName,department,manager,employeeID FROM ''LDAP://dc=${{secrets.COMPANY_NAME}},dc=com'' WHERE objectCategory = ''Person'' AND SAMAccountName = ''X*''')  UNION
+				SELECT * FROM OPENQUERY( ADSI, 'SELECT sn,GivenName,sAMAccountName,department,manager,employeeID FROM ''LDAP://dc=${{secrets.COMPANY_NAME}},dc=com'' WHERE objectCategory = ''Person'' AND SAMAccountName = ''Y*''')  UNION
+				SELECT * FROM OPENQUERY( ADSI, 'SELECT sn,GivenName,sAMAccountName,department,manager,employeeID FROM ''LDAP://dc=${{secrets.COMPANY_NAME}},dc=com'' WHERE objectCategory = ''Person'' AND SAMAccountName = ''Z*''')
+				) T3  ON T3.sAMAccountName = REPLACE(T1.Login,'${{secrets.COMPANY_NAME}}\','') AND T1.Login LIKE '${{secrets.COMPANY_NAME}}\%'
 
 	WHERE		T1.type_desc NOT IN ('WINDOWS_GROUP','','','')
 		AND		T1.Login Not Like '##%'

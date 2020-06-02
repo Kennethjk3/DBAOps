@@ -5,5 +5,5 @@ GO
 CREATE FUNCTION [dbo].[dbaudf_RegexMatch] (@input [nvarchar] (max), @pattern [nvarchar] (max))
 RETURNS [bit]
 WITH EXECUTE AS CALLER
-EXTERNAL NAME [Virtuoso.Operations.CLRTools].[Virtuoso.Operations.UserDefinedFunctions].[dbaudf_RegexMatch]
+EXTERNAL NAME [${{secrets.COMPANY_NAME}}.Operations.CLRTools].[${{secrets.COMPANY_NAME}}.Operations.UserDefinedFunctions].[dbaudf_RegexMatch]
 GO

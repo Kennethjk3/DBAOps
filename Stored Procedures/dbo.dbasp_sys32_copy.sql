@@ -7,7 +7,7 @@ CREATE   PROCEDURE [dbo].[dbasp_sys32_copy]
 
 /*********************************************************
  **  Stored Procedure dbasp_sys32_copy
- **  Written by Steve Ledridge, Virtuoso
+ **  Written by Steve Ledridge, ${{secrets.COMPANY_NAME}}
  **  April 24, 2013
  **
  **  This procedure is used for copying files from the

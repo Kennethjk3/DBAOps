@@ -14,7 +14,7 @@ CREATE   PROCEDURE [dbo].[dbasp_add_nocheck]  (@nocheck_type sysname = null
 
 /*********************************************************
  **  Stored Procedure dbasp_add_nocheck
- **  Written by Steve Ledridge, Virtuoso
+ **  Written by Steve Ledridge, ${{secrets.COMPANY_NAME}}
  **  January 13, 2009
  **
  **  This proc requires the following input parms;

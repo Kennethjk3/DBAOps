@@ -5,13 +5,13 @@ GO
 CREATE   PROCEDURE [dbo].[dbasp_File_Transit_Event] (@target_env sysname = null
 				,@target_server sysname = null
 				,@target_SQLserver sysname = null
-				,@Fail_replyto sysname = 'DBANotify@virtuoso.com'
+				,@Fail_replyto sysname = 'DBANotify@${{secrets.DOMAIN_NAME}}'
 				,@SQLcode nvarchar(max) = '')
 
 
 /*********************************************************
  **  Stored Procedure dbasp_File_Transit_Event
- **  Written by Steve Ledridge, Virtuoso
+ **  Written by Steve Ledridge, ${{secrets.COMPANY_NAME}}
  **  September 26, 2008
  **
  **  This procedure is used to create an action event from one Domain
@@ -56,7 +56,7 @@ Declare @SQLcode nvarchar(max)
 Select @target_env = 'production'
 Select @target_server = 'g1sqla'
 Select @target_SQLserver = 'g1sqla$a'
-Select @Fail_replyto = 'DBANotify@virtuoso.com'
+Select @Fail_replyto = 'DBANotify@${{secrets.DOMAIN_NAME}}'
 Select @SQLcode = 'use master
 exec sp_who2
 go

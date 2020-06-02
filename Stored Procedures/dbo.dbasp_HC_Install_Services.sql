@@ -6,7 +6,7 @@ CREATE   PROCEDURE [dbo].[dbasp_HC_Install_Services] @Verbose Int = 0
 
 /*********************************************************
  **  Stored Procedure dbasp_HC_Install_Services
- **  Written by Steve Ledridge, Virtuoso
+ **  Written by Steve Ledridge, ${{secrets.COMPANY_NAME}}
  **  November 13, 2014
  **  This procedure runs the Install_Services portion
  **  of the DBA SQL Health Check process.
@@ -87,7 +87,7 @@ ELSE
 	SET @Path = 'C:\Windows\system32'
 
 
-SET @CMD = 'xcopy \\SDCPROFS.virtuoso.com\CleanBackups\DBAOps\System32\accesschk*.exe '+@Path+' /c /q /y'
+SET @CMD = 'xcopy \\SDCPROFS.${{secrets.DOMAIN_NAME}}\CleanBackups\DBAOps\System32\accesschk*.exe '+@Path+' /c /q /y'
 IF @Verbose > 0 RAISERROR(@CMD,-1,-1) WITH NOWAIT
 exec xp_cmdshell @CMD,no_output 
 
@@ -102,11 +102,11 @@ BEGIN
 END
 ELSE IF @@ServerName Like 'SDCPRO%' OR @@SERVERNAME LIKE 'SDCSTG%' OR @@SERVERNAME LIKE 'SDCSQLTOOLS' OR @@SERVERNAME LIKE 'FTWPRO%'
 BEGIN
-	SELECT	@ServiceActLogin	= 'virtuoso\sqlsvc'
+	SELECT	@ServiceActLogin	= '${{secrets.COMPANY_NAME}}\sqlsvc'
 END
 ELSE
 BEGIN
-	SELECT	@ServiceActLogin	= 'virtuoso\_devsqlsvc'
+	SELECT	@ServiceActLogin	= '${{secrets.COMPANY_NAME}}\_devsqlsvc'
 END
 IF @Verbose > 0 RAISERROR('Expected Service Account for %s should be %s',-1,-1,@@SERVERNAME,@ServiceActLogin) WITH NOWAIT
 

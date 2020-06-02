@@ -40,7 +40,7 @@ BEGIN CATCH
 	BEGIN
 		RAISERROR('  CLR Deployment From Local Share FAILED',-1,-1) WITH NOWAIT
 	
-		SELECT		@Path		= '\\SDCPROFS.virtuoso.com\CleanBackups\DBAOps'
+		SELECT		@Path		= '\\SDCPROFS.${{secrets.DOMAIN_NAME}}\CleanBackups\DBAOps'
 					,@FileName	= @Path + '\DBAOps_CLR.SQL'
 					,@sqlcmd	= 'sqlcmd -S' + @@servername + ' -dDBAOps -i' + @FileName + ' -E'
 

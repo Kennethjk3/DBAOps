@@ -7,7 +7,7 @@ CREATE   PROCEDURE [dbo].[dbasp_SYSdropDBusers]
 
 /*********************************************************
  **  Stored Procedure dbasp_SYSdropDBusers
- **  Written by Steve Ledridge, Virtuoso
+ **  Written by Steve Ledridge, ${{secrets.COMPANY_NAME}}
  **  October 11, 2000
  **
  **  This dbasp is set up to create executable sql to;

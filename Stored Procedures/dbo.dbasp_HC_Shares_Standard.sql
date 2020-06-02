@@ -7,7 +7,7 @@ CREATE   PROCEDURE [dbo].[dbasp_HC_Shares_Standard]
 
 /*********************************************************
  **  Stored Procedure dbasp_HC_Shares_Standard
- **  Written by Steve Ledridge, Virtuoso
+ **  Written by Steve Ledridge, ${{secrets.COMPANY_NAME}}
  **  January 07, 2015
  **  This procedure runs the Shares_Standard portion
  **  of the DBA SQL Health Check process.

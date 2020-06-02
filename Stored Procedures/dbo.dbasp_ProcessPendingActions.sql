@@ -7,7 +7,7 @@ CREATE   PROCEDURE [dbo].[dbasp_ProcessPendingActions]
 
 /*********************************************************
  **  Stored Procedure dbasp_ProcessPendingActions
- **  Written by Steve Ledridge, Virtuoso
+ **  Written by Steve Ledridge, ${{secrets.COMPANY_NAME}}
  **  January 06, 2012
  **
  **  This sproc will process entries in the Pending_Actions table.

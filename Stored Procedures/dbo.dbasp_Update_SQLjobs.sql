@@ -7,7 +7,7 @@ CREATE   PROCEDURE [dbo].[dbasp_Update_SQLjobs] @runtype	varchar(20) = 'report'
 
 /***************************************************************
  **  Stored Procedure dbasp_Update_SQLjobs
- **  Written by Steve Ledridge, Virtuoso
+ **  Written by Steve Ledridge, ${{secrets.COMPANY_NAME}}
  **  October 15, 2002
  **
  **  This dbasp is set up to;

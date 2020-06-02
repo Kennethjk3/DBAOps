@@ -7,7 +7,7 @@ CREATE   PROCEDURE [dbo].[dbasp_create_buildtbl]
 
 /*********************************************************
  **  Stored Procedure dbasp_create_buildtbl
- **  Written by Steve Ledridge, Virtuoso
+ **  Written by Steve Ledridge, ${{secrets.COMPANY_NAME}}
  **  February 23, 2011
  **
  **  This sproc is set up to create the build and build_detail tables

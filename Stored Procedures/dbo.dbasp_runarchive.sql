@@ -6,7 +6,7 @@ CREATE   PROCEDURE [dbo].[dbasp_runarchive]  @outpath varchar (255) = null
 
 /*********************************************************
  **  Stored Procedure dbasp_runarchive                  
- **  Written by Steve Ledridge, Virtuoso                
+ **  Written by Steve Ledridge, ${{secrets.COMPANY_NAME}}                
  **  May 2, 2000                                      
  **  This procedure runs the archive process that is    
  **  used for disaster recovery.                        

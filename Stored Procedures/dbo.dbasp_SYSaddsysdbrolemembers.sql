@@ -7,7 +7,7 @@ CREATE   PROCEDURE [dbo].[dbasp_SYSaddsysdbrolemembers]
 
 /*********************************************************
  **  Stored Procedure dbasp_SYSaddsysdbrolemembers
- **  Written by Steve Ledridge, Virtuoso
+ **  Written by Steve Ledridge, ${{secrets.COMPANY_NAME}}
  **  October 16, 2000
  **
  **  This dbasp is set up to create executable sql to;

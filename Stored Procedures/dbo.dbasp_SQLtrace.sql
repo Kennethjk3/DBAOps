@@ -14,7 +14,7 @@ CREATE   PROCEDURE [dbo].[dbasp_SQLtrace] (@outPath sysname = null
 
 /***************************************************************
  **  Stored Procedure dbasp_SQLtrace
- **  Converted from unknown and various sources by Steve Ledridge, Virtuoso
+ **  Converted from unknown and various sources by Steve Ledridge, ${{secrets.COMPANY_NAME}}
  **  April 11, 2008
  **
  **  This proc accepts the followinf input parms:

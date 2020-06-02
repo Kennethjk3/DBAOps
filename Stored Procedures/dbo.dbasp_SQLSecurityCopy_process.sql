@@ -7,7 +7,7 @@ CREATE   PROCEDURE [dbo].[dbasp_SQLSecurityCopy_process]
 
 /**************************************************************
  **  Stored Procedure dbasp_SQLSecurityCopy_process
- **  Written by Steve Ledridge, Virtuoso
+ **  Written by Steve Ledridge, ${{secrets.COMPANY_NAME}}
  **  December 27, 2002
  **
  **  This dbasp is set up to gather and combine the SQL security

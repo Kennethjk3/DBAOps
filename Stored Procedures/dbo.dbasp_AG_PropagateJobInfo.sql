@@ -7,7 +7,7 @@ CREATE   PROCEDURE [dbo].[dbasp_AG_PropagateJobInfo]
 
 /*********************************************************
  **  Stored Procedure dbasp_AG_PropagateJobInfo
- **  Written by Steve Ledridge, Virtuoso
+ **  Written by Steve Ledridge, ${{secrets.COMPANY_NAME}}
  **  April 21, 2016
  **
  **  This dbasp will Propagate AvailGrp related job info to all nodes.

@@ -15,7 +15,7 @@ AS
 SET NOCOUNT ON
 --	======================================================================================
 --	Stored Procedure dbasp_ManageDBSnapshot
---	Written by Steve Ledridge, Virtuoso
+--	Written by Steve Ledridge, ${{secrets.COMPANY_NAME}}
 --	June 17, 2014
 --
 --	This procedure was created to allow the DW team to create and drop

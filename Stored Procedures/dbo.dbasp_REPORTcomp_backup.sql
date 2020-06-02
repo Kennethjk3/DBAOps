@@ -7,7 +7,7 @@ CREATE   PROCEDURE [dbo].[dbasp_REPORTcomp_backup]
 
 /*********************************************************
  **  Stored Procedure dbasp_REPORTcomp_backup
- **  Written by Steve Ledridge, Virtuoso
+ **  Written by Steve Ledridge, ${{secrets.COMPANY_NAME}}
  **  August 20, 2009
  **
  **  This dbasp is set up to create a report documenting

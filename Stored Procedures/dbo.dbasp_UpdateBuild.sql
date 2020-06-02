@@ -11,7 +11,7 @@ AS
 ---------------------------------------------------------------------------
 -- Procedure: dbasp_UpdateBuild
 --
--- For: Virtuoso
+-- For: ${{secrets.COMPANY_NAME}}
 --
 -- Revision History
 --      Modified 3/20/2001 - Modified sproc to accept the parameter of

@@ -56,7 +56,7 @@ BEGIN
  	;WITH		DBFiles
  			AS
  			(
- 			--DECLARE @DBName SYSNAME,@SnapName VarChar(8000),@SnapShotPath VarChar(8000);SELECT @DBName = 'Virtuoso_Images_US_Inc__MSCRM',@SnapName='Virtuoso_Images_US_Inc__MSCRM_Daily',@SnapShotPath='C:\';
+ 			--DECLARE @DBName SYSNAME,@SnapName VarChar(8000),@SnapShotPath VarChar(8000);SELECT @DBName = '${{secrets.COMPANY_NAME}}_Images_US_Inc__MSCRM',@SnapName='${{secrets.COMPANY_NAME}}_Images_US_Inc__MSCRM_Daily',@SnapShotPath='C:\';
 			 SELECT		name
 					,DBAOps.dbo.dbaudf_GetFileProperty(physical_name,'File','DirectoryName')+'\' OldPath
 					,COALESCE(@SnapShotPath, DBAOps.dbo.dbaudf_GetFileProperty(physical_name,'File','DirectoryName')+'\') NewPath

@@ -7,7 +7,7 @@ CREATE   PROCEDURE [dbo].[dbasp_SYSrestoreBYdb] (@outfiles char(1) = 'n')
 
 /*********************************************************
  **  Stored Procedure dbasp_SYSrestoreBYdb
- **  Written by Steve Ledridge, Virtuoso
+ **  Written by Steve Ledridge, ${{secrets.COMPANY_NAME}}
  **  October 01, 2002
  **
  **  This dbasp is set up to create executable sql to;

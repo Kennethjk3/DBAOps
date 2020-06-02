@@ -12,7 +12,7 @@ as
 --	02/26/2013	Steve Ledridge		Found on DBA01.
 --	04/29/2015	Steve Ledridge		Changed Results to All Uppercase
 --	05/26/2015	Steve Ledridge		New Version that uses a Lookup Table.
---	11/20/2017	Steve Ledridge		Modified for Virtuoso
+--	11/20/2017	Steve Ledridge		Modified for ${{secrets.COMPANY_NAME}}
 
 BEGIN
 	DECLARE @PathName VarChar(2000)

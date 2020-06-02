@@ -6,7 +6,7 @@ CREATE   PROCEDURE [dbo].[dbasp_internalGetDBName]
 
 /**************************************************************
  **  Stored Procedure dbasp_internalGetDBName
- **  Written by Steve Ledridge, Virtuoso
+ **  Written by Steve Ledridge, ${{secrets.COMPANY_NAME}}
  **  September 25, 2008
  **
  **  Returns the database names from dbo.DBA_DBInfo

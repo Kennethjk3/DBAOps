@@ -7,7 +7,7 @@ CREATE   PROCEDURE [dbo].[dbasp_Restore]
 					@dbname							SYSNAME			= NULL
 					,@NewDBName						SYSNAME			= NULL
 					,@FromServer					SYSNAME			= NULL -- SHOULD BE FQDN AND IS USED TO FORCE PATH TO EXAMPLE BELOW
-					,@FilePath						VarChar(MAX)	= NULL --'\\SDCSQLBACKUPFS.virtuoso.com\DatabaseBackups\{Server_FQDN}\'
+					,@FilePath						VarChar(MAX)	= NULL --'\\SDCSQLBACKUPFS.${{secrets.DOMAIN_NAME}}\DatabaseBackups\{Server_FQDN}\'
 					,@FileGroups					VarChar(MAX)	= NULL
 					,@ForceFileName					VarChar(MAX)	= NULL
 					,@RestoreToDateTime				DateTime		= NULL
@@ -41,7 +41,7 @@ CREATE   PROCEDURE [dbo].[dbasp_Restore]
 
 /*********************************************************
  **  Stored Procedure dbasp_Restore                  
- **  Written by Steve Ledridge, VIRTUOSO                
+ **  Written by Steve Ledridge, ${{secrets.COMPANY_NAME}}                
  **  December 29, 2008                                      
  **  
  **  This procedure is used for automated database
@@ -78,7 +78,7 @@ CREATE   PROCEDURE [dbo].[dbasp_Restore]
 /*
 EXEC dbo.[dbasp_Restore] 
 		@DBName			= 'DBAPerf'
-		,@FromServer	= 'SDCPROSQL01.db.virtuoso.com'
+		,@FromServer	= 'SDCPROSQL01.db.${{secrets.DOMAIN_NAME}}'
 		,@post_shrink	= 1
 		,@NoRevert		= 1
 		,@noSnap		= 1
@@ -87,7 +87,7 @@ EXEC dbo.[dbasp_Restore]
 EXEC dbo.[dbasp_Restore] 
 		@DBName			= 'DBAPerf'
 		--,@NewDBName		= 'GD'
-		,@FromServer	= 'SDCPROSQL01.db.virtuoso.com'
+		,@FromServer	= 'SDCPROSQL01.db.${{secrets.DOMAIN_NAME}}'
 		,@Debug			= 1
 		,@NoExec		= 1
 		,@noSnap		= 1
@@ -311,7 +311,7 @@ IF @@SERVERNAME LIKE 'SDT%' OR @BackupPathN IS NULL
 BEGIN
 	SELECT	@cECategory = 'VALIDATION',@cEEvent = 'BACKUP FILE LOCATION',@cEMessage = 'DBA INFO: -- CURRENT SERVERNAME STARTS WITH "SDT", USING SDT LOCAL SHARE.'; EXEC [dbo].[dbasp_LogEvent] @cEModule,@cECategory,@cEEvent,@cEGUID,@cEMessage,@cEMethod_Screen=@cEMethod_Screen,@cEMethod_TableLocal=@cEMethod_TableLocal;
 	--RAISERROR('-- CURRENT SERVERNAME STARTS WITH "SDT", USING SDT LOCAL SHARE',-1,-1) WITH NOWAIT
-	SET	@FilePath = COALESCE(@FilePath,'\\SDTPRONAS01.virtuoso.com\Backup\CleanBackups\' + @FromServer + '\')
+	SET	@FilePath = COALESCE(@FilePath,'\\SDTPRONAS01.${{secrets.DOMAIN_NAME}}\Backup\CleanBackups\' + @FromServer + '\')
 END
 ELSE
 	SET	@FilePath = COALESCE(@FilePath,REPLACE(@BackupPathN,DBAOps.dbo.dbaudf_GetLocalFQDN()+'\','') + @FromServer + '\')
@@ -972,7 +972,7 @@ EXEC sp_addextendedproperty N'MS_Description', N'force a revert even if the back
 GO
 EXEC sp_addextendedproperty N'MS_Description', N'DO NOT USE', 'SCHEMA', N'dbo', 'PROCEDURE', N'dbasp_Restore', 'PARAMETER', N'@FP'
 GO
-EXEC sp_addextendedproperty N'MS_Description', N'the Server FQDN from which the database comes (real name, not alias) ex. SDCPROSQL01.DB.VIRTUOSO.COM', 'SCHEMA', N'dbo', 'PROCEDURE', N'dbasp_Restore', 'PARAMETER', N'@FromServer'
+EXEC sp_addextendedproperty N'MS_Description', N'the Server FQDN from which the database comes (real name, not alias) ex. SDCPROSQL01.DB.${{secrets.DOMAIN_NAME}}', 'SCHEMA', N'dbo', 'PROCEDURE', N'dbasp_Restore', 'PARAMETER', N'@FromServer'
 GO
 EXEC sp_addextendedproperty N'MS_Description', N'force restore over an existing database (will error if 0 and database exists)', 'SCHEMA', N'dbo', 'PROCEDURE', N'dbasp_Restore', 'PARAMETER', N'@FullReset'
 GO

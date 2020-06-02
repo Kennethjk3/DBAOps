@@ -13,7 +13,7 @@ CREATE   PROCEDURE [dbo].[dbasp_FileVerify] ( @full_path nvarchar(500) = null,
 
 /*********************************************************
  **  Stored Procedure dbasp_FileVerify
- **  Written by Steve Ledridge, Virtuoso
+ **  Written by Steve Ledridge, ${{secrets.COMPANY_NAME}}
  **  JULY 23, 2008
  **
  **  This procedure is used for Verifying the existance of a file.

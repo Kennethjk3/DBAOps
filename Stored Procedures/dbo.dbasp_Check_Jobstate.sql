@@ -9,7 +9,7 @@ CREATE   PROCEDURE [dbo].[dbasp_Check_Jobstate]
 
 /*********************************************************
  **  Stored Procedure dbasp_Check_Jobstate
- **  Written by Steve Ledridge, Virtuoso
+ **  Written by Steve Ledridge, ${{secrets.COMPANY_NAME}}
  **  March 9, 2001
  **
  **  This dbasp is set up to check the job status of a

@@ -18,7 +18,7 @@ CREATE   PROCEDURE [dbo].[dbasp_Backup_detach_move] (@dbname sysname = null
 
 /*********************************************************
  **  Stored Procedure dbasp_Backup_detach_move
- **  Written by Steve Ledridge, Virtuoso
+ **  Written by Steve Ledridge, ${{secrets.COMPANY_NAME}}
  **  November 20, 2002
  **
  **  This procedure is used to backup and detach a database,

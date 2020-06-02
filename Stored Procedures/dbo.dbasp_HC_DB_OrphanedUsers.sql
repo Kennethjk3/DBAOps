@@ -8,7 +8,7 @@ CREATE   PROCEDURE [dbo].[dbasp_HC_DB_OrphanedUsers] (@dbname sysname = null
 
 /*********************************************************
  **  Stored Procedure dbasp_HC_DB_OrphanedUsers
- **  Written by Steve Ledridge, Virtuoso
+ **  Written by Steve Ledridge, ${{secrets.COMPANY_NAME}}
  **  February 10, 2015
  **  This procedure runs the DB Orphaned Users portion
  **  of the DBA SQL Health Check process.

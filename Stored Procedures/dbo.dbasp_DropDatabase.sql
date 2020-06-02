@@ -6,7 +6,7 @@ CREATE   PROCEDURE [dbo].[dbasp_DropDatabase] (@dbname sysname,@debug bit = 0, @
 
 /*********************************************************
  **  Stored Procedure dbasp_DropDatabase                  
- **  Written by Steve Ledridge, Virtuoso                
+ **  Written by Steve Ledridge, ${{secrets.COMPANY_NAME}}                
  **  April 6, 2015                                      
  **  
  **  This procedure is used when dropping a database as

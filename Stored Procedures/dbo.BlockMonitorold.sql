@@ -6,7 +6,7 @@ CREATE   PROCEDURE [dbo].[BlockMonitorold]
 (
             @SendResultsInEmail         BIT             = 1
 ,           @PollingDelayInSeconds      SMALLINT        = 60
-,           @recipients                 NVARCHAR(MAX)   = 'DBANotify@virtuoso.com'
+,           @recipients                 NVARCHAR(MAX)   = 'DBANotify@${{secrets.DOMAIN_NAME}}'
 )
 AS
 BEGIN
@@ -14,8 +14,8 @@ BEGIN
 
 /*
 *******************************************************************************
-**   Intellectual property of Virtuoso LTD.
-**   Copyright 2008-2011 Virtuoso LTD
+**   Intellectual property of ${{secrets.COMPANY_NAME}} LTD.
+**   Copyright 2008-2011 ${{secrets.COMPANY_NAME}} LTD
 **   This computer program is protected by copyright law
 **   and international treaties.
 *******************************************************************************
@@ -57,7 +57,7 @@ CT ''SPID'' + CHAR(9) + ''DatabaseName'' + CHAR(9) + ''request_status'' + CHAR(9
     ,           @append_query_error         BIT           = 0
     ,           @query_no_truncate          BIT           = 1
     ,           @query_result_no_padding    BIT           = 0
-    ,           @from_address               VARCHAR(max)  = @@SERVERNAME + '@virtuoso.com'
+    ,           @from_address               VARCHAR(max)  = @@SERVERNAME + '@${{secrets.DOMAIN_NAME}}'
     ,           @reply_to                   VARCHAR(max)  = NULL
 
 

@@ -13,7 +13,7 @@ CREATE   PROCEDURE [dbo].[dbasp_BackupFile_mover_trusted] ( @source_server sysna
 
 /*********************************************************
  **  Stored Procedure dbasp_BackupFile_mover_trusted
- **  Written by Steve Ledridge, Virtuoso
+ **  Written by Steve Ledridge, ${{secrets.COMPANY_NAME}}
  **  August 16, 2004
  **
  **  This procedure is used for copying files from one server
@@ -345,8 +345,8 @@ If @loop_count > 5
 	Select @save_subject = 'DBAOps:  Backup File Mover Copy Process Failure for server ' + @@servername
 	Select @save_message = 'Unable to copy source backup file ' + @savefilename + ' to the target path ' + @target_path + '.'
 	EXEC DBAOps.dbo.dbasp_sendmail
-		@recipients = 'DBANotify@virtuoso.com',
-		--@recipients = 'DBANotify@virtuoso.com',
+		@recipients = 'DBANotify@${{secrets.DOMAIN_NAME}}',
+		--@recipients = 'DBANotify@${{secrets.DOMAIN_NAME}}',
 		@subject = @save_subject,
 		@message = @save_message
 	goto skip_copyloop

@@ -7,7 +7,7 @@ CREATE   PROCEDURE [dbo].[dbasp_runIndexMaintenance]
 
 /*********************************************************
  **  Stored Procedure dbasp_runIndexMaintenance
- **  Written by Steve Ledridge, Virtuoso
+ **  Written by Steve Ledridge, ${{secrets.COMPANY_NAME}}
  **  July 23, 2012
  **  This procedure runs Index Maintenance tsql code located
  **  in the IndexMaintenanceProcess table.

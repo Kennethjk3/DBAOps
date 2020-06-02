@@ -20,7 +20,7 @@ DROP TABLE IF EXISTS #AGData
 
 
 SELECT		name																						[AGName]
-			,UPPER(r.replica_server_name) + '.DB.VIRTUOSO.COM'											[ServerName]
+			,UPPER(r.replica_server_name) + '.DB.${{secrets.DOMAIN_NAME}}'											[ServerName]
 			,CASE r.replica_server_name WHEN  DBAOps.dbo.dbaudf_AG_Get_Primary(name) THEN 1 ELSE 0 END	[IsPrimary]
 			,CASE r.replica_server_name WHEN  @@SERVERNAME THEN 1 ELSE 0 END							[IsMe]
 INTO		#AGData

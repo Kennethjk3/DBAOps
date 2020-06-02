@@ -28,7 +28,7 @@ CREATE   PROCEDURE [dbo].[dbasp_autorestore] ( @full_path NVARCHAR(500) = NULL,
 
 /*********************************************************
  **  Stored Procedure dbasp_autorestore
- **  Written by Steve Ledridge, Virtuoso
+ **  Written by Steve Ledridge, ${{secrets.COMPANY_NAME}}
  **  September 21, 2001
  **
  **  This procedure is used for automated database
@@ -1498,8 +1498,8 @@ IF @differential_flag = 'y'
 					SELECT @save_subject = 'DBAOps:  AutoRestore Failure for server ' + @@SERVERNAME
 					SELECT @save_message = 'Unable to restore the differential file for database ''' + @check_dbname + ''', the restore will be completed without the differential.'
 					EXEC DBAOps.dbo.dbasp_sendmail
-						@recipients = 'DBANotify@virtuoso.com',
-						--@recipients = 'DBANotify@virtuoso.com',
+						@recipients = 'DBANotify@${{secrets.DOMAIN_NAME}}',
+						--@recipients = 'DBANotify@${{secrets.DOMAIN_NAME}}',
 						@subject = @save_subject,
 						@message = @save_message
 
@@ -1585,8 +1585,8 @@ IF @differential_flag = 'y'
 					SELECT @save_subject = 'DBAOps:  AutoRestore Failure for server ' + @@SERVERNAME
 					SELECT @save_message = 'Unable to restore the differential file for database ''' + @check_dbname + ''', the restore will be completed without the differential.'
 					EXEC DBAOps.dbo.dbasp_sendmail
-						@recipients = 'DBANotify@virtuoso.com',
-						--@recipients = 'DBANotify@virtuoso.com',
+						@recipients = 'DBANotify@${{secrets.DOMAIN_NAME}}',
+						--@recipients = 'DBANotify@${{secrets.DOMAIN_NAME}}',
 						@subject = @save_subject,
 						@message = @save_message
 
@@ -1663,8 +1663,8 @@ IF @differential_flag = 'y'
 					SELECT @save_subject = 'DBAOps:  AutoRestore Failure for server ' + @@SERVERNAME
 					SELECT @save_message = 'Unable to restore the differential file for database ''' + @check_dbname + ''', the restore will be completed without the differential.'
 					EXEC DBAOps.dbo.dbasp_sendmail
-						@recipients = 'DBANotify@virtuoso.com',
-						--@recipients = 'DBANotify@virtuoso.com',
+						@recipients = 'DBANotify@${{secrets.DOMAIN_NAME}}',
+						--@recipients = 'DBANotify@${{secrets.DOMAIN_NAME}}',
 						@subject = @save_subject,
 						@message = @save_message
 

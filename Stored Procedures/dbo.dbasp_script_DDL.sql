@@ -11,7 +11,7 @@ CREATE   PROCEDURE [dbo].[dbasp_script_DDL] (@DBname sysname = 'all'
 
 /*********************************************************
  **  Stored Procedure dbasp_script_DDL
- **  Written by Steve Ledridge, Virtuoso
+ **  Written by Steve Ledridge, ${{secrets.COMPANY_NAME}}
  **  October 15, 2007
  **
  **  This dbasp is set up to create executable sql to;

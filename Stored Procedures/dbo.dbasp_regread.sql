@@ -10,7 +10,7 @@ CREATE   PROCEDURE [dbo].[dbasp_regread] (@in_key sysname = 'HKEY_LOCAL_MACHINE'
 
 /*********************************************************
  **  Stored Procedure dbasp_regread
- **  Written by Steve Ledridge, Virtuoso
+ **  Written by Steve Ledridge, ${{secrets.COMPANY_NAME}}
  **  04/06/2006
  **
  **  This procedure gets values from the registry.

@@ -10,7 +10,7 @@ CREATE   PROCEDURE [dbo].[dbasp_dba_sqlsetup] (@backup_path varchar(200) = NULL
 
 /**************************************************************
  **  Stored Procedure dbasp_dba_sqlsetup
- **  Written by Steve Ledridge, Virtuoso
+ **  Written by Steve Ledridge, ${{secrets.COMPANY_NAME}}
  **  September 6, 2002
  **
  **  This dbasp is set up to help in the standard SQL setup
@@ -319,7 +319,7 @@ Select @save_domain = config_value from #loginconfig
 get_domain_end:
 
 
---  Reformat the service account name if needed (remove the @Virtuoso...)
+--  Reformat the service account name if needed (remove the @${{secrets.DOMAIN_NAME}}...)
 Select @charpos = charindex('@', @save_envname)
 IF @charpos <> 0
    begin

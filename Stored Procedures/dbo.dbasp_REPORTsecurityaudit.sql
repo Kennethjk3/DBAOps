@@ -7,7 +7,7 @@ CREATE   PROCEDURE [dbo].[dbasp_REPORTsecurityaudit]
 
 /*********************************************************
  **  Stored Procedure dbasp_REPORTsecurityaudit
- **  Written by Steve Ledridge, Virtuoso
+ **  Written by Steve Ledridge, ${{secrets.COMPANY_NAME}}
  **  October 29, 2015
  **
  **  This dbasp is set up to create a report documenting

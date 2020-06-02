@@ -7,7 +7,7 @@ CREATE   PROCEDURE [dbo].[dbasp_Base_RemoteStartLocalProcess] (@environment sysn
 
 /*********************************************************
  **  Stored Procedure dbasp_Base_RemoteStartLocalProcess
- **  Written by Anne Varnes, Virtuoso
+ **  Written by Anne Varnes, ${{secrets.COMPANY_NAME}}
  **  June 24, 2008
  **
  **  This procedure is used to start the 'BASE - Local Process'

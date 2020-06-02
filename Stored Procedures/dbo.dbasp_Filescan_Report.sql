@@ -6,7 +6,7 @@ CREATE   PROCEDURE [dbo].[dbasp_Filescan_Report]
     @outshare varchar (255) = null     /** file output share name override **/
 /***************************************************************
  **  Stored Procedure dbasp_Filescan_Report
- **  Written by Steve Ledridge, Virtuoso
+ **  Written by Steve Ledridge, ${{secrets.COMPANY_NAME}}
  **  July 3, 2001
  **
  **  This dbasp is set up to create the daily filescan report.

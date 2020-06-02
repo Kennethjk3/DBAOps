@@ -7,7 +7,7 @@ CREATE   PROCEDURE [dbo].[dbasp_Check_DEPLOYJobs]
 
 /***************************************************************
  **  Stored Procedure dbasp_Check_DEPLOYJobs
- **  Written by Steve Ledridge, Virtuoso
+ **  Written by Steve Ledridge, ${{secrets.COMPANY_NAME}}
  **  February 27, 2013
  **
  **  This dbasp is set up to;
@@ -77,7 +77,7 @@ If (select env_detail from DBAOps.dbo.Local_ServerEnviro where env_type = 'ENVna
 
 
 			Exec DBAOps.dbo.dbasp_sendmail
-			@recipients = 'DBANotify@virtuoso.com',
+			@recipients = 'DBANotify@${{secrets.DOMAIN_NAME}}',
 			@subject = @savesubject,
 			@message = 'DBA Note: Automated SQL DEPLoyment Jobs were not removed from this production server.'
 
@@ -126,7 +126,7 @@ If (select env_detail from DBAOps.dbo.Local_ServerEnviro where env_type = 'ENVna
 		If @delete_flag = 'y'
 		   begin
 			Exec DBAOps.dbo.dbasp_sendmail
-			@recipients = 'DBANotify@virtuoso.com',
+			@recipients = 'DBANotify@${{secrets.DOMAIN_NAME}}',
 			@subject = @savesubject,
 			@message = 'DBA Note: Automated SQL DEPLoyment Jobs have been removed from this production server.'
 		   end

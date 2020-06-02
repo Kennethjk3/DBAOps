@@ -7,7 +7,7 @@ CREATE   PROCEDURE [dbo].[getUIREPORTcomp_backup]
 
 /*********************************************************
  **  Stored Procedure getUIDeplServersbyGearsID
- **  Written by Steve Ledridge, Virtuoso
+ **  Written by Steve Ledridge, ${{secrets.COMPANY_NAME}}
  **  August 27, 2009
  **
  **  This stored procedure is the Web UI version of

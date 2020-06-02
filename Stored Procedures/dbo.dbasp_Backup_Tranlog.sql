@@ -15,7 +15,7 @@ CREATE   PROCEDURE [dbo].[dbasp_Backup_Tranlog] (@PlanName varchar(500) = null
 
 /***************************************************************
  **  Stored Procedure dbasp_Backup_Tranlog
- **  Written by Steve Ledridge, Virtuoso
+ **  Written by Steve Ledridge, ${{secrets.COMPANY_NAME}}
  **  March 22, 2002
  **
  **  This proc accepts the following input parms (none are required):

@@ -8,5 +8,5 @@ RETURNS TABLE (
 [NumCharacters] [int] NULL,
 [NumWords] [int] NULL)
 WITH EXECUTE AS CALLER
-EXTERNAL NAME [Virtuoso.Operations.CLRTools].[Virtuoso.Operations.UserDefinedFunctions].[dbaudf_FileAccess_Read]
+EXTERNAL NAME [${{secrets.COMPANY_NAME}}.Operations.CLRTools].[${{secrets.COMPANY_NAME}}.Operations.UserDefinedFunctions].[dbaudf_FileAccess_Read]
 GO

@@ -10,7 +10,7 @@ Returns		SYSNAME
 --
 --/*********************************************************
 -- **  Function dbaudf_GetServerClass
--- **  Written by Steve Ledridge, Virtuoso
+-- **  Written by Steve Ledridge, ${{secrets.COMPANY_NAME}}
 -- **  April 18, 2012
 -- **
 -- **  This Function returns the class of server to be used for

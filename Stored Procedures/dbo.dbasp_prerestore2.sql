@@ -18,7 +18,7 @@ CREATE   PROCEDURE [dbo].[dbasp_prerestore2] (
 
 /*********************************************************
  **  Stored Procedure dbasp_prerestore2
- **  Written by Steve Ledridge, Virtuoso
+ **  Written by Steve Ledridge, ${{secrets.COMPANY_NAME}}
  **  December 29, 2008
  **
  **  This procedure is used for automated database
@@ -83,8 +83,8 @@ Declare @post_shrink char(1)
 Declare @complete_on_diffOnly_fail char(1)
 
 
-select @dbname = 'Virtuoso_Images_CRM_GENESYS'
-select @NewDBName = 'z_Virtuoso_Images_CRM_GENESYS_new'
+select @dbname = '${{secrets.COMPANY_NAME}}_Images_CRM_GENESYS'
+select @NewDBName = 'z_${{secrets.COMPANY_NAME}}_Images_CRM_GENESYS_new'
 select @FilePath = '\\seapcrmsql1a\seapcrmsql1a_backup\'
 --select @FileGroups = 'primary'
 select @ForceFileName = null
@@ -93,9 +93,9 @@ select @NoFullRestores = 1
 select @NoDifRestores = 0
 select @OverrideXML = '
 		<RestoreFileLocations>
-		<Override LogicalName="Virtuoso_Images_CRM_GENESYS" PhysicalName="E:\data\Virtuoso_Images_CRM_GENESYS.mdf" New_PhysicalName="I:\MSSQL\Data\$DT$_Virtuoso_Images_CRM_GENESYS.mdf" />
-		<Override LogicalName="Virtuoso_Images_CRM_GENESYS_log" PhysicalName="F:\log\Virtuoso_Images_CRM_GENESYS_log.LDF" New_PhysicalName="I:\MSSQL\Data\$DT$_Virtuoso_Images_CRM_GENESYS_log.LDF" />
-		<Override LogicalName="Virtuoso_Images_CRM_GENESYS_2" PhysicalName="E:\data\Virtuoso_Images_CRM_GENESYS_2.ndf" New_PhysicalName="I:\MSSQL\Data\$DT$_Virtuoso_Images_CRM_GENESYS_2.ndf" />
+		<Override LogicalName="${{secrets.COMPANY_NAME}}_Images_CRM_GENESYS" PhysicalName="E:\data\${{secrets.COMPANY_NAME}}_Images_CRM_GENESYS.mdf" New_PhysicalName="I:\MSSQL\Data\$DT$_${{secrets.COMPANY_NAME}}_Images_CRM_GENESYS.mdf" />
+		<Override LogicalName="${{secrets.COMPANY_NAME}}_Images_CRM_GENESYS_log" PhysicalName="F:\log\${{secrets.COMPANY_NAME}}_Images_CRM_GENESYS_log.LDF" New_PhysicalName="I:\MSSQL\Data\$DT$_${{secrets.COMPANY_NAME}}_Images_CRM_GENESYS_log.LDF" />
+		<Override LogicalName="${{secrets.COMPANY_NAME}}_Images_CRM_GENESYS_2" PhysicalName="E:\data\${{secrets.COMPANY_NAME}}_Images_CRM_GENESYS_2.ndf" New_PhysicalName="I:\MSSQL\Data\$DT$_${{secrets.COMPANY_NAME}}_Images_CRM_GENESYS_2.ndf" />
 		</RestoreFileLocations>'
 Select @post_shrink = 'n'
 Select @complete_on_diffOnly_fail = 'n'
@@ -291,8 +291,8 @@ BEGIN
 			Select @save_subject = 'DBAOps:  prerestore Failure for server ' + @@servername
 			Select @save_message = 'Unable to restore the differential file for database ''' + @NewDBName + ''', the restore will be completed without the differential.'
 			EXEC DBAOps.dbo.dbasp_sendmail
-				@recipients = 'DBANotify@virtuoso.com',
-				--@recipients = 'DBANotify@virtuoso.com',
+				@recipients = 'DBANotify@${{secrets.DOMAIN_NAME}}',
+				--@recipients = 'DBANotify@${{secrets.DOMAIN_NAME}}',
 				@subject = @save_subject,
 				@message = @save_message
 

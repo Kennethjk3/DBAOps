@@ -14,7 +14,7 @@ CREATE   PROCEDURE [dbo].[dbasp_updatestats] (@Large_count int = 100000
 
 /***************************************************************
  **  Stored Procedure dbasp_updatestats
- **  Written by Steve Ledridge, Virtuoso
+ **  Written by Steve Ledridge, ${{secrets.COMPANY_NAME}}
  **  February 08, 2006
  **
  **  This procedure creates a file to run the update stats process.

@@ -7,7 +7,7 @@ CREATE   PROCEDURE [dbo].[dbasp_Base_cleanup]
 
 /*********************************************************
  **  Stored Procedure dbasp_Base_cleanup
- **  Written by Steve Ledridge, Virtuoso
+ **  Written by Steve Ledridge, ${{secrets.COMPANY_NAME}}
  **  May 13, 2010
  **
  **  This procedure is used to clear out the local BASE share

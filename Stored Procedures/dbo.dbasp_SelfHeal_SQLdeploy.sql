@@ -7,7 +7,7 @@ CREATE   PROCEDURE [dbo].[dbasp_SelfHeal_SQLdeploy]
 
 /*********************************************************
  **  Stored Procedure dbasp_SelfHeal_SQLdeploy
- **  Written by Steve Ledridge, Virtuoso
+ **  Written by Steve Ledridge, ${{secrets.COMPANY_NAME}}
  **  May 15, 2014
  **
  **  This dbasp is set up to fix security for auto SQL deployments.

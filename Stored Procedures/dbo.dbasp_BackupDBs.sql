@@ -27,7 +27,7 @@ CREATE   PROCEDURE [dbo].[dbasp_BackupDBs] (@DBname sysname = null
 
 /***************************************************************
  **  Stored Procedure dbasp_BackupDBs
- **  Written by Steve Ledridge, Virtuoso
+ **  Written by Steve Ledridge, ${{secrets.COMPANY_NAME}}
  **  October 07, 2003
  **
  **  This procedure is used for various

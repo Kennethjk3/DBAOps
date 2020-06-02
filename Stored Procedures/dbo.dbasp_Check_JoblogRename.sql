@@ -6,7 +6,7 @@ CREATE   PROCEDURE [dbo].[dbasp_Check_JoblogRename] (@retention_days smallint = 
 
 /*********************************************************
  **  Stored Procedure dbasp_Check_JoblogRename                  
- **  Written by Steve Ledridge, Virtuoso                
+ **  Written by Steve Ledridge, ${{secrets.COMPANY_NAME}}                
  **  November 11, 2004                                      
  **  
  **  This procedure is used to rename SQL job step logs.

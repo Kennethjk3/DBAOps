@@ -9,7 +9,7 @@ CREATE   PROCEDURE [dbo].[dbasp_create_NXTshare] (@path_nxt nvarchar(250) = NULL
 
 /**************************************************************
  **  Stored Procedure dbasp_create_NXTshare
- **  Written by Steve Ledridge, Virtuoso
+ **  Written by Steve Ledridge, ${{secrets.COMPANY_NAME}}
  **  October 10, 2005
  **
  **  This dbasp is set up to create the NXT and BASE shares, which
@@ -187,7 +187,7 @@ Select @save_domain = config_value from #loginconfig
 get_domain_end:
 
 
---  Reformat the service account name if needed (remove the @Virtuoso...)
+--  Reformat the service account name if needed (remove the @${{secrets.DOMAIN_NAME}}...)
 Select @charpos = charindex('@', @save_envname)
 IF @charpos <> 0
    begin

@@ -11,7 +11,7 @@ CREATE   PROCEDURE [dbo].[dbasp_StartJob]
 	)
 /*********************************************************
  **  Stored Procedure dbasp_StartJob
- **  Written by Steve Ledridge, Virtuoso
+ **  Written by Steve Ledridge, ${{secrets.COMPANY_NAME}}
  **  April 14, 2014
  **  This procedure starts an Agent Job if it is not already
  **  running, and optionally waits for it to complete.

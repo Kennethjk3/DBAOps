@@ -9,7 +9,7 @@ CREATE   PROCEDURE [dbo].[dbasp_Tranlog_Cleanup] (@BkUpPath varchar(255) = null
 
 /***************************************************************
  **  Stored Procedure dbasp_Tranlog_Cleanup
- **  Written by Steve Ledridge, Virtuoso
+ **  Written by Steve Ledridge, ${{secrets.COMPANY_NAME}}
  **  November 20, 2012
  **
  **  This proc accepts the following input parms (none are required):
@@ -121,7 +121,7 @@ SET @BkUpPath = COALESCE(NULLIF(@BkUpPath,''),@EnvBackupPath,CASE WHEN @ForceLoc
 --		IF @ForceLocal = 1
 --			exec master.dbo.xp_instance_regread N'HKEY_LOCAL_MACHINE', N'Software\Microsoft\MSSQLServer\MSSQLServer', N'BackupDirectory', @BkUpPath output
 --		ELSE
---			SELECT @BkUpPath = '\\SDCSQLBACKUPFS.virtuoso.com\DatabaseBackups\' + UPPER(DBAOps.dbo.dbaudf_GetLocalFQDN())
+--			SELECT @BkUpPath = '\\SDCSQLBACKUPFS.${{secrets.DOMAIN_NAME}}\DatabaseBackups\' + UPPER(DBAOps.dbo.dbaudf_GetLocalFQDN())
 --	END
 --END
 

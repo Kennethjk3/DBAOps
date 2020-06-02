@@ -33,7 +33,7 @@ CREATE   PROCEDURE [dbo].[dbasp_Backup_Retention]
 								)
  /***************************************************************
  **  Stored Procedure dbasp_Backup_Retention
- **  Written by Steve Ledridge, Virtuoso
+ **  Written by Steve Ledridge, ${{secrets.COMPANY_NAME}}
  **  August 08, 2017
  **
  **

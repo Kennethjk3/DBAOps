@@ -6,7 +6,7 @@ CREATE   PROCEDURE [dbo].[dbasp_internalGetEnviroByDB]
 				 (@db sysname)
 /**************************************************************
  **  Stored Procedure dbasp_internalGetEnviroByDB
- **  Written by Steve Ledridge, Virtuoso
+ **  Written by Steve Ledridge, ${{secrets.COMPANY_NAME}}
  **  September 25, 2008
  **
  **  Returns the SQL Instance, database name and

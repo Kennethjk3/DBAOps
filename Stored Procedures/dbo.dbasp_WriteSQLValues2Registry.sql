@@ -6,7 +6,7 @@ CREATE   PROCEDURE [dbo].[dbasp_WriteSQLValues2Registry]
 --
 --/*********************************************************
 -- **  Stored Procedure dbasp_WriteSQLValues2Registry
--- **  Written by Steve Ledridge, Virtuoso
+-- **  Written by Steve Ledridge, ${{secrets.COMPANY_NAME}}
 -- **  April 18, 2012
 -- **
 -- **  This procedure writes several values to the registry to be
@@ -65,8 +65,8 @@ DECLARE		@RegValues			TABLE
 ---------------------------------------
 
 
-	SELECT	@ServerKey		= N'SOFTWARE\Virtuoso\SQL'
-			,@InstanceKey	= N'SOFTWARE\Virtuoso\SQL\' + @@servicename
+	SELECT	@ServerKey		= N'SOFTWARE\${{secrets.COMPANY_NAME}}\SQL'
+			,@InstanceKey	= N'SOFTWARE\${{secrets.COMPANY_NAME}}\SQL\' + @@servicename
 
 
 	-- GET CURRENT DB BUILD NUMBERS

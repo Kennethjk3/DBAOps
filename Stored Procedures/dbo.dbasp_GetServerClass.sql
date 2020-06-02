@@ -10,7 +10,7 @@ CREATE   PROCEDURE [dbo].[dbasp_GetServerClass]
 --
 --/*********************************************************
 -- **  Stored Procedure dbasp_GetServerClass
--- **  Written by Steve Ledridge, Virtuoso
+-- **  Written by Steve Ledridge, ${{secrets.COMPANY_NAME}}
 -- **  April 18, 2012
 -- **
 -- **  This procedure returns the class of server to be used for
@@ -55,7 +55,7 @@ BEGIN
 	ELSE IF EXISTS (SELECT 1 FROM DBAOps.dbo.dba_dbinfo WHERE status = 'RESTORING' AND Mirroring!='n' AND SQLName=@SQLName)
 	BEGIN
 		SELECT Distinct @PartnerServer = nullif(Mirroring,'n') FROM DBAOps.dbo.dba_dbinfo WHERE nullif(Mirroring,'n') IS NOT NULL
-		SET @TSQL = 'sqlcmd -Q"SET NOCOUNT ON;DECLARE @Value nVarChar(255);EXECUTE [master]..[xp_instance_regread] @rootkey = N''HKEY_LOCAL_MACHINE'',@key = ''SOFTWARE\Virtuoso\SQL'',@value_name = ''ServerClass'',@value = @Value OUT;SELECT @Value;" -h -1 -S ' + @PartnerServer
+		SET @TSQL = 'sqlcmd -Q"SET NOCOUNT ON;DECLARE @Value nVarChar(255);EXECUTE [master]..[xp_instance_regread] @rootkey = N''HKEY_LOCAL_MACHINE'',@key = ''SOFTWARE\${{secrets.COMPANY_NAME}}\SQL'',@value_name = ''ServerClass'',@value = @Value OUT;SELECT @Value;" -h -1 -S ' + @PartnerServer
 		INSERT INTO @Output(Data)
 		exec xp_cmdshell @TSQL
 		SELECT TOP 1 @PartnerServerClass = Data FROM @Output WHERE Data IS NOT NULL

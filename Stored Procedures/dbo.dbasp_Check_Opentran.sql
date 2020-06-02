@@ -5,7 +5,7 @@ GO
 CREATE   PROCEDURE [dbo].[dbasp_Check_Opentran]
 /*********************************************************
  **  Stored Procedure dbasp_Check_Opentran
- **  Written by Steve Ledridge, Virtuoso
+ **  Written by Steve Ledridge, ${{secrets.COMPANY_NAME}}
  **  December 12, 2000
  **
  **  This dbasp is set up to create executable sql to;

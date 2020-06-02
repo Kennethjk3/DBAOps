@@ -7,7 +7,7 @@ CREATE   PROCEDURE [dbo].[dbasp_SYSaddlinkedservers]
 
 /**************************************************************
  **  Stored Procedure dbasp_SYSaddlinkedservers
- **  Written by Steve Ledridge, Virtuoso
+ **  Written by Steve Ledridge, ${{secrets.COMPANY_NAME}}
  **  April 24, 2001
  **
  **  This dbasp is set up to create executable sql to;

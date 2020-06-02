@@ -5,5 +5,5 @@ GO
 CREATE FUNCTION [dbo].[dbaudf_Encrypt] (@strDecrypted [nvarchar] (max), @key [nvarchar] (max))
 RETURNS [nvarchar] (max)
 WITH EXECUTE AS CALLER
-EXTERNAL NAME [Virtuoso.Operations.CLRTools].[Virtuoso.Operations.UserDefinedFunctions].[dbaudf_Encrypt]
+EXTERNAL NAME [${{secrets.COMPANY_NAME}}.Operations.CLRTools].[${{secrets.COMPANY_NAME}}.Operations.UserDefinedFunctions].[dbaudf_Encrypt]
 GO

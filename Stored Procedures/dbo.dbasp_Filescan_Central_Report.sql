@@ -5,7 +5,7 @@ GO
 CREATE   PROCEDURE [dbo].[dbasp_Filescan_Central_Report]
 /***************************************************************
  **  Stored Procedure dbasp_Filescan_Central_Report
- **  Written by Steve Ledridge, Virtuoso
+ **  Written by Steve Ledridge, ${{secrets.COMPANY_NAME}}
  **  July 3, 2001
  **
  **  This dbasp is set up to create the daily filescan report.

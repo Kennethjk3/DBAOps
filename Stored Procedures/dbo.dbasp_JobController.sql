@@ -10,7 +10,7 @@ CREATE   PROCEDURE [dbo].[dbasp_JobController] (@JobNameMask sysname = 'BASE'
 
 /*********************************************************
  **  Stored Procedure dbasp_JobController
- **  Written by Steve Ledridge, Virtuoso
+ **  Written by Steve Ledridge, ${{secrets.COMPANY_NAME}}
  **  September 11, 2008
  **
  **  This dbasp is set up to run a series of jobs (job stream), each

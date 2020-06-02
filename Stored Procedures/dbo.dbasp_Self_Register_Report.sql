@@ -6,7 +6,7 @@ CREATE   PROCEDURE [dbo].[dbasp_Self_Register_Report]
 --
 --/*********************************************************
 -- **  Stored Procedure dbasp_Self_Register_Report
--- **  Written by Steve Ledridge        , Virtuoso
+-- **  Written by Steve Ledridge        , ${{secrets.COMPANY_NAME}}
 -- **  March 22, 2007
 -- **
 -- **  This procedure registers the local SQL server instance
@@ -787,7 +787,7 @@ DECLARE @DBconnections TABLE (DBc_id [int] IDENTITY(1,1) NOT NULL
 IF NOT EXISTS (SELECT 1 from dbo.Local_ServerEnviro where env_type = 'CentralServer')
 BEGIN
 	INSERT INTO dbo.Local_ServerEnviro (env_detail,env_type)
-	VALUES ('SDCSQLTOOLS.DB.VIRTUOSO.COM','CentralServer')
+	VALUES ('SDCSQLTOOLS.DB.${{secrets.DOMAIN_NAME}}','CentralServer')
 END
 
 Select @central_server = env_detail from dbo.Local_ServerEnviro where env_type = 'CentralServer'
@@ -2135,7 +2135,7 @@ SELECT
        LEFT JOIN B ON B.database_id=D.database_id
        JOIN E ON d.database_id=E.database_id
        CROSS JOIN C
-       --WHERE d.name NOT IN ('master','model','tempdb','msdb','ReportServer','ReportServerTempDB','distribution','DBAOps','dbaperf','DBAOps') --> Exclude "system", as well as Virtuoso's generic DB's
+       --WHERE d.name NOT IN ('master','model','tempdb','msdb','ReportServer','ReportServerTempDB','distribution','DBAOps','dbaperf','DBAOps') --> Exclude "system", as well as ${{secrets.COMPANY_NAME}}'s generic DB's
 
 
 --------------------  Cursor 11  -----------------------
@@ -4708,14 +4708,14 @@ delete from #drives
 delete from @Results
 
 
--- THIS MAKES SURE THAT THE Software\Virtuoso\Script\DiskMonitor BRANCH EXISTS
-EXEC[sys].[xp_instance_regwrite] N'HKEY_LOCAL_MACHINE',N'Software\Virtuoso\Script\DiskMonitor','XX','reg_sz','0'
-EXEC[sys].[xp_instance_regdeletevalue] N'HKEY_LOCAL_MACHINE',N'Software\Virtuoso\Script\DiskMonitor','XX'
+-- THIS MAKES SURE THAT THE Software\${{secrets.COMPANY_NAME}}\Script\DiskMonitor BRANCH EXISTS
+EXEC[sys].[xp_instance_regwrite] N'HKEY_LOCAL_MACHINE',N'Software\${{secrets.COMPANY_NAME}}\Script\DiskMonitor','XX','reg_sz','0'
+EXEC[sys].[xp_instance_regdeletevalue] N'HKEY_LOCAL_MACHINE',N'Software\${{secrets.COMPANY_NAME}}\Script\DiskMonitor','XX'
 
 
--- GET DISK ALERT OVERRIDES AT Software\Virtuoso\Script\DiskMonitor
+-- GET DISK ALERT OVERRIDES AT Software\${{secrets.COMPANY_NAME}}\Script\DiskMonitor
 INSERT INTO @Results
-EXEC [sys].[xp_instance_regenumvalues] N'HKEY_LOCAL_MACHINE',N'Software\Virtuoso\Script\DiskMonitor'
+EXEC [sys].[xp_instance_regenumvalues] N'HKEY_LOCAL_MACHINE',N'Software\${{secrets.COMPANY_NAME}}\Script\DiskMonitor'
 
 
 -- IF FORECAST DATA IS MORE THAN A DAY OLD THEN REPROCESS IT
@@ -4743,7 +4743,7 @@ ELSE IF (SELECT DATEDIFF(DAY,MAX(RunDate),@CheckDate) FROM [DBAperf].[dbo].[DMV_
 --                    Data    NVARCHAR (100)
 --                 )
 --INSERT INTO @Results
---EXEC [sys].[xp_instance_regenumvalues] N'HKEY_LOCAL_MACHINE',N'Software\Virtuoso\Script\DiskMonitor'
+--EXEC [sys].[xp_instance_regenumvalues] N'HKEY_LOCAL_MACHINE',N'Software\${{secrets.COMPANY_NAME}}\Script\DiskMonitor'
 
 
 ;WITH		DriveData		-- SOURCE DATA TO WORK FROM

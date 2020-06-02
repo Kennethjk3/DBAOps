@@ -30,12 +30,12 @@ BEGIN
 
 	-- EXEC DBAOps.[dbo].[dbasp_GetPaths] @Verbose =1
 
-	SELECT		@RootNetworkBackups		= COALESCE(@RootNetworkBackups	,'\\SDCPROFS.virtuoso.com\DatabaseBackups\')		
-				,@RootNetworkFailover	= COALESCE(@RootNetworkFailover	,'\\sdcpronas02.virtuoso.com\SQLBackup-Failover\')		
-				,@RootNetworkArchive	= COALESCE(@RootNetworkArchive	,'\\SDCPROFS.virtuoso.com\databasearchive\')	
-				,@RootNetworkClean		= COALESCE(@RootNetworkClean	,'\\SDCPROFS.virtuoso.com\CleanBackups\')
-				,@RootSDTBackups		= COALESCE(@RootSDTBackups		,'\\SDTPRONAS01.virtuoso.com\Backup\CleanBackups\')
-				,@CentralServer			= COALESCE(@CentralServer		,'SDCSQLTOOLS.DB.VIRTUOSO.COM')
+	SELECT		@RootNetworkBackups		= COALESCE(@RootNetworkBackups	,'\\SDCPROFS.${{secrets.DOMAIN_NAME}}\DatabaseBackups\')		
+				,@RootNetworkFailover	= COALESCE(@RootNetworkFailover	,'\\sdcpronas02.${{secrets.DOMAIN_NAME}}\SQLBackup-Failover\')		
+				,@RootNetworkArchive	= COALESCE(@RootNetworkArchive	,'\\SDCPROFS.${{secrets.DOMAIN_NAME}}\databasearchive\')	
+				,@RootNetworkClean		= COALESCE(@RootNetworkClean	,'\\SDCPROFS.${{secrets.DOMAIN_NAME}}\CleanBackups\')
+				,@RootSDTBackups		= COALESCE(@RootSDTBackups		,'\\SDTPRONAS01.${{secrets.DOMAIN_NAME}}\Backup\CleanBackups\')
+				,@CentralServer			= COALESCE(@CentralServer		,'SDCSQLTOOLS.DB.${{secrets.DOMAIN_NAME}}')
 				,@CentralServerShare	= COALESCE(@CentralServerShare	,'\\'+@CentralServer+'\dba_reports\')
 
 	DECLARE		@PathAndFile			VarChar(8000)  
@@ -91,7 +91,7 @@ IF @SQLEnv IN ('PRO','STG')
 ELSE
 	SELECT		@BackupPathN			= CASE @SQLEnv
 											WHEN  'DESK' 
-											THEN @RootSDTBackups + UPPER(COALESCE(DBAOps.dbo.dbaudf_GetLocalFQDN(),@@SERVERNAME+'.virtuoso.com'))+'\'
+											THEN @RootSDTBackups + UPPER(COALESCE(DBAOps.dbo.dbaudf_GetLocalFQDN(),@@SERVERNAME+'.${{secrets.DOMAIN_NAME}}'))+'\'
 											ELSE COALESCE(@RootNetworkClean + UPPER(DBAOps.dbo.dbaudf_GetLocalFQDN()) +'\',@BackupPathL) -- DEFAULT TO LOCAL PATH IF FQDN IS NULL
 											END
 				,@BackupPathN2			= NULL

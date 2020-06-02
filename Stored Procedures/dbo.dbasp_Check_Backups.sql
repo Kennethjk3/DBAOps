@@ -8,7 +8,7 @@ CREATE   PROCEDURE [dbo].[dbasp_Check_Backups] (@backup_full_dd_period int = 7
 
 /*********************************************************
  **  Stored Procedure dbasp_Check_Backups
- **  Written by Steve Ledridge, Virtuoso
+ **  Written by Steve Ledridge, ${{secrets.COMPANY_NAME}}
  **  June 12, 2001
  **
  **  This proc accepts the following input parms (position does matter):

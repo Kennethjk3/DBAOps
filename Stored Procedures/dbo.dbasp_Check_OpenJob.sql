@@ -6,7 +6,7 @@ CREATE   PROCEDURE [dbo].[dbasp_Check_OpenJob] (@job_run_hours int = 4)
 
 /*********************************************************
  **  Stored Procedure dbasp_Check_OpenJob
- **  Written by Steve Ledridge, Virtuoso
+ **  Written by Steve Ledridge, ${{secrets.COMPANY_NAME}}
  **  July 23, 2002
  **
  **  This dbasp is set up to check for long running jobs.

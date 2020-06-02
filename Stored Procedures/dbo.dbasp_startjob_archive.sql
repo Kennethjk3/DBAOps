@@ -7,7 +7,7 @@ CREATE   PROCEDURE [dbo].[dbasp_startjob_archive]  @miniute_limit int = 20
 
 /*********************************************************
  **  Stored Procedure dbasp_startjob_archive
- **  Written by Steve Ledridge, Virtuoso
+ **  Written by Steve Ledridge, ${{secrets.COMPANY_NAME}}
  **  March 13, 2014
  **  This procedure starts the DBA Archive process if it is
  **  not already running.
@@ -81,7 +81,7 @@ else
 
 
 		EXEC DBAOps.dbo.dbasp_sendmail
-			@recipients = 'DBANotify@virtuoso.com',
+			@recipients = 'DBANotify@${{secrets.DOMAIN_NAME}}',
 			@subject = @save_subject,
 			@message = @miscprint
 	   end

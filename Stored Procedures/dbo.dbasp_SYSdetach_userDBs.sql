@@ -7,7 +7,7 @@ CREATE   PROCEDURE [dbo].[dbasp_SYSdetach_userDBs]
 
 /**************************************************************
  **  Stored Procedure dbasp_SYSdetach_userDBs
- **  Written by Steve Ledridge, Virtuoso
+ **  Written by Steve Ledridge, ${{secrets.COMPANY_NAME}}
  **  June 10, 2002
  **
  **  This dbasp is set up to create a script that will

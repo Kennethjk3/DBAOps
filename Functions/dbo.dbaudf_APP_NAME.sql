@@ -10,7 +10,7 @@ RETURNS VarChar(1024)
 AS
 	/*********************************************************
 	 **  Function dbaudf_APP_NAME
-	 **  Written by Steve Ledridge, Virtuoso
+	 **  Written by Steve Ledridge, ${{secrets.COMPANY_NAME}}
 	 **  Aug 08, 2012
 	 **
 	 **  This function is used to return the application running the script.

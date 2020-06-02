@@ -7,7 +7,7 @@ CREATE   PROCEDURE [dbo].[dbasp_FixJobOutput]
 
 /***************************************************************
  **  Stored Procedure dbasp_FixJobOutput
- **  Written by Steve Ledridge, Virtuoso
+ **  Written by Steve Ledridge, ${{secrets.COMPANY_NAME}}
  **  December 27, 2005
  **
  **  This dbasp is set up to;

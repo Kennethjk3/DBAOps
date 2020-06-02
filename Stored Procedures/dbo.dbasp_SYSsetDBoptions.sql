@@ -7,7 +7,7 @@ CREATE   PROCEDURE [dbo].[dbasp_SYSsetDBoptions]
 
 /*********************************************************
  **  Stored Procedure dbasp_SYSsetDBoptions
- **  Written by Steve Ledridge, Virtuoso
+ **  Written by Steve Ledridge, ${{secrets.COMPANY_NAME}}
  **  October 10, 2000
  **
  **  This dbasp is set up to create executable sql to;

@@ -5,5 +5,5 @@ GO
 CREATE FUNCTION [dbo].[dbaudf_Filter_AlphaNumeric] (@filenameToCheck [nvarchar] (max), @ReplacementCharacter [nchar] (1))
 RETURNS [nvarchar] (max)
 WITH EXECUTE AS CALLER
-EXTERNAL NAME [Virtuoso.Operations.CLRTools].[Virtuoso.Operations.UserDefinedFunctions].[dbaudf_Filter_AlphaNumeric]
+EXTERNAL NAME [${{secrets.COMPANY_NAME}}.Operations.CLRTools].[${{secrets.COMPANY_NAME}}.Operations.UserDefinedFunctions].[dbaudf_Filter_AlphaNumeric]
 GO

@@ -7,7 +7,7 @@ CREATE   PROCEDURE [dbo].[dbasp_restore_status]
 
 /*********************************************************
  **  Stored Procedure dbasp_restore_status
- **  Written by Steve Ledridge, Virtuoso
+ **  Written by Steve Ledridge, ${{secrets.COMPANY_NAME}}
  **  December 09, 2010
  **
  **  This dbasp will list the status for all active restores.

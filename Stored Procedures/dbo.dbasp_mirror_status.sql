@@ -7,7 +7,7 @@ CREATE   PROCEDURE [dbo].[dbasp_mirror_status] (@show_detail smallint = 0)
 
 /*********************************************************
  **  Stored Procedure dbasp_mirror_status
- **  Written by Steve Ledridge, Virtuoso
+ **  Written by Steve Ledridge, ${{secrets.COMPANY_NAME}}
  **  March 30, 2010
  **
  **  This dbasp will list the status for all mirrored databases.

@@ -7,7 +7,7 @@ CREATE   PROCEDURE [dbo].[dbasp_HC_SysDB_General]
 
 /*********************************************************
  **  Stored Procedure dbasp_HC_SysDB_General
- **  Written by Steve Ledridge, Virtuoso
+ **  Written by Steve Ledridge, ${{secrets.COMPANY_NAME}}
  **  November 04, 2014
  **  This procedure runs the Sys DB portion
  **  of the DBA SQL Health Check process.

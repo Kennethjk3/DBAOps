@@ -9,7 +9,7 @@ CREATE   PROCEDURE [dbo].[dbasp_SYSdbRestore_singleDB] (@dbname sysname = null
 
 /*********************************************************
  **  Stored Procedure dbasp_SYSdbRestore_singleDB
- **  Written by Steve Ledridge, Virtuoso
+ **  Written by Steve Ledridge, ${{secrets.COMPANY_NAME}}
  **  September 20, 2007
  **
  **  This dbasp is set up to create executable sql to;

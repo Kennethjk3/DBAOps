@@ -7,7 +7,7 @@ CREATE   PROCEDURE [dbo].[dbasp_script_DBsprocs] (@DBname sysname = null)
 
 /*********************************************************
  **  Stored Procedure dbasp_script_DBsprocs
- **  Written by Steve Ledridge, Virtuoso
+ **  Written by Steve Ledridge, ${{secrets.COMPANY_NAME}}
  **  September 27, 2002
  **
  **  This dbasp is set up to create executable sql to;
