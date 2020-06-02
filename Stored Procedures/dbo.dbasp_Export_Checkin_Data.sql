@@ -6,9 +6,9 @@ GO
 --	DROP PROCEDURE [dbo].[dbasp_Export_Checkin_Data]
 --GO
 CREATE   PROCEDURE [dbo].[dbasp_Export_Checkin_Data]	(
-													@SpecificTables		VarChar(max)	= NULL -- USE PIPE DELIMITED STRING OF TABLES
-													,@ListTables		BIT				= 0
-													)
+                                                        @SpecificTables		VarChar(max)	= NULL -- USE PIPE DELIMITED STRING OF TABLES
+                                                        ,@ListTables		BIT		        = 0
+                                                        )
 AS
 
 DECLARE		@RunDate					DATETIME		--= GETDATE()
@@ -95,21 +95,21 @@ IF @ListTables = 1
 
 			-- FILE NAME FORMAT = {ServerName}|{TableName}|{KeyColumn}|{DateColumn}|{DateValue}|{GetAll}.dat
 			SELECT	@FileName	= REPLACE([DBAOps].[dbo].[dbaudf_base64_encode]		(
-																					@@SERVERNAME+'|'
-																					+PARSENAME(@TableName,1)+'|'
-																					+@KeyColumn+'|' 
-																					+@DateColumn+'|' 
-																					+@Now+'|'
-																					+CASE @GetAll WHEN 1 THEN '1' ELSE '0' END +'|'
-																					)+'.dat','=','$')
+                                                                                    @@SERVERNAME+'|'
+                                                                                    +PARSENAME(@TableName,1)+'|'
+                                                                                    +@KeyColumn+'|' 
+                                                                                    +@DateColumn+'|' 
+                                                                                    +@Now+'|'
+                                                                                    +CASE @GetAll WHEN 1 THEN '1' ELSE '0' END +'|'
+                                                                                    )+'.dat','=','$')
 
-					,@SCRIPT	= 'bcp "SELECT *'
-								+ CASE @CreateExportDate WHEN 0 THEN '' ELSE ', CAST('''+@Now+''' AS DateTime) ['+@DateColumn+']' END
-								+ CASE @CreateKeyColumn WHEN 0 THEN '' ELSE ', '''+@@ServerName+''' ['+@KeyColumn+']' END
-								+ ' FROM '
-								+ @TableName
-								+ CASE WHEN @GetAll = 1 THEN '' ELSE ' WHERE Convert(VarChar(12),['+@DateColumn+'],101) = '''+@Now+'''' END
-								+'" queryout "'+@Output_Path +'\'+@FileName+'" -S '+@@Servername+' -T -N -q'
+                    ,@SCRIPT	= 'bcp "SELECT *'
+                                + CASE @CreateExportDate WHEN 0 THEN '' ELSE ', CAST('''+@Now+''' AS DateTime) ['+@DateColumn+']' END
+                                + CASE @CreateKeyColumn WHEN 0 THEN '' ELSE ', '''+@@ServerName+''' ['+@KeyColumn+']' END
+                                + ' FROM '
+                                + @TableName
+                                + CASE WHEN @GetAll = 1 THEN '' ELSE ' WHERE Convert(VarChar(12),['+@DateColumn+'],101) = '''+@Now+'''' END
+                                +'" queryout "'+@Output_Path +'\'+@FileName+'" -S '+@@Servername+' -T -N -q'
  
 			RAISERROR('Exporting Data from %s to file %s\%s.',-1,-1,@TableName,@Output_Path,@FileName) WITH NOWAIT
 			
